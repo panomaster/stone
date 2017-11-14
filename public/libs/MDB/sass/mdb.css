@@ -10342,6 +10342,14 @@ textarea.editor {
 .col-left {
   float: left;
 }
+
+.pano-abstract-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f0f0f0;
+  background-size: cover;
+  height: 180px;
+}
  
 
  /*# sourceMappingURL= mdb.css.map */

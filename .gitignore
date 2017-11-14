@@ -1,7 +1,7 @@
 config.js
-config.default.tune.js
 .cov
 coverage
+node_modules
 .naeindex
 coverage.html
 .monitor

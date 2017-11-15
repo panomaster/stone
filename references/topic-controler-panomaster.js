@@ -1,5 +1,5 @@
 /*!
- * panostone - controllers/topic.js
+ * nodeclub - controllers/topic.js
  */
 
 /**
@@ -125,7 +125,6 @@ exports.put = function (req, res, next) {
   var desc = validator.trim(req.body.desc);
   var cover = validator.trim(req.body.cover);
 
-
   // 得到所有的 tab, e.g. ['ask', 'share', ..]
   var allTabs = config.tabs.map(function (tPair) {
     return tPair[0];
@@ -193,7 +192,7 @@ exports.showEdit = function (req, res, next) {
         topic_id: topic._id,
         title: topic.title,
         content: topic.content,
-        desc:topic.desc,
+		desc:topic.desc,
         cover:topic.cover,
         tab: topic.tab,
         tabs: config.tabs
@@ -471,6 +470,38 @@ exports.upload = function (req, res, next) {
           success: true,
           url: result.url,
         });
+      });
+
+    });
+
+  req.pipe(req.busboy);
+};
+
+exports.uploadFile = function (req, res, next) {
+  
+  var isFileLimit = false;
+  req.busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
+      file.on('limit', function () {
+        isFileLimit = true;
+
+        res.json({
+          success: false,
+          msg: 'File size too large. Max is ' + config.file_limit
+        })
+      });
+
+      store.upload(file, {filename: filename}, function (err, result) {
+        if (err) {
+          return next(err);
+        }
+        if (isFileLimit) {
+          return;
+        }
+        var temp = "<script type=\"text/javascript\">"
+        + "window.parent.CKEDITOR.tools.callFunction(" + '1' + ",'" + result.url + "','')"
+        + "</script>";
+        
+        res.send(temp);
       });
 
     });

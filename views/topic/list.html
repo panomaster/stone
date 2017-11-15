@@ -1,7 +1,10 @@
 <div id="topic_list">
   <%- partial('../topic/abstract', {collection:topics, as:'topic'}) %>
 </div>
-<!-- div class='pagination' current_page='<%= current_page %>'>
+<div class="clearfix"></div>
+  
+
+<div class='pagination' current_page='<%= current_page %>'>
   <ul>
     <% var base_url = base + (base.indexOf('?') < 0 ? '?' : '&')
       + 'tab=' + (typeof tab !== 'undefined' ? tab : '') + '&page='; %>
@@ -38,7 +41,7 @@
     <li><a href='<%= base_url + pages %>'>»</a></li>
     <% } %>
   </ul>
-</div -->
+</div>
 <script>
   $(document).ready(function () {
     var $nav = $('.pagination');

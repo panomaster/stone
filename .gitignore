@@ -6,8 +6,7 @@ node_modules
 coverage.html
 .monitor
 
-*.min.*.js
-*.min.*.css
+
 assets.json
 
 # Ignore Mac OS desktop services store

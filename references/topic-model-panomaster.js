@@ -22,6 +22,7 @@ var TopicSchema = new Schema({
   content_is_html: { type: Boolean },
   tab: {type: String},
   deleted: {type: Boolean, default: false},
+    //JK add newlly added areas for contents description and cover image information.
   desc:{type: String},
   cover:{type: String},
 });

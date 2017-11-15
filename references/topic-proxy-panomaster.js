@@ -226,4 +226,3 @@ exports.newAndSave = function (title, content, tab,  desc, cover, authorId, call
 
   topic.save(callback);
 };
-

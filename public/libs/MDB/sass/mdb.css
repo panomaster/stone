@@ -9716,6 +9716,8 @@ table.table-sm td {
 /* base */
 #topic_list {
   margin: 0;
+  height: 100%;
+  background-color: transparent;
 }
 
 #topic_list .cell:hover {
@@ -9726,12 +9728,16 @@ table.table-sm td {
   padding: 0;
   margin-top: 60px;
   width: 100%;
+  height: 100%;
+  border: solid 1px grey;
 }
 
 #sidebar {
   margin-bottom: 20px;
   float: right;
   width: 100%;
+  border: solid 1px grey;
+  padding-left: 20px;
 }
 
 #content .topic_full_title {
@@ -10332,9 +10338,39 @@ textarea.editor {
 .pano-abstract-bg {
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #f0f0f0;
+  background-color: #ddf1fa;
   background-size: cover;
   height: 180px;
+}
+
+.pano-abstract-hf-text {
+  height: 100px;
+  line-height: 20px;
+}
+
+.pano-avatar-small {
+  height: 40px;
+}
+
+.pano-cut2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.pano-cut1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  width: 100%;
+}
+
+.pano-information {
+  font-size: 12px;
+  color: #2b2a2a;
 }
 
 @media screen and (max-width: 1200px) {
@@ -10389,7 +10425,7 @@ textarea.editor {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 1200px;
   }
 }
 

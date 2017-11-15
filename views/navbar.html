@@ -1,67 +1,64 @@
-<nav class="navbar">
-    <div class="container">
-        <div class="navbar-translate">
-                <a class='brand' href='/'>
-                    <% if (config.site_logo) {%>
-                      <img style="height:32px" src="<%- staticFile(config.site_logo) %>" />
-                    <%} else {%>
-                      <%- config.name %>
-                    <%}%>
-                  </a>
-            <!--
-                  <form id='search_form' class='navbar-search' action="/search">
-                    <input type='text' id='q' name='q' class='search-query span3' value=''/>
-                  </form> -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark black">
+    <a class='brand' href='/'>
+        <% if (config.site_logo) {%>
+          <img style="height:32px" src="<%- staticFile(config.site_logo) %>" />
+        <%} else {%>
+          <%- config.name %>
+        <%}%>
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
 
-            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-            </button>
-        </div>
+            <li class="nav-item active"><a class="nav-link" href='/'>首页<span class="sr-only">(current)</span></a></li>
+            <% if (current_user){ %>
+            <li class="nav-item">
+                <a class="nav-link" href='/my/messages'>
+                    <% if (current_user.messages_count) { %>
+                    <%= current_user.messages_count %>个
+                    <% } %>
+                    未读消息
+                </a>
+            </li>
+            <% } %>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
-            <ul class="navbar-nav">
+            <% if (current_user) { %>
+            <li class="nav-item">
+                <a class="nav-link" href='/topic/create' id='create_topic_btn'>
+                    发布话题
+                </a>
+            </li>
+            <% } %>
 
-                <li class="nav-item"><a class="nav-link" href='/'><p>首页</p></a></li>
-                <% if (current_user){ %>
-                <li class="nav-item">
-                    <a class="nav-link" href='/my/messages'>
-                      <% if (current_user.messages_count) { %>
-                        <%= current_user.messages_count %>个
-                      <% } %>
-                      <p>未读消息</p>
-                    </a>
-                </li>
-                <% } %>
-
-                <% if (current_user) { %>
-                <li class="nav-item">
-                    <a class="nav-link" href='/topic/create' id='create_topic_btn'>
-                        <p>发布话题</p>
-                    </a>
-                </li>
-                <% } %>
-            
-                <% if (current_user) { %>
-                <li class="nav-item"><a class="nav-link" href='/setting'><p>设置</p></a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href='/signout' data-method="post" rel="nofollow"><p>退出</p></a>
-                </li>
-                <% } else { %>
-                <li class="nav-item"><a class="nav-link" href='/signup'><p>注册</p></a></li>
-                <li class="nav-item"><a class="nav-link" href='/signin'><p>登录</p></a></li>
-                <% } %>
+            <% if (current_user) { %>
+            <li class="nav-item"><a class="nav-link" href='/setting'>设置</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href='/signout' data-method="post" rel="nofollow">退出</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item"><a class="nav-link" href='/signup'>注册</a></li>
+            <li class="nav-item"><a class="nav-link" href='/signin'>登录</a></li>
+            <% } %>            
 
 
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none d-xl-none">Instagram</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown 
+                </a>
+                <div class="dropdown-menu dropdown-purple" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+        </ul>
+
+        <form id="search_form" action="/search" class="form-inline">
+            <input type="text" id="q"  class="form-control mr-sm-2" placeholder="Search" value="" aria-label="Search" />
+        </form>
     </div>
 </nav>
-<script src="/public/assets/js/now-ui-kit.js" type="text/javascript"></script>
+    
+                
+ 

@@ -6542,7 +6542,7 @@ a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Microsoft YaHei","微软雅黑", verdana, sans-serif;
   font-weight: 300;
 }
 
@@ -9714,15 +9714,6 @@ table.table-sm td {
 }
 
 /* base */
-#main {
-  width: 90%;
-  max-width: 1400px;
-  min-width: 960px;
-  margin: 15px auto;
-  min-height: 400px;
-  position: relative;
-}
-
 #topic_list {
   margin: 0;
 }
@@ -9733,14 +9724,14 @@ table.table-sm td {
 
 #content {
   padding: 0;
-  margin-right: 305px;
+  margin-top: 60px;
+  width: 100%;
 }
 
 #sidebar {
-  width: 290px;
-  font-size: 14px;
-  float: right;
   margin-bottom: 20px;
+  float: right;
+  width: 100%;
 }
 
 #content .topic_full_title {
@@ -10201,11 +10192,6 @@ div[class$=content] > blockquote > p {
   padding: 2px;
 }
 
-#sidebar .inner ol {
-  margin: 4px 0px;
-  list-style: none;
-}
-
 .top_score {
   margin-right: 10px;
 }
@@ -10350,6 +10336,79 @@ textarea.editor {
   background-size: cover;
   height: 180px;
 }
+
+@media screen and (max-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+@media (max-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+
+*/
  
 
  /*# sourceMappingURL= mdb.css.map */

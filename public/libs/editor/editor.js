@@ -7085,9 +7085,9 @@ var toolbar = [
   {name: 'ordered-list', action: toggleOrderedList},
   '|',
 
-  {name: 'link', action: drawLink},
+  /* {name: 'link', action: drawLink},
   {name: 'image', action: drawImage},
-  '|',
+  '|', */
 
   {name: 'info', action: 'http://lab.lepture.com/editor/markdown'},
   {name: 'preview', action: togglePreview},

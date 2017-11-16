@@ -477,3 +477,37 @@ exports.upload = function (req, res, next) {
 
   req.pipe(req.busboy);
 };
+
+
+exports.uploadFile = function (req, res, next) {
+  
+  var isFileLimit = false;
+  req.busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
+      file.on('limit', function () {
+        isFileLimit = true;
+
+        res.json({
+          success: false,
+          msg: 'File size too large. Max is ' + config.file_limit
+        })
+      });
+
+      store.upload(file, {filename: filename}, function (err, result) {
+        if (err) {
+          return next(err);
+        }
+        if (isFileLimit) {
+          return;
+        }
+        var temp = "<script type=\"text/javascript\">"
+        + "window.parent.CKEDITOR.tools.callFunction(" + '1' + ",'" + result.url + "','')"
+        + "</script>";
+        
+        res.send(temp);
+      });
+
+    });
+
+  req.pipe(req.busboy);
+};
+

@@ -72,6 +72,7 @@ router.get('/my/messages', auth.userRequired, message.index); // 用户个人的
 
 // 新建文章界面
 router.get('/topic/create', auth.userRequired, topic.create);
+router.get('/topic/upload', auth.userRequired, topic.uploadFile);
 
 router.get('/topic/:tid', topic.index);  // 显示某个话题
 router.post('/topic/:tid/top', auth.adminRequired, topic.top);  // 将某话题置顶
@@ -95,6 +96,7 @@ router.post('/reply/:reply_id/edit', auth.userRequired, reply.update); // 修改
 router.post('/reply/:reply_id/delete', auth.userRequired, reply.delete); // 删除某评论
 router.post('/reply/:reply_id/up', auth.userRequired, reply.up); // 为评论点赞
 router.post('/upload', auth.userRequired, topic.upload); //上传图片
+router.post('/uploadFile', auth.userRequired, topic.uploadFile); //上传图片
 
 // static
 router.get('/about', staticController.about);

@@ -14,3 +14,7 @@ pano stone repo with newly built nodeclub framework
 * original style elements has been updated with MDB-FREE framewor. It can be found in lib/sass folder.
 * 
 
+### 2017.11.16
+* ckeditor porting (still have some problem to upload images)
+* original markdown editor modification (remove addlink/addimage button... in editor.js--toolbar.)
+* topic edit html has been modified to upload cover image and descriptions... ckeditor has been ported.

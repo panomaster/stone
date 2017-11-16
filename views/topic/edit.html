@@ -1,19 +1,19 @@
 <%- partial('navbar') %>
 
-
 <%- partial('editor_sidebar') %>
-<div id='content' class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-  <div class='panel'>
-    <div class='header'>
-      <ol class='breadcrumb'>
-        <li><a href='/'>主页</a><span class='divider'>/</span></li>
-        <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
-        <li class='active'>编辑话题</li>
-        <% }else{ %>
-        <li class='active'>发布话题</li>
-        <% } %>
-      </ol>
-    </div>
+
+<div id='content'>
+  <div class="panel">
+      <div class='header'>
+          <ol class='breadcrumb'>
+            <li><a href='/'>主页</a><span class='divider'>/</span></li>
+            <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
+            <li class='active'>编辑话题</li>
+            <% }else{ %>
+            <li class='active'>发布话题</li>
+            <% } %>
+          </ol>
+        </div>
     <div class='inner post'>
       <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
       <div class="alert alert-error">
@@ -28,62 +28,86 @@
       <% }else{ %>
       <% if (typeof(action) !== 'undefined' && action === 'edit') { %>
       <form id='create_topic_form' action='/topic/<%= topic_id %>/edit' method='post'>
-      <% } else { %>
-      <form id='create_topic_form' action='/topic/create' method='post'>
-        <% } %>
-        <fieldset>
-          <span class="tab-selector">选择版块：</span>
-          <select name="tab" id="tab-value">
-            <option value="">请选择</option>
-            <%
-            var tabValue = '';
-            if (typeof(tab) !== 'undefined') {
-              tabValue = tab;
-            }
-            tabs.forEach(function (pair) {
-              var value = pair[0];
-              var text = pair[1];
-              %>
-            <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
+        <% } else { %>
+        <form id='create_topic_form' action='/topic/create' method='post'>
+          <% } %>
+          <fieldset>
+            <span class="tab-selector">选择版块：</span>
+            <select name="tab" id="tab-value">
+              <option value="">请选择</option>
+              <%
+              var tabValue = '';
+              if (typeof(tab) !== 'undefined') {
+                tabValue = tab;
+              }
+              tabs.forEach(function (pair) {
+                var value = pair[0];
+                var text = pair[1];
+                %>
+                <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
 
-            <%});%>
-          </select>
-          <span id="topic_create_warn"></span>
-          <textarea autofocus class='span9' id='title' name='title' rows='1'
-                    placeholder="标题字数 10 字以上"
-                  ><%= typeof(title) !== 'undefined' && title || '' %>
-          </textarea>
-          <div class='markdown_editor in_editor'>
-            <div class='markdown_in_editor'>
-              <textarea class='editor' name='t_content' rows='20'
-                        placeholder='文章支持 Markdown 语法, 请注意标记代码'
-                      ><%= typeof(content) !== 'undefined' && content || '' %></textarea>
+              <%});%>
+            </select>
+            <span id="topic_create_warn"></span>
+			<!-- 内容标题 -->		
+            <textarea autofocus class='form-control' id='title' name='title' rows='1'
+                      placeholder="标题字数 10 字以上"
+                    ><%= typeof(title) !== 'undefined' && title || '' %></textarea>
+			<!-- 内容简介 -->						
+            <textarea class='form-control' id='desc' name='desc' rows='1' maxlength="40"
+                      placeholder="简介字数20~40字"
+					><%= typeof(desc) !== 'undefined' && desc || '' %></textarea>		
 
-              <div class='editor_buttons'>
-                <input type="submit" class='span-primary submit_btn' data-loading-text="提交中"
-                        value="提交">
+			<!-- 封面上传按钮 -->
+            <div id="cover_div" style="margin-bottom:1em;">
+              <div class="btn" style="float:left;margin-right:10px;border:1px solid #aaa" id="cover_btn" name="cover_btn">
+                上传封面
+              </div>
+			<!-- 封面图片显示区 -->
+              <span id="cover_url">
+                &nbsp;<%= typeof(cover) !== 'undefined' && cover || '' %>
+              </span>
+
+            </div>
+			<div class="clearfix"></div>
+					
+            <div class='markdown_editor in_editor'>
+              <div class='markdown_in_editor'>
+	                <textarea class='editor' id='editor' name='t_content' rows='20'
+                          placeholder='文章支持 Markdown 语法, 请注意标记代码'
+                        ><%= typeof(content) !== 'undefined' && content || '' %></textarea>
+                <div class='editor_buttons'>
+                  <input type="submit" class='pull-right btn btn-primary btn-round submit_btn' data-loading-text="提交中"
+                         value="提交">
+                </div>
               </div>
             </div>
 
-          </div>
-          <input type='hidden' id='topic_tags' name='topic_tags' value=''>
-          <input type='hidden' name='_csrf' value='<%= csrf %>'>
-        </fieldset>
-      </form>
-        <% } %>
+            <input type='hidden' id='topic_tags' name='topic_tags' value=''>
+            <input type='hidden' name='_csrf' value='<%= csrf %>'>
+            <input type='hidden' name='_csrf1' value='<%= csrf %>'>
+            <input type='hidden' id='cover' name="cover" value=''>
+          </fieldset>
+        </form>
     </div>
+    <% } %>
   </div>
 </div>
 
+
 <!-- markdown editor -->
-<%- partial('../includes/editor') %>
-
-
+		<%- partial('../includes/ckeditor') %>
+	
+	
 <script>
   (function () {
-    var editor = new Editor();
-    editor.render($('.editor')[0]);
+	    CKEDITOR.replace( 'editor' );
 
+		
+    $('#cover_btn').on('click', function(){
+      var toolImage = new ToolImage1();
+      toolImage.bind();
+    });
     // 版块选择的检查，必须选择
     $('#create_topic_form').on('submit', function (e) {
       var tabValue = $('#tab-value').val();
@@ -101,13 +125,164 @@
       var $this = $(this);
       var value = $this.val();
       var warnMsg = '';
-      if (value === 'job') {
+      if (value === 'accident') {
         warnMsg = '<strong>为避免被管理员删帖，发帖时请好好阅读<a href="http://cnodejs.org/topic/541ed2d05e28155f24676a12" target="_blank">《招聘帖规范》</a></strong>';
-      } else if (value === 'ask') {
+      } else if (value === 'story') {
         warnMsg = '<strong>提问时，请遵循 <a href="http://doc.zengrong.net/smart-questions/cn.html" target="_blank">《提问的智慧》</a>中提及的要点，以便您更接收到高质量回复。</strong>'
       }
       $('#topic_create_warn').html(warnMsg);
     });
     // END 选择招聘版块时，给出提示
+	
+
+	  var ToolImage1 = function(){
+      var self = this;
+      this.$win = $([
+        '<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">',
+			'<div class="modal-dialog">',
+				'<div class="modal-content">',
+					'<div class="modal-header">',		
+						'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
+						'<h4 class="modal-title" id="editorToolImageTitle">上传封面图片</h4>',
+					'</div>',
+					'<div class="modal-body" style="height: 260px">',
+						'<div class="upload-img">',
+						'<div class="button">上传封面</div>',
+							'<div style="margin-top:10px;">',
+							  '<p>请选择作为本文章封面的图片。</p>',
+							  '<p>请避免选择与主题无关的图片。</p>',
+							  '<p>上传图片请遵守法律法规。</p>',
+							'</div>',
+							'<span class="tip"></span>',
+							'<div class="alert alert-error hide"></div>',
+						'</div>',
+					'</div>',
+					'<div class="modal-footer">',
+						'<button type="button" class="close btn btn-default" data-dismiss="modal">Close</button>',
+					'</div>',
+				'</div>',
+			'</div>',	
+        '</div>'		
+      ].join('')).appendTo($('#cover_div'));
+
+      this.$upload = this.$win.find('.upload-img').css({
+        height: 30,
+        textAlign: 'center',
+        padding: '20px 0',
+      });
+
+      this.$uploadBtn = this.$upload.find('.button').css({
+        width: 86,
+        height: 40,
+        margin: '0 auto'
+      });
+
+      this.$uploadTip = this.$upload.find('.tip').hide();
+
+      this.file = false;
+      var _csrf1 = $('[name=_csrf1]').val();
+
+      this.uploader = WebUploader.create({
+        swf: '/public/libs/webuploader/Uploader.swf',
+        server: '/upload?_csrf=' + _csrf1,
+        pick: this.$uploadBtn[0],
+        paste: document.body,
+        dnd: this.$upload[0],
+        auto: true,
+        fileSingleSizeLimit: 2 * 1024 * 1024,
+        //sendAsBinary: true,
+        // 只允许选择图片文件。
+        accept: {
+          title: 'Images',
+          extensions: 'gif,jpg,jpeg,bmp,png',
+          mimeTypes: 'image/*'
+        }
+      });
+
+      this.uploader.on('beforeFileQueued', function(file){
+        if(self.file !== false){
+          return false;
+        }
+        self.showFile(file);
+      });
+
+      this.uploader.on('uploadProgress', function(file, percentage){
+        // console.log(percentage);
+        self.showProgress(file, percentage * 100);
+      });
+
+      this.uploader.on('uploadSuccess', function(file, res){
+        if(res.success){
+          self.$win.modal('hide');
+          console.log(JSON.stringify(res));
+          $('#cover_url').text(res.url);
+          $('#cover').val(res.url);
+          //self.editor.push('!['+ file.name +']('+ res.url +')');
+          self.showError(res.url || '服务器走神了，上传失败!!!!!!!!!!!!!!!!!');
+        }
+        else{
+          self.removeFile();
+          self.showError(res.msg || '服务器走神了，上传失败');
+        }
+      });
+
+      this.uploader.on('uploadComplete', function(file){
+        self.uploader.removeFile(file);
+        self.removeFile();
+      });
+
+      this.uploader.on('error', function(type){
+        self.removeFile();
+        switch(type){
+          case 'Q_EXCEED_SIZE_LIMIT':
+          case 'F_EXCEED_SIZE':
+            self.showError('文件太大了, 不能超过2M');
+            break;
+          case 'Q_TYPE_DENIED':
+            self.showError('只能上传图片');
+            break;
+          default:
+            self.showError('发生未知错误');
+        }
+      });
+
+      this.uploader.on('uploadError', function(){
+        self.removeFile();
+        self.showError('服务器走神了，上传失败');
+      });
+    };
+    ToolImage1.prototype.removeFile = function(){
+      //var self = this;
+      this.file = false;
+      this.$uploadBtn.show();
+      this.$uploadTip.hide();
+    };
+
+    ToolImage1.prototype.showFile = function(file){
+      //var self = this;
+      this.file = file;
+      this.$uploadBtn.hide();
+      this.$uploadTip.html('正在上传: ' + file.name).show();
+      this.hideError();
+    };
+
+    ToolImage1.prototype.showError = function(error){
+      this.$upload.find('.alert-error').html(error).show();
+    };
+
+    ToolImage1.prototype.hideError = function(error){
+      this.$upload.find('.alert-error').hide();
+    };
+
+    ToolImage1.prototype.showProgress = function(file, percentage){
+      this.$uploadTip
+              .html('正在上传: ' + file.name + ' ' + percentage + '%')
+              .show();
+    };
+
+    ToolImage1.prototype.bind = function(){
+      this.$win.modal('show');
+    };
+
   })();
 </script>

@@ -84,7 +84,7 @@
     var ToolImage = function(){
         var self = this;
         this.$win = $([
-            '<div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="true">',
+            '<div class="modal" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="true">',
                 '<div class="modal-header">',
                     '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
                     '<h3 id="editorToolImageTitle">图片</h3>',

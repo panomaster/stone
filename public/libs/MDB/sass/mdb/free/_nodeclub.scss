@@ -259,8 +259,6 @@ a.tag_big {
 }
 
 
-
-
 .user_info {
   margin-left: 10px;
   display: inline-block;
@@ -322,11 +320,8 @@ a.tag_big {
   font-size: 12px;
 }
 
-
-
-
 .tags_select {
-  border: 1px dashed #ccc;
+  border: 1px dashed rgb(233, 59, 59);
   padding: 10px;
 }
 
@@ -460,17 +455,6 @@ textarea#title {
   overflow: auto;
 }
 
-#main .topic_content p a.content_img,
-#main .reply_content p a.content_img {
-  color: hsl(0, 0%, 40%);
-  box-shadow: 0px 1px 2px hsla(0, 0%, 55%, 0.6);
-  display: inline-block;
-  margin: 10px 0px;
-}
-
-#main p a.content_img {
-  max-width: 100%;
-}
 
 div[class$=content] > blockquote > p {
   font-size: 14px;
@@ -599,7 +583,7 @@ textarea.editor {
 .topic-tab {
   margin: 0 10px;
   &.current-tab {
-    color: white;
+    color: rgb(9, 243, 48);
     padding: 3px 4px;
     border-radius: 3px;
   }
@@ -620,7 +604,4 @@ textarea.editor {
 }
 
 
-.btn-info {
-  color: white !important;
-}
 

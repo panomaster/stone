@@ -2,6 +2,7 @@ config.js
 .cov
 coverage
 node_modules
+.node_modules
 .naeindex
 coverage.html
 .monitor

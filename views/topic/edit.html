@@ -44,8 +44,7 @@
                 var value = pair[0];
                 var text = pair[1];
                 %>
-                <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
-
+              <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
               <%});%>
             </select>
             <span id="topic_create_warn"></span>

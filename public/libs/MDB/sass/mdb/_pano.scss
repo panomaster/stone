@@ -14,7 +14,7 @@
 }
 
 .container-fluid {
-  width: 100%;
+  width: 100%; 
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -27,6 +27,14 @@
     background-color: #ddf1fa;
     background-size: cover;
     height: 180px;
+}
+
+.pano-qrate1-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #ddf1fa;
+    background-size: cover;
+    height: 100px;
 }
 
 .pano-abstract-hf-text{

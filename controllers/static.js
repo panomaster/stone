@@ -14,7 +14,13 @@ exports.faq = function (req, res, next) {
 
 exports.getstart = function (req, res) {
   res.render('static/getstart', {
-    pageTitle: 'Node.js 新手入门'
+    pageTitle: '测试页面'
+  });
+};
+
+exports.mockup = function (req, res) {
+  res.render('static/mockup', {
+    pageTitle: '测试页面'
   });
 };
 

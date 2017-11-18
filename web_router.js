@@ -102,6 +102,7 @@ router.post('/uploadFile', auth.userRequired, topic.uploadFile); //上传图片
 router.get('/about', staticController.about);
 router.get('/faq', staticController.faq);
 router.get('/getstart', staticController.getstart);
+router.get('/mockup', staticController.mockup);
 router.get('/robots.txt', staticController.robots);
 router.get('/api', staticController.api);
 

@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+
+  <% if (typeof(no_reply_topics) !== 'undefined') { %>
+    <div class='swiper-container swiper-qrate1'>
+      <% if (no_reply_topics.length > 0) { %>
+      <ul class="unstyled list-inline swiper-wrapper">
+        <%- partial('topic/qrate1', { collection: no_reply_topics, as: 'topic' }) %>
+      </ul>
+      <% } else { %>
+      <p>无</p>
+      <% } %>
+    </div>
+  <% } %>
+
+    
+<style>
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      width: 160px;
+      height: 230px;
+      text-align: left;
+    }
+  </style>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper('.swiper-qrate1', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+  });
+</script>

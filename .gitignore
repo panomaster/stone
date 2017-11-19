@@ -3,6 +3,7 @@ config.js
 coverage
 node_modules
 mdb-backup
+mdb-addons
 pro
 .node_modules
 .naeindex

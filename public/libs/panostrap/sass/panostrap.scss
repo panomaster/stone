@@ -29,92 +29,92 @@
 
 // Bootstrap //
 
-@import "mdb/free/data/functions";
-@import "mdb/free/data/variables-b4";
+@import "panostrap/free/data/functions";
+@import "panostrap/free/data/variables-b4";
 
 // MDB Framework //
-@import "mdb/free/data/prefixer";
-@import "mdb/free/data/mixins";
-@import "mdb/free/data/colors";
-@import "mdb/free/data/variables";
-@import "mdb/free/global";
-@import "mdb/free/animations";
-@import "mdb/free/helpers";
-@import "mdb/free/typography";
-@import "mdb/free/buttons";
-@import "mdb/free/cards-basic";
-@import "mdb/free/dropdowns";
-@import "mdb/free/navbar";
-@import "mdb/free/pagination";
-@import "mdb/free/badge";
-@import "mdb/free/breadcrumb";
-@import "mdb/free/modals";
-@import "mdb/free/progress";
-@import "mdb/free/carousel-basic";
-@import "mdb/free/collapse";
-@import "mdb/free/jumbotron";
-@import "mdb/free/masks";
-@import "mdb/free/waves";
-// @import "mdb/free/forms-basic"; //
-@import "mdb/free/msc";
-@import "mdb/free/footer";
-@import "mdb/free/list-group";
-@import "mdb/free/tables";
+@import "panostrap/free/data/prefixer";
+@import "panostrap/free/data/mixins";
+@import "panostrap/free/data/colors";
+@import "panostrap/free/data/variables";
+@import "panostrap/free/global";
+@import "panostrap/free/animations";
+@import "panostrap/free/helpers";
+@import "panostrap/free/typography";
+@import "panostrap/free/buttons";
+@import "panostrap/free/cards-basic";
+@import "panostrap/free/dropdowns";
+@import "panostrap/free/navbar";
+@import "panostrap/free/pagination";
+@import "panostrap/free/badge";
+@import "panostrap/free/breadcrumb";
+@import "panostrap/free/modals";
+@import "panostrap/free/progress";
+@import "panostrap/free/carousel-basic";
+@import "panostrap/free/collapse";
+@import "panostrap/free/jumbotron";
+@import "panostrap/free/masks";
+@import "panostrap/free/waves";
+// @import "panostrap/free/forms-basic"; //
+@import "panostrap/free/msc";
+@import "panostrap/free/footer";
+@import "panostrap/free/list-group";
+@import "panostrap/free/tables";
 
 
-@import "mdb/pro/variables-pro";
-@import "mdb/free/deprecated";
-@import "mdb/pro/deprecated";
-@import "mdb/pro/buttons-pro";
-@import "mdb/pro/social-buttons";
-@import "mdb/pro/tabs"; 
-@import "mdb/pro/cards-pro";
-@import "mdb/pro/dropdowns-pro";
-@import "mdb/pro/navbars-pro";
-@import "mdb/pro/scrollspy";
-@import "mdb/pro/light-box";
-@import "mdb/pro/chips";
-@import "mdb/pro/msc";
-@import "mdb/pro/radio";
-@import "mdb/pro/checkbox";
-/* @import "mdb/pro/material-select"; */
-@import "mdb/pro/switch";
-@import "mdb/pro/file-input";
-@import "mdb/pro/range";
-@import "mdb/pro/input-group";
-@import "mdb/pro/autocomplete";
-@import "mdb/pro/parallax";
-@import "mdb/pro/side-nav";
-@import "mdb/pro/ecommerce";
-@import "mdb/pro/carousels-pro"; 
-@import "mdb/pro/stepper";
-@import "mdb/pro/blog";
-@import "mdb/pro/toasts";
-@import "mdb/pro/animations-pro";
-@import "mdb/pro/charts-pro";
-@import "mdb/pro/progress";
-@import "mdb/pro/scrollbar";
-@import "mdb/pro/skins";
+@import "panostrap/pro/variables-pro";
+@import "panostrap/free/deprecated";
+@import "panostrap/pro/deprecated";
+@import "panostrap/pro/buttons-pro";
+@import "panostrap/pro/social-buttons";
+@import "panostrap/pro/tabs"; 
+@import "panostrap/pro/cards-pro";
+@import "panostrap/pro/dropdowns-pro";
+@import "panostrap/pro/navbars-pro";
+@import "panostrap/pro/scrollspy";
+@import "panostrap/pro/light-box";
+@import "panostrap/pro/chips";
+@import "panostrap/pro/msc";
+@import "panostrap/pro/radio";
+@import "panostrap/pro/checkbox";
+/* @import "panostrap/pro/material-select"; */
+@import "panostrap/pro/switch";
+@import "panostrap/pro/file-input";
+@import "panostrap/pro/range";
+@import "panostrap/pro/input-group";
+@import "panostrap/pro/autocomplete";
+@import "panostrap/pro/parallax";
+@import "panostrap/pro/side-nav";
+@import "panostrap/pro/ecommerce";
+@import "panostrap/pro/carousels-pro"; 
+@import "panostrap/pro/stepper";
+@import "panostrap/pro/blog";
+@import "panostrap/pro/toasts";
+@import "panostrap/pro/animations-pro";
+@import "panostrap/pro/charts-pro";
+@import "panostrap/pro/progress";
+@import "panostrap/pro/scrollbar";
+@import "panostrap/pro/skins";
 
 
-@import "mdb/pro/date_picker/default";
-@import "mdb/pro/date_picker/default.time";
-@import "mdb/pro/date_picker/default.date"; 
+@import "panostrap/pro/date_picker/default";
+@import "panostrap/pro/date_picker/default.time";
+@import "panostrap/pro/date_picker/default.date"; 
 
-@import "mdb/pro/sections";
-@import "mdb/pro/sections/templates";
-@import "mdb/pro/sections/features";
-@import "mdb/pro/sections/social";
-@import "mdb/pro/sections/blog";
-@import "mdb/pro/sections/team";
-@import "mdb/pro/sections/testimonials";
-@import "mdb/pro/sections/projects";
-@import "mdb/pro/sections/magazine";
-@import "mdb/pro/sections/pricing";
-@import "mdb/pro/sections/contacts";
+@import "panostrap/pro/sections";
+@import "panostrap/pro/sections/templates";
+@import "panostrap/pro/sections/features";
+@import "panostrap/pro/sections/social";
+@import "panostrap/pro/sections/blog";
+@import "panostrap/pro/sections/team";
+@import "panostrap/pro/sections/testimonials";
+@import "panostrap/pro/sections/projects";
+@import "panostrap/pro/sections/magazine";
+@import "panostrap/pro/sections/pricing";
+@import "panostrap/pro/sections/contacts";
 
 // Custom Sass
-@import "mdb/custom";
-@import "mdb/nodeclub";
-@import "mdb/pano";
-@import "mdb/swiper";
+@import "panostrap/custom/custom";
+@import "panostrap/custom/nodeclub";
+@import "panostrap/custom/pano";
+@import "panostrap/custom/swiper";

@@ -1,6 +1,9 @@
-<%- partial('../sidebar') %>
 
-<div id='content'>
+
+<div class="container">
+    <div class="row">
+      <!--Main column-->
+      <div class="col-lg-8">
   <div class='panel'>
     <div class='header'>
       <ul class='breadcrumb'>
@@ -13,12 +16,16 @@
       </div>
       <a class='dark'><%= user.loginname %></a>
 
+      <span class='col_fade'><%= user.follower_count %> 粉丝 </span>
+      <span class='space'></span>
+      <span class='col_fade'><%= user.following_count %> 关注 </span>
+
       <div class='user_profile'>
         <ul class='unstyled'>
           <span class='big'><%= user.score %></span> 积分
           <% if (user.collect_topic_count) {%>
           <li>
-            <a class='dark' href="/user/<%= user.loginname %>/collections" target='_blank'>
+            <a class='dark' href="/user/<%= user.loginname %>/collections">
               <span class='big collect-topic-count'><%= user.collect_topic_count %></span>个话题收藏
             </a>
           </li>
@@ -113,6 +120,14 @@
     <% } %>
   </div>
 </div>
+<!--Sidebar-->
+<div class="col-lg-4 hidden-md-down">
+    <%- partial('../sidebar') %>
+</div>    
+<!--/.Sidebar-->
+</div>
+</div>
+
 
 <% if (current_user) { %>
 <script>

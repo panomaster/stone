@@ -1,151 +1,38 @@
-
-
-    <style rel="stylesheet">
-
-        footer.page-footer {
-            background-color: #53463d;
-            margin-top: 2rem;
-        }
-    </style>
-
-
-
-    <header>
-      <%- partial('navbar') %>
-    </header>
-
-    <main style="margin-top:60px;">
-        <!--Main layout-->
-        <div class="container">
-            <div class="row">
-                <!--Main column-->
-                <div class="col-lg-8">
-                    <div class="panel">
-                      <div class="inner no-padding">
-                      <%- partial('parts/qrate1.html') %>
-                    </div>
-                    <hr>                  
-                      <div>
-                        <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
-                          var value = pair[0];
-                          var text = pair[1]; %>
-                          <a href="<%= value ? '/?tab=' + value : '/' %>"
-                            class="topic-tab <%= value === tab ? 'current-tab' : '' %>"><%= text %></a>
-                        <% }) %>
-                      </div>
-                      <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
-                      <div class="inner no-padding">
-                        <%- partial('topic/list', {
-                        topics: topics,
-                        pages: pages,
-                        current_page: current_page,
-                        base: '/'
-                        }) %>
-                      </div>
-                      <% } else { %>
-                      <div class="inner no-padding">
-                        <p class="text-center">此版块暂时还没有话题</p>
-                      </div>
-                      <% } %>
-                    </div>
-                </div>
-                <!--Sidebar-->
-                <div class="col-lg-4">
-                  <%- partial('sidebar') %>
-                </div>
-                <!--/.Sidebar-->
+<div class="container">
+    <div class="row">
+        <!--Main column-->
+        <div class="col-lg-8">
+            <div>
+                <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                var value = pair[0];
+                var text = pair[1]; %>
+                <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
+                <%= text %>
+                </a>
+                <% }) %>
             </div>
-        </div>
-        <!--/.Main layout-->
-    </main>
 
-    <!--Footer-->
-    <footer class="page-footer center-on-small-only">
-        <!--Footer links-->
-        <div class="container-fluid">
-            <div class="row">
-                <!--First column-->
-                <div class="col-lg-3 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>About </strong></h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus, ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet dolor lectus eu libero. </p>
-
-                </div>
-                <!--/.First column-->
-                <hr class="w-100 clearfix d-sm-none">
-                <!--Second column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>First column</strong></h5>
-                    <ul>
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-                <hr class="w-100 clearfix d-sm-none">
-                <!--Third column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>Second column</strong></h5>
-                    <ul>
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-                <hr class="w-100 clearfix d-sm-none">
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-6 ml-auto">
-                    <h5 class="title mb-3"><strong>Third column</strong></h5>
-                    <ul>
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
+            <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
+            <div>
+                <%- partial('topic/list', {
+                topics: topics,
+                pages: pages,
+                current_page: current_page,
+                base: '/'
+                }) %>
             </div>
-        </div>
-        <!--/.Footer links-->
-
-        <hr>
-
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4 class="mb-5">啊手动阀第三方</h4>
-            <ul>
-                <li>
-                    <h5>啊手动阀手动阀手动阀</h5>
-                </li>
-                <li><a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-info" rel="nofollow">Sign up!</a></li>
-                <li><a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default" rel="nofollow">Learn more</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
-
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-                © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
-
+            <% } else { %>
+            <div>
+                <p class="text-center">此版块暂时还没有话题</p>
             </div>
+            <% } %>
         </div>
-        <!--/.Copyright-->
+        <!--Sidebar-->
+        <div class="col-lg-4 hidden-md-down">
+            <%- partial('sidebar') %>
+        </div>    
+        <!--/.Sidebar-->
+    </div>
+</div>
 
-    </footer>
-    <!--/.Footer-->
-
-
-    <script>
-        new WOW().init();
-    </script>
 

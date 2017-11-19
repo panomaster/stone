@@ -66,39 +66,131 @@
 </head>
 
 <body>
+<header>
+    <%- partial('navbar') %>
+</header>
 
-<div id='main' class="container">
-  <%- body %>
-</div>
+<main>
+    <%- body %>
+</main>
 
-<div id='backtotop'>回到顶部</div>
-<div id='footer'>
-  <div id='footer_main'>
-    <div class="links">
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+    <!--Footer links-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--First column-->
+            <div class="col-lg-3 col-md-6 ml-auto">
+                <h5 class="title mb-3"><strong>About </strong></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus, ex eu sagittis faucibus, ligula ipsum sagittis magna, et imperdiet dolor lectus eu libero. </p>
+
+            </div>
+            <!--/.First column-->
+            <hr class="w-100 clearfix d-sm-none">
+            <!--Second column-->
+            <div class="col-lg-2 col-md-6 ml-auto">
+                <h5 class="title mb-3"><strong>First column</strong></h5>
+                <ul>
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+            <hr class="w-100 clearfix d-sm-none">
+            <!--Third column-->
+            <div class="col-lg-2 col-md-6 ml-auto">
+                <h5 class="title mb-3"><strong>Second column</strong></h5>
+                <ul>
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+            <hr class="w-100 clearfix d-sm-none">
+            <!--Fourth column-->
+            <div class="col-lg-2 col-md-6 ml-auto">
+                <h5 class="title mb-3"><strong>Third column</strong></h5>
+                <ul>
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+        </div>
     </div>
-  </div>
-</div>
+    <!--/.Footer links-->
+
+    <hr>
+
+    <!--Call to action-->
+    <div class="call-to-action">
+        <h4 class="mb-5">啊手动阀第三方</h4>
+        <ul>
+            <li>
+                <h5>啊手动阀手动阀手动阀</h5>
+            </li>
+            <li><a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-info" rel="nofollow">Sign up!</a></li>
+            <li><a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default" rel="nofollow">Learn more</a></li>
+        </ul>
+    </div>
+    <!--/.Call to action-->
 
 
+</footer>
+<!--/.Footer-->
 
+
+<!-- 
 <% if (config.google_tracker_id) { %>
-<script>
-  // google analytics
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script', "<%- proxy('https://www.google-analytics.com/analytics.js') %>",'ga');
+  <script>
+    // google analytics
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script', "<%- proxy('https://www.google-analytics.com/analytics.js') %>",'ga');
 
-  ga('create', '<%-config.google_tracker_id%>', 'auto');
-  ga('send', 'pageview');
-</script>
+    ga('create', '<%-config.google_tracker_id%>', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <% } %>
+
+  <% if (config.cnzz_tracker_id) { %>
+  <div style="display:none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=<%- config.cnzz_tracker_id %>&web_id=<%- config.cnzz_tracker_id %>" language="JavaScript"></script>
+  </div>
 <% } %>
-
-<% if (config.cnzz_tracker_id) { %>
-<div style="display:none;">
-  <script src="//s95.cnzz.com/z_stat.php?id=<%- config.cnzz_tracker_id %>&web_id=<%- config.cnzz_tracker_id %>" language="JavaScript"></script>
-</div>
-<% } %>
-
+--> 
 </body>
+
+
+<style rel="stylesheet">
+    main{
+        margin-top: 60px;
+    }
+    
+    footer.page-footer {
+        background-color: #53463d;
+        margin-top: 2rem;
+    }
+</style>
+    
+    
+    
+<script>
+    new WOW().init();
+</script>
+
+
 </html>

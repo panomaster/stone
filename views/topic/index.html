@@ -1,132 +1,126 @@
-<%- partial('navbar') %>
-
-<%- partial('editor_sidebar') %>
-
-
-
-<div id="content">
-  <div class='panel'>
-    <div class='header topic_header'>
-      <span class="topic_full_title">
-        <%- partial('./_top_good', {topic: topic}) %>
-        <%= topic.title %>
-      </span>
-      <div class="changes">
-        <span>
-          发布于 <%= topic.create_at_ago() %>
-        </span>
-        <span>
-          作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
-        </span>
-        <span>
-          <%= topic.visit_count %> 次浏览
-        </span>
-        <% if (topic.create_at_ago() != topic.update_at_ago()) { %>
-          <span>
-            最后一次编辑是 <%= topic.update_at_ago() %>
-          </span>
-        <% } %>
-        <% if (topic.tab) { %>
-          <span> 来自 <%= topic.tabName %></span>
-        <%}%>
-        <% if (current_user) { %>
-          <input class="span-common <%= is_collect ? '' : 'span-success' %> pull-right collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
-        <%}%>
-      </div>
-      <% if (current_user) { %>
-      <div id="manage_topic">
-        <% if (current_user.is_admin) { %>
-          <a href='/topic/<%= topic._id %>/top' data-method="post">
-            <% if (topic.top) { %>
-              <i class="fa fa-lg fa-star-o" title='取消置顶'></i>
-            <% } else { %>
-              <i class="fa fa-lg fa-star" title='置顶'/></i>
+<div class="container">
+  <div class="row">
+    <!--Main column-->
+    <div id="content" class="col-lg-8">
+        <div class='panel'>
+          <div class='header topic_header'>
+            <div class="pano-abstract-bg" style="background-image:URL(<%= topic.cover %>)">
+                <span class="pano-abstract-label"><%- partial('./_top_good', {topic: topic}) %></span>
+            </div>
+            <span class="topic_full_title">
+              <%- partial('./_top_good', {topic: topic}) %>
+              <%= topic.title %>
+            </span>
+            <div class="changes">
+              <span>
+                发布于 <%= topic.create_at_ago() %>
+              </span>
+              <span>
+                作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
+              </span>
+              <span>
+                <%= topic.visit_count %> 次浏览
+              </span>
+              <% if (topic.create_at_ago() != topic.update_at_ago()) { %>
+              <span>
+                最后一次编辑是 <%= topic.update_at_ago() %>
+              </span>
+              <% } %>
+              <% if (topic.tab) { %>
+              <span> 
+                来自 <%= topic.tabName %>
+              </span>
+              <%}%>
+              <% if (current_user) { %>
+                <input class="span-common <%= is_collect ? '' : 'span-success' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+              <%}%>
+            </div>
+            <% if (current_user) { %>
+            <div id="manage_topic">
+              <% if (current_user.is_admin) { %>
+                <a href='/topic/<%= topic._id %>/top' data-method="post">
+                  <% if (topic.top) { %>
+                    取消置顶
+                  <% } else { %>
+                    置顶
+                  <% } %>
+                </a>
+                <a href='/topic/<%= topic._id %>/good' data-method="post">
+                  <% if (topic.good) { %>
+                    取消精华
+                  <% } else { %>
+                    加精华
+                  <% } %>
+                </a>
+                <a href='/topic/<%= topic._id %>/lock' data-method="post">
+                  <% if (topic.lock) { %>
+                    取消锁定
+                  <% } else { %>
+                    锁定（不可再回复）
+                  <% } %>
+                </a>
+                <a href='/topic/<%= topic._id %>/edit'>
+                  编辑
+                <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
+                  删除
+                </a>
+                <% } else { %>
+                <% if (current_user._id.equals(topic.author_id)) { %>
+                <a href='/topic/<%= topic._id %>/edit'>
+                  编辑
+                </a>
+                <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
+                  删除
+                </a>
+                <% } %>
+              <% } %>
+            </div>
             <% } %>
-          </a>
-          <a href='/topic/<%= topic._id %>/good' data-method="post">
-            <% if (topic.good) { %>
-              <i class="fa fa-lg fa-heart-o" title="取消精华"></i>
-            <% } else { %>
-              <i class="fa fa-lg fa-heart" title="加精华"></i>
-            <% } %>
-          </a>
-          <a href='/topic/<%= topic._id %>/lock' data-method="post">
-            <% if (topic.lock) { %>
-              <i class="fa fa-lg fa-unlock" title='取消锁定'></i>
-            <% } else { %>
-              <i class="fa fa-lg fa-lock" title='锁定（不可再回复）'/></i>
-            <% } %>
-          </a>
-          <a href='/topic/<%= topic._id %>/edit'>
-            <i class="fa fa-lg fa-pencil-square-o" title='编辑'></i></a>
-          <a href='javascript:;'
-            data-id="<%= topic._id %>"
-            class='delete_topic_btn'>
-            <i class="fa fa-lg fa-trash" title='删除'></i></a>
-          <% } else { %>
-          <% if (current_user._id.equals(topic.author_id)) { %>
-          <a href='/topic/<%= topic._id %>/edit'>
-            <i class="fa fa-lg fa-pencil-square-o" title='编辑'></i></a>
-          <a href='javascript:;'
-            data-id="<%= topic._id %>"
-            class='delete_topic_btn'>
-            <i class="fa fa-lg fa-trash" title='删除'></i></a>
-          <% } %>
-        <% } %>
-      </div>
-      <% } %>
-    </div>
-    <div class='inner topic'>
-      <div class='topic_content'>
-        <!-- <%- markdown(topic.linkedContent) %> -->
-        <%- topic.linkedContent %>
-      </div>
-    </div>
-  </div>
-  <% if (topic.replies && topic.replies.length > 0) { %>
-  <div class='panel'>
-    <div class='header'>
-      <span class='col_fade'><%= topic.replies.length %> 回复</span>
-    </div>
-    <%- partial('../reply/reply', topic.replies) %>
-  </div>
-  <% } %>
-  <% if (current_user && typeof(topic) !== 'undefined') { %>
-  <div class='panel'>
-    <div class='header'>
-      <span class='col_fade'>添加回复</span>
-    </div>
-    <div class='inner reply'>
-      <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
-        <div class='markdown_editor in_editor'>
-          <div class='markdown_in_editor'>
-            <textarea class='editor' name='r_content' rows='8'></textarea>
-
-            <div class='editor_buttons'>
-              <input class='span-primary submit_btn' type="submit" data-loading-text="回复中.." value="回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
+          </div>
+          <div class='inner topic'>
+            <div class='topic_content'>
+              <!-- <%- markdown(topic.linkedContent) %> -->
+              <%- topic.linkedContent %>
             </div>
           </div>
         </div>
-        <input type='hidden' name='_csrf' id="_csrf" value='<%= csrf %>'/>
-      </form>
+        <% if (topic.replies && topic.replies.length > 0) { %>
+        <div class='panel'>
+          <div class='header'>
+            <span class='col_fade'><%= topic.replies.length %> 回复</span>
+          </div>
+          <%- partial('../reply/reply', topic.replies) %>
+        </div>
+        <% } %>
+        <% if (current_user && typeof(topic) !== 'undefined') { %>
+        <div class='panel'>
+          <div class='header'>
+            <span class='col_fade'>添加回复</span>
+          </div>
+          <div class='inner reply'>
+            <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
+              <div class='markdown_editor in_editor'>
+                <div class='markdown_in_editor'>
+                  <textarea class='editor' name='r_content' rows='8'></textarea>
+                  <div class='editor_buttons'>
+                    <input class='span-primary submit_btn' type="submit" data-loading-text="回复中.." value="回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
+                  </div>
+                </div>
+              </div>
+              <input type='hidden' name='_csrf' id="_csrf" value='<%= csrf %>'/>
+            </form>
+          </div>
+        </div>
+        <% } %>
     </div>
-  </div>
-  <% } %>
-</div>
-
-
-<div class="replies_history">
-  <div class="inner_content"></div>
-  <div class="anchor"></div>
-</div>
-
-<!-- 预览模态对话框
-<div class="modal fade" id="preview-modal">
-  <div class="modal-body" style="max-height: initial;">
-    <img src="" alt="点击内容或者外部自动关闭图片预览" id="preview-image">
+    <div class="col-lg-4 hidden-md-down">
+      <%- partial('topic-sidebar') %>
+    </div>  
   </div>
 </div>
- -->
+
+
+
 
 <% if (current_user && typeof(topic) !== 'undefined') { %>
 <!-- markdown editor -->

@@ -1,42 +1,184 @@
-<%- partial('navbar') %>
-<%- partial('sidebar') %>
 
 
-<div id="content">
-  <hr>
-  <div class="panel">
-    <div class="inner no-padding">
-    <%- partial('parts/qrate1.html') %>
-  </div>
-  <hr>
+    <style rel="stylesheet">
 
-    <div>
-      <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
-        var value = pair[0];
-        var text = pair[1]; %>
-        <a href="<%= value ? '/?tab=' + value : '/' %>"
-          class="topic-tab <%= value === tab ? 'current-tab' : '' %>"><%= text %></a>
-      <% }) %>
-    </div>
+        footer.page-footer {
+            background-color: #53463d;
+            margin-top: 2rem;
+        }
+    </style>
 
 
 
+    <header>
+      <%- partial('navbar') %>
+    </header>
 
-    <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
+    <main style="margin-top:60px;">
+        <!--Main layout-->
+        <div class="container">
+            <div class="row">
+                <!--Main column-->
+                <div class="col-lg-8">
+                    <div class="panel">
+                      <div class="inner no-padding">
+                      <%- partial('parts/qrate1.html') %>
+                    </div>
+                    <hr>                  
+                      <div>
+                        <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                          var value = pair[0];
+                          var text = pair[1]; %>
+                          <a href="<%= value ? '/?tab=' + value : '/' %>"
+                            class="topic-tab <%= value === tab ? 'current-tab' : '' %>"><%= text %></a>
+                        <% }) %>
+                      </div>
+                      <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
+                      <div class="inner no-padding">
+                        <%- partial('topic/list', {
+                        topics: topics,
+                        pages: pages,
+                        current_page: current_page,
+                        base: '/'
+                        }) %>
+                      </div>
+                      <% } else { %>
+                      <div class="inner no-padding">
+                        <p class="text-center">此版块暂时还没有话题</p>
+                      </div>
+                      <% } %>
+                    </div>
+                </div>
+                <!--Sidebar-->
+                <div class="col-lg-4">
+                  <%- partial('sidebar') %>
+                </div>
+                <!--/.Sidebar-->
+            </div>
+        </div>
+        <!--/.Main layout-->
+    </main>
 
-    <div class="inner no-padding">
-      <%- partial('topic/list', {
-      topics: topics,
-      pages: pages,
-      current_page: current_page,
-      base: '/'
-      }) %>
-    </div>
-    <% } else { %>
-    <div class="inner no-padding">
-      <p class="text-center">此版块暂时还没有话题</p>
-    </div>
-    <% } %>
-  </div>
-</div>
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
+        <!--Footer links-->
+        <div class="container-fluid">
+            <div class="row">
+                <!--First column-->
+                <div class="col-lg-3 col-md-6 ml-auto">
+                    <h5 class="title mb-3"><strong>About material design</strong></h5>
+                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google.</p>
+                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS,
+                        and JS framework - Bootstrap.</p>
+                </div>
+                <!--/.First column-->
+                <hr class="w-100 clearfix d-sm-none">
+                <!--Second column-->
+                <div class="col-lg-2 col-md-6 ml-auto">
+                    <h5 class="title mb-3"><strong>First column</strong></h5>
+                    <ul>
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.Second column-->
+                <hr class="w-100 clearfix d-sm-none">
+                <!--Third column-->
+                <div class="col-lg-2 col-md-6 ml-auto">
+                    <h5 class="title mb-3"><strong>Second column</strong></h5>
+                    <ul>
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.Third column-->
+                <hr class="w-100 clearfix d-sm-none">
+                <!--Fourth column-->
+                <div class="col-lg-2 col-md-6 ml-auto">
+                    <h5 class="title mb-3"><strong>Third column</strong></h5>
+                    <ul>
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.Fourth column-->
+            </div>
+        </div>
+        <!--/.Footer links-->
+
+        <hr>
+
+        <!--Call to action-->
+        <div class="call-to-action">
+            <h4 class="mb-5">Material Design for Bootstrap</h4>
+            <ul>
+                <li>
+                    <h5>Get our UI KIT for free</h5>
+                </li>
+                <li><a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-info" rel="nofollow">Sign up!</a></li>
+                <li><a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default" rel="nofollow">Learn more</a></li>
+            </ul>
+        </div>
+        <!--/.Call to action-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap dropdown -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <script>
+        new WOW().init();
+    </script>
 

@@ -1687,7 +1687,7 @@
 }
 
 a {
-  color: #0275d8;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -19008,6 +19008,67 @@ section .contact i {
   color: #6b89a5;
 }
 
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
+.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
+.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
+.col-xl-auto {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 576px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .col-12, .col,
+  .col-auto, .col-sm-12, .col-sm,
+  .col-sm-auto, .col-md-12, .col-md,
+  .col-md-auto, .col-lg-12, .col-lg,
+  .col-lg-auto, .col-xl-12, .col-xl,
+  .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
 /* base */
 #topic_list {
   margin: 0;
@@ -19569,18 +19630,18 @@ textarea.editor {
   margin-bottom: 0;
 }
 
-/* .topic-tab {
+.topic-tab {
   margin: 0 10px;
 }
 
 .topic-tab.current-tab {
   color: #09f330;
   border-radius: 3px;
-} 
+}
 
 .topic-tab:hover {
   text-decoration: none;
-}*/
+}
 
 .topiclist-tab {
   background-color: #e5e5e5;
@@ -19593,25 +19654,17 @@ textarea.editor {
   font-size: 12px;
 }
 
+.main {
+  margin-top: 68px;
+}
+
+.footer.page-footer {
+  background-color: #53463d;
+  margin-top: 2rem;
+}
+
 .col-left {
   float: left;
-}
-
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  align-content: center;
-}
-
-.container-fluid {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .pano-abstract-bg {
@@ -19636,7 +19689,7 @@ textarea.editor {
 }
 
 .pano-avatar-small {
-  height: 40px;
+  height: 30px;
 }
 
 .pano-cut2 {
@@ -19660,112 +19713,6 @@ textarea.editor {
   color: #2b2a2a;
 }
 
-/*
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-
-  @media (min-width: 1200px){ //>=1200的设备 }
-  @media (min-width: 992px){ //>=992的设备 }
-  @media (min-width: 768px){ //>=768的设备 }
-  @media (min-width: 576px){ //>=576的设备}
-
-  */
-/*
-
-  @media (min-width: 1200px){
-    .container {
-      max-width: 1200px;
-    }
-    #content {
-      padding: 0;
-      margin-top: 60px;
-      max-width:850px;
-      height: 100%;
-      border: solid 1px rgb(209, 209, 209);
-    }
-    
-    #sidebar {
-      margin-bottom: 20px;
-      float: right;
-      width: 300px;
-      border: solid 1px rgb(209, 209, 209);
-      padding-left: 20px;
-    }
-  }
-
-// ---- //
-
-  @media (max-width: 576px){
-    .container {
-      width: 100%;
-      padding-right: 1px;
-      padding-left: 1px;
-      margin-right: auto;
-      margin-left: auto;
-      align-content: center;
-    }
-    #content {
-      padding: 0;
-      margin-top: 60px;
-      height: 100%;
-    }
-  }
-
-  @media (max-width: 768px){
-    .container {
-      max-width: 100%;
-    }
-  }
-
-  @media (max-width: 992px){
-    .container {
-      max-width: 100%;
-    }
-  }
-
-  @media (max-width: 1200px){
-    #content {
-      padding: 0;
-      margin-top: 60px;
-      max-width:100%;
-      height: 100%;
-    }
-    
-    #sidebar {
-      display: none;
-    }
-  }
-
-  /////////////////////////////////////////////////////////
-
-  @media (min-width: 1200px){
-    .hidden-lg {
-      display:none;
-    }
-  }
-
-  @media (min-width: 992px){
-    .hidden-md {
-      display:none;
-    }
-  }
-//////////////////////////////////////////////
-  @media (max-width: 768px){
-    .hidden-sm {
-      display:none;
-    }
-  }
-
-  @media (max-width: 576px){
-    .hidden-xs {
-      display:none;
-    }    
-}
-
-*/
 /**
  * Swiper 4.0.6
  * Most modern mobile touch slider and framework with hardware accelerated transitions

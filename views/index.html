@@ -1,28 +1,26 @@
 <div class="container">
     <div class="row">
-        <!--Main column-->
-        <div class="col-lg-8">
-
-            <%- partial('parts/swiper2') %>
-
-            <div class="card text-center z-depth-2" style="margin-left: 15px; margin-right: 15px; margin-bottom: 15px">
-                <div class="card-body">
-                    <p class="white-text mb-0">    
-                        <span class='col_fade'>
-                            <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
-                            var value = pair[0];
-                            var text = pair[1]; %>
-                            <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
-                            <div class="float-left" style="padding: 10px"><%= text %></div>
-                            </a>
-                            <% }) %>
-                        </span>
-                    </p>
+        <div class="col-lg-3  order-2">  
+            <%- partial('sidebar') %>            
+        </div>  
+        <div class="col-lg-3  order-4" style="background-color:aquamarine">  
+            sidebar             
+        </div> 
+        <div class="col-lg-9 order-1">
+            <div class="row">
+                <div style="padding: 20px">
+                    <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                    var value = pair[0];
+                    var text = pair[1]; %>
+                    <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
+                        <div class="float-left" style="padding: 10px; font-size: 14px;"><%= text %></div>
+                    </a>
+                    <% }) %>
                 </div>
             </div>
 
             <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
-            <div>
+            <div class="panel">
                 <%- partial('topic/list', {
                 topics: topics,
                 pages: pages,
@@ -32,24 +30,12 @@
             </div>
             <% } else { %>
             <div>
-               <p class="text-center">此版块暂时还没有话题</p>
+                <p class="text-center">此版块暂时还没有话题</p>
             </div>
             <% } %>
-
         </div>
-        <!--Main column End-->
-        
-        <!--Sidebar-->
-        <div class="col-lg-4">
-            <%- partial('sidebar') %>
-        </div>    
-        <!--/.Sidebar-->
-    </div>
-</div>
-
-
-<style>
-    .current-tab{
-        color: green;
-    }
-</style>    
+        <div class="col-lg-9 order-3" style="height: 700px; background-color:bisque">
+            main
+        </div>
+    </div> 
+</div> 

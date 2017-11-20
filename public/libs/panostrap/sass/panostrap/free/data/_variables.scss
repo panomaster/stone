@@ -191,7 +191,7 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 $hide-sidenav: "only screen and (max-width : #{$sidenav-breakpoint})" !default;
 
 // Link color
-$link-color: #0275d8;
+$link-color: #000000;
 
 $navbar-option: (
   "light": (

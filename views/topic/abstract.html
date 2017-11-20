@@ -1,24 +1,24 @@
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-left wow fadeIn" style="margin-bottom:10px" data-wow-delay="0.2s">
-  <div class="card">
+<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 col-left wow fadeIn" style="margin-bottom:10px" data-wow-delay="0.2s">
+  <div>
       <!--Card image-->
       <a href="/topic/<%= topic._id %>">
         <div class="pano-abstract-bg" style="background-image:URL(<%= topic.cover %>)">
-            <span class="pano-abstract-label"><%- partial('./_top_good', {topic: topic}) %></span>
+            <span><%- partial('./_top_good', {topic: topic}) %></span>
         </div>
         <!--Card content-->
-        <div class="card-body pano-abstract-hf-text">
+        <div>
             <!--Title-->
-            <h6 class="card-title pano-cut2">
+            <p class="pano-cut2">
                 <%= topic.title %>     
-            </h6>
+            </p>
             <!--Text-->
-            <p class="card-text pano-cut2">          
-                  <%= topic.desc %>              
+            <p class="pano-cut2">          
+               <%= topic.desc %>              
             </p>
         </div>
       </a>
-      <div class="card-body pano-information">    
+      <div class="pano-information">    
         <div class="pull-left">
           <a href="/user/<%= topic.author.loginname %>">
             <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" title="<%= topic.author.loginname %>"/>

@@ -1,4 +1,5 @@
 <li>
-  <span class='top_score'><%= user.score %></span>
-  <span class="user_name"><a href="/user/<%= user.loginname %>"><%= user.loginname %></a></span>
+  <img src="<%= proxy(user.avatar_url) %>" title="<%= user.loginname %>" class="rounded-circle" />
+  <span><a href="/user/<%= user.loginname %>"><%= user.loginname %></a></span>
+  <span><%= user.score %></span>
 </li>

@@ -83,6 +83,27 @@
               <%- topic.linkedContent %>
             </div>
           </div>
+
+          <div class="mdb-feed">
+            <hr>
+              <div class="news">
+                  <div class="label">
+                      <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1-mini.jpg" class="rounded-circle z-depth-1-half">
+                     
+                  </div>
+                  <div class="excerpt">
+                      <div class="brief">
+                          <a class="name" href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a><div class="date">积分<%= topic.author.score %>，  发布于 <%= topic.create_at_ago() %></div>
+                      </div>
+                      <div class="feed-footer">
+                          <%= topic.author.signature%>
+                      </div>
+                  </div>
+              </div>
+            <hr>
+          </div>
+
+
         </div>
         <% if (topic.replies && topic.replies.length > 0) { %>
         <div class='panel'>
@@ -113,7 +134,7 @@
         </div>
         <% } %>
     </div>
-    <div class="col-lg-4 hidden-md-down">
+    <div class="col-lg-4">
       <%- partial('topic-sidebar') %>
     </div>  
   </div>

@@ -2,14 +2,23 @@
     <div class="row">
         <!--Main column-->
         <div class="col-lg-8">
-            <div>
-                <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
-                var value = pair[0];
-                var text = pair[1]; %>
-                <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
-                <%= text %>
-                </a>
-                <% }) %>
+
+            <%- partial('parts/swiper2') %>
+
+            <div class="card text-center z-depth-2" style="margin-left: 15px; margin-right: 15px; margin-bottom: 15px">
+                <div class="card-body">
+                    <p class="white-text mb-0">    
+                        <span class='col_fade'>
+                            <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                            var value = pair[0];
+                            var text = pair[1]; %>
+                            <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
+                            <div class="float-left" style="padding: 10px"><%= text %></div>
+                            </a>
+                            <% }) %>
+                        </span>
+                    </p>
+                </div>
             </div>
 
             <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
@@ -23,12 +32,15 @@
             </div>
             <% } else { %>
             <div>
-                <p class="text-center">此版块暂时还没有话题</p>
+               <p class="text-center">此版块暂时还没有话题</p>
             </div>
             <% } %>
+
         </div>
+        <!--Main column End-->
+        
         <!--Sidebar-->
-        <div class="col-lg-4 hidden-md-down">
+        <div class="col-lg-4">
             <%- partial('sidebar') %>
         </div>    
         <!--/.Sidebar-->
@@ -36,3 +48,8 @@
 </div>
 
 
+<style>
+    .current-tab{
+        color: green;
+    }
+</style>    

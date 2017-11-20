@@ -1,0 +1,15 @@
+<li>
+    <div class="row">
+        <div class="col-md-4">
+            <!--Image-->
+            <div class="pano-qrate1-bg" style="background-image:URL(<%= topic.cover %>)">
+            </div>
+        </div>
+        <!--Excerpt-->
+        <div class="col-md-8">
+            <p class="card-text pano-cut1"><strong><%= topic.title %></strong></p>
+            <p class="card-text pano-cut1"><%= topic.desc %></p>   
+            <a class="pull-right" href="/topic/<%= topic._id %>" title="<%= topic.title %>">阅读  <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+</li>

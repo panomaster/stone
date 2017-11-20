@@ -19569,18 +19569,18 @@ textarea.editor {
   margin-bottom: 0;
 }
 
-.topic-tab {
+/* .topic-tab {
   margin: 0 10px;
 }
 
 .topic-tab.current-tab {
   color: #09f330;
   border-radius: 3px;
-}
+} 
 
 .topic-tab:hover {
   text-decoration: none;
-}
+}*/
 
 .topiclist-tab {
   background-color: #e5e5e5;

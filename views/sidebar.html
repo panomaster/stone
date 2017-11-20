@@ -1,79 +1,108 @@
 
-<div class='panel'>
-  <% if (typeof(user) !== 'undefined' || current_user) { %>
-  <div class='header'>
-    <span class='col_fade'>个人信息</span>
-  </div>
-  <div class='inner'>
-    <%- partial('user/card',{ object: typeof(user) === 'undefined' ? current_user : user, as: 'user' }) %>
-  </div>
-  <% } else { %>
-  <div class='inner'>
-    <p><%= config.description %></p>
+<div class="hidden-md-down">
+<% if (typeof(user) !== 'undefined' || current_user) { %>
+<%- partial('user/card',{ object: typeof(user) === 'undefined' ? current_user : user, as: 'user' }) %>
+<% } else { %>
+  <div class="card testimonial-card" style="margin-bottom: 10px;">
+    <div class="card-up indigo lighten-1">
+    </div>
+    <div class="avatar" style="background-color: black"><img src="public/images/logo-white.png" class="rounded-circle">
+    </div>
 
-    <div>
-      您可以
-      <a href='/signin'>登录</a>
-      或
-      <a href='/signup'>注册</a>
-      , 也可以
-      <a href="/auth/github">
-        <span class="span-info">
-          通过 GitHub 登录
-        </span>
-      </a>
+    <div class="card-body">
+        <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
+        <hr>
+        <p><%= config.description %></p>
     </div>
   </div>
   <% } %>
 </div>
 
-<% if (current_user) { %>
-<div class="panel">
-  <div class='inner'>
-    <a href='/topic/create' id='create_topic_btn'>
-      <span class='span-success'>发布话题</span>
-    </a>
+
+<div class="hidden-md-down" style="margin-bottom: 10px;">
+  <div class="tabs-wrapper"> 
+      <ul class="nav nav-tabs nav-justified indigo" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link waves-light" data-toggle="tab" href="#rankboard" role="tab">积分榜</a>
+          </li>
+      </ul>
+  </div>
+  <div class="tab-content card">
+      <div class="tab-pane fade in show active" id="rankboard" role="tabpanel">
+          <% if (typeof(tops) !== 'undefined') { %>
+            <div class='inner'>
+              <% if (tops.length > 0) { %>
+              <ol>
+                <%- partial('user/top', { collection: tops, as: 'user' }) %>
+              </ol>
+              <% } else { %>
+              <p>无</p>
+              <% } %>
+            </div>
+            <a class='dark pull-right' href='/users/top100'>TOP 100 &gt;&gt;</a>
+          <% } %>
+      </div>
   </div>
 </div>
-<% } %>
 
-<% if (!current_user || !current_user.isAdvanced) { %>
-  <%- partial('./_ads') %>
-<% } %>
-
-<% if (typeof(no_reply_topics) !== 'undefined') { %>
-<div class='panel'>
-  <div class='header'>
-    <span class='col_fade'>无人回复的话题</span>
-  </div>
-  <div class='inner'>
-    <% if (no_reply_topics.length > 0) { %>
-    <ul class="unstyled">
-      <%- partial('topic/small', { collection: no_reply_topics, as: 'topic' }) %>
+<div class="tabs-wrapper"> 
+    <ul class="nav nav-tabs nav-justified indigo" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link waves-light" data-toggle="tab" href="#no-reply-topic" role="tab">没有回复的话题</a>
+        </li>
     </ul>
-    <% } else { %>
-    <p>无</p>
-    <% } %>
-  </div>
 </div>
-<% } %>
 
-<% if (typeof(tops) !== 'undefined') { %>
-<div class='panel'>
-  <div class='header'>
-    <span class='col_fade'>积分榜</span>
-    &nbsp;
-    <a class='dark' href='/users/top100'>TOP 100 &gt;&gt;</a>
-  </div>
-  <div class='inner'>
-    <% if (tops.length > 0) { %>
-    <ol>
-      <%- partial('user/top', { collection: tops, as: 'user' }) %>
-    </ol>
-    <% } else { %>
-    <p>无</p>
+<div class="tab-content card">
+
+    <div class="tab-pane fade in show active" id="no-reply-topic" role="tabpanel">
+      <% if (typeof(no_reply_topics) !== 'undefined') { %>
+        <% if (no_reply_topics.length > 0) { %>
+        <ul class="list-inline">
+          <%- partial('topic/qrate2', { collection: no_reply_topics, as: 'topic' }) %>
+        </ul>
+        <% } else { %>
+        <p>无</p>
+        <% } %>
+    </div>
     <% } %>
-  </div>
 </div>
-<% } %>
+ 
 
+<!-- Card -->
+<div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+  
+      <!-- Content -->
+      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+          <div>
+              <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
+              <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                  optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                  Odit sed qui, dolorum!.</p>
+              <a class="btn btn-pink"><i class="fa fa-clone left"></i> View project</a>
+          </div>
+      </div>
+      <!-- Content -->
+  </div>
+  <!-- Card -->
+
+  <hr>
+<!-- Card -->
+<div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+  
+      <!-- Content -->
+      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+          <div>
+              <h5 class="green-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
+              <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                  optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                  Odit sed qui, dolorum!.</p>
+              <a class="btn btn-green"><i class="fa fa-clone left"></i> View project</a>
+          </div>
+      </div>
+      <!-- Content -->
+  </div>
+  <!-- Card -->
+                      

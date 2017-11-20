@@ -1,18 +1,24 @@
 <%- partial('../navbar') %>
-<%- partial('../sidebar') %>
-<div id='content'>
-  <div class='panel'>
-    <div class='header'>
-      <ul class='breadcrumb'>
-        <li><a href='/'>主页</a><span class='divider'>/</span></li>
-        <li class='active'>测试画面</li>
-      </ul>
+<div class="container">
+    <div class="row">
+        <!--Main column-->
+        <div class="col-lg-8">
+            <div class='panel'>
+              <div class='header'>
+                  <ul class='breadcrumb'>
+                      <li><a href='/'>主页</a><span class='divider'>/</span></li>
+                      <li class='active'>测试画面2</li>
+                  </ul>
+              </div>
+                  <%- partial('parts/swiper2') %>
+                  <%- partial('parts/swiper') %>
+            </div>
+        </div>
+        <!--Sidebar-->
+        <div class="col-lg-4 hidden-md-down">
+            <%- partial('../sidebar') %>
+        </div>    
+        <!--/.Sidebar-->
     </div>
-
-    <%- partial('parts/swiper2') %>
-    <%- partial('parts/swiper') %>
-
-  </div>
 </div>
-
-
+    

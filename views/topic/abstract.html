@@ -1,37 +1,30 @@
-
-<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 col-left wow fadeIn" style="margin-bottom:10px" data-wow-delay="0.2s">
-  <div>
-      <!--Card image-->
-      <a href="/topic/<%= topic._id %>">
-        <div class="pano-abstract-bg" style="background-image:URL(<%= topic.cover %>)">
-            <span><%- partial('./_top_good', {topic: topic}) %></span>
-        </div>
-        <!--Card content-->
-        <div>
-            <!--Title-->
-            <p class="pano-cut2">
-                <%= topic.title %>     
-            </p>
-            <!--Text-->
-            <p class="pano-cut2">          
-               <%= topic.desc %>              
-            </p>
-        </div>
-      </a>
-      <div class="pano-information">    
-        <div class="pull-left">
-          <a href="/user/<%= topic.author.loginname %>">
-            <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" title="<%= topic.author.loginname %>"/>
-          </a>
-        </div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pano-abstract-box">
+    <a href="/topic/<%= topic._id %>">
+      <div class="col-lg-4 col-md-12 col-left pano-abstract-bg" style="background-image:URL(<%= topic.cover %>)">
+          <span><%- partial('./_top_good', {topic: topic}) %></span>
+      </div>
+    </a>
+    <div class="col-lg-8 col-md-12 col-left pano-abstract-body">
+      <div class="pano-abstract-contents">
+        <a href="/topic/<%= topic._id %>">
+          <p class="pano-abstract-title">
+              <%= topic.title %>    
+          </p>
+          <p class="pano-abstract-desc">          
+              <%= topic.desc %>           
+          </p>
+        </a>
+      </div>
+      <div class="pano-abstract-information pull-right">    
+        <a href="/user/<%= topic.author.loginname %>">
+          <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" />
+        </a>
         <div class="pull-right">
-          <%= topic.author.loginname %> | <%= topic.create_at_ago() %> | <%= topic.reply_count %>回复 | <%= topic.visit_count %>点击
+          &nbsp; &nbsp;<%= topic.author.loginname %> | <%= topic.create_at_ago() %> | <%= topic.reply_count %>回复 | <%= topic.visit_count %>点击
         </div>  
       </div>
-  </div>
-  <!--/.Card-->
+    </div>
 </div>
-
 
 
 <!--  some other information

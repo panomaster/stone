@@ -1,65 +1,63 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark black">
-    <a class='brand' href='/'>
-        <% if (config.site_logo) {%>
-          <img style="height:32px" src="<%- staticFile(config.site_logo) %>" />
-        <%} else {%>
-          <%- config.name %>
-        <%}%>
-      </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item active"><a class="nav-link" href='/'>首页<span class="sr-only">(current)</span></a></li>
-            <% if (current_user){ %>
-            <li class="nav-item">
-                <a class="nav-link" href='/my/messages'>
-                    <% if (current_user.messages_count) { %>
-                    <%= current_user.messages_count %>个
-                    <% } %>
-                    未读消息
-                </a>
-            </li>
-            <% } %>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark black h6" style="background-image:URL(../public/libs/panostrap/img/overlays/navbg.jpg)">
+    <div class="container">
+        <a class='brand px-10' href='/'>
+            <% if (config.site_logo) {%>
+                <img style="height:32px" src="<%- staticFile(config.site_logo) %>" />
+            <%} else {%>
+                <%- config.name %>
+            <%}%>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto pano-valign">
+                <% if (current_user){ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/<%= current_user.loginname %>">
+                        <img class="pano-avatar-small rounded-circle" src="<%= (current_user.avatar_url) %>">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/<%= current_user.loginname %>">
+                        <%= current_user.name %>
+                    </a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" href='/my/messages'>
+                        <% if (current_user.messages_count) { %>
+                        <%= current_user.messages_count %>个
+                        <% } %>
+                        未读消息
+                    </a>
+                </li>
+                <% } %>
 
-            <% if (current_user) { %>
-            <li class="nav-item">
-                <a class="nav-link" href='/topic/create' id='create_topic_btn'>
-                    发布话题
-                </a>
-            </li>
-            <% } %>
+                <% if (current_user) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href='/topic/create' id='create_topic_btn'>
+                        发布话题
+                    </a>
+                </li>
+                <% } %>
 
-            <% if (current_user) { %>
-            <li class="nav-item"><a class="nav-link" href='/setting'>设置</a></li>
-            <li class="nav-item">
-                <a class="nav-link" href='/signout' data-method="post" rel="nofollow">退出</a>
-            </li>
-            <% } else { %>
-            <li class="nav-item"><a class="nav-link" href='/signup'>注册</a></li>
-            <li class="nav-item"><a class="nav-link" href='/signin'>登录</a></li>
-            <% } %>            
-            <li class="nav-item"><a class="nav-link" href='/getstart'>测试1</a></li>
-            <li class="nav-item"><a class="nav-link" href='/mockup'>测试2</a></li>
+                <% if (current_user) { %>
+                <li class="nav-item"><a class="nav-link" href='/setting'>设置</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/signout' data-method="post" rel="nofollow">退出</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item"><a class="nav-link" href='/signup'>注册</a></li>
+                <li class="nav-item"><a class="nav-link" href='/signin'>登录</a></li>
+                <% } %>   
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown 
-                </a>
-                <div class="dropdown-menu dropdown-purple" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-        </ul>
-
-        <form id="search_form" action="/search" class="form-inline">
-            <input type="text" id="q"  class="form-control mr-sm-2" placeholder="Search" value="" aria-label="Search" />
-        </form>
-    </div>
+                <li class="nav-item"><a class="nav-link" href='/getstart'>测试1</a></li>
+                <li class="nav-item"><a class="nav-link" href='/mockup'>测试2</a></li>
+            </ul>
+        </div>
+    </div>   
 </nav>
-    
+ 
                 
  

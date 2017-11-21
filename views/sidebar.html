@@ -1,7 +1,6 @@
-
+<div class="col-lg-3  order-2">  
 <div class="hidden-md-down">
 <% if (typeof(user) !== 'undefined' || current_user) { %>
-<%- partial('user/card',{ object: typeof(user) === 'undefined' ? current_user : user, as: 'user' }) %>
 <% } else { %>
   <div class="card testimonial-card" style="margin-bottom: 10px;">
     <div class="card-up indigo lighten-1">
@@ -18,6 +17,20 @@
   <% } %>
 </div>
 
+            <!-- Card -->
+            <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">            
+                <!-- Content -->
+                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                    <div>
+                        <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
+                        <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam.</p>
+                        <a class="btn btn-pink"><i class="fa fa-clone left"></i> View project</a>
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+            <!-- Card -->   
 
 <div class="hidden-md-down" style="margin-bottom: 10px;">
   <div class="tabs-wrapper"> 
@@ -68,37 +81,7 @@
     <% } %>
 </div>
  
+</div>  
 
-<!-- Card -->
-<div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
-  
-      <!-- Content -->
-      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-          <div>
-              <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
-              <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam.</p>
-              <a class="btn btn-pink"><i class="fa fa-clone left"></i> View project</a>
-          </div>
-      </div>
-      <!-- Content -->
-  </div>
-  <!-- Card -->
 
-  <hr>
-<!-- Card -->
-<div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
-  
-      <!-- Content -->
-      <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-          <div>
-              <h5 class="green-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
-              <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-              <a class="btn btn-green"><i class="fa fa-clone left"></i> View project</a>
-          </div>
-      </div>
-      <!-- Content -->
-  </div>
-  <!-- Card -->
                       

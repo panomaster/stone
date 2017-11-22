@@ -338,8 +338,9 @@ textarea.editor {
 
 .topic-tab {
   margin: 0 10px;
+  color: grey;
   &.current-tab {
-    color: rgb(9, 243, 48);
+    color: rgb(255, 255, 255);
     border-radius: 3px;
   }
   &:hover {

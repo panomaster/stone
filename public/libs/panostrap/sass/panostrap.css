@@ -19398,10 +19398,11 @@ textarea.editor {
 
 .topic-tab {
   margin: 0 10px;
+  color: grey;
 }
 
 .topic-tab.current-tab {
-  color: #09f330;
+  color: white;
   border-radius: 3px;
 }
 

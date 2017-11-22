@@ -1,86 +1,82 @@
-<div class="col-lg-3  order-2">  
-<div class="hidden-md-down">
-<% if (typeof(user) !== 'undefined' || current_user) { %>
-<% } else { %>
-  <div class="card testimonial-card" style="margin-bottom: 10px;">
-    <div class="card-up indigo lighten-1">
-    </div>
-    <div class="avatar" style="background-color: black"><img src="public/images/logo-white.png" class="rounded-circle">
-    </div>
-
-    <div class="card-body">
-        <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
-        <hr>
-        <p><%= config.description %></p>
-    </div>
-  </div>
-  <% } %>
-</div>
-
-            <!-- Card -->
-            <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">            
-                <!-- Content -->
-                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                    <div>
-                        <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
-                        <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam.</p>
-                        <a class="btn btn-pink"><i class="fa fa-clone left"></i> View project</a>
-                    </div>
+<div class="col-lg-4  order-2">  
+    <div class="hidden-md-down" style="margin-bottom: 10px;">
+        <!--Panel-->
+            <% if (typeof(user) !== 'undefined' || current_user) { %>
+            <% } else { %>
+            <div class="card testimonial-card" style="margin-bottom: 10px;">
+                <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
                 </div>
-                <!-- Content -->
+                <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-white.png" class="rounded-circle">
+                </div>
+                <div class="card-body">
+                    <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
+                    <hr>
+                    <p><%= config.description %></p>
+                </div>
             </div>
-            <!-- Card -->   
-
-<div class="hidden-md-down" style="margin-bottom: 10px;">
-  <div class="tabs-wrapper"> 
-      <ul class="nav nav-tabs nav-justified indigo" role="tablist">
-          <li class="nav-item">
-              <a class="nav-link waves-light" data-toggle="tab" href="#rankboard" role="tab">积分榜</a>
-          </li>
-      </ul>
-  </div>
-  <div class="tab-content card">
-      <div class="tab-pane fade in show active" id="rankboard" role="tabpanel">
-          <% if (typeof(tops) !== 'undefined') { %>
-            <div class='inner'>
-              <% if (tops.length > 0) { %>
-              <ol>
-                <%- partial('user/top', { collection: tops, as: 'user' }) %>
-              </ol>
-              <% } else { %>
-              <p>无</p>
-              <% } %>
-            </div>
-            <a class='dark pull-right' href='/users/top100'>TOP 100 &gt;&gt;</a>
-          <% } %>
-      </div>
-  </div>
-</div>
-
-<div class="tabs-wrapper"> 
-    <ul class="nav nav-tabs nav-justified indigo" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link waves-light" data-toggle="tab" href="#no-reply-topic" role="tab">没有回复的话题</a>
-        </li>
-    </ul>
-</div>
-
-<div class="tab-content card">
-
-    <div class="tab-pane fade in show active" id="no-reply-topic" role="tabpanel">
-      <% if (typeof(no_reply_topics) !== 'undefined') { %>
-        <% if (no_reply_topics.length > 0) { %>
-        <ul class="list-inline">
-          <%- partial('topic/qrate2', { collection: no_reply_topics, as: 'topic' }) %>
-        </ul>
-        <% } else { %>
-        <p>无</p>
-        <% } %>
+            <% } %>
+        <!--/.Panel-->
     </div>
-    <% } %>
-</div>
- 
+
+    <!-- Card -->
+    <div class="card card-image" style="margin-bottom: 8px; background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">            
+        <!-- Content -->
+        <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+            <div>
+                <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
+                <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam.</p>
+                <a class="btn btn-pink"><i class="fa fa-clone left"></i> View project</a>
+            </div>
+        </div>
+        <!-- Content -->
+    </div>
+    <!-- Card -->   
+
+    <div class="hidden-md-down" style="margin-bottom: 10px;">
+        <!--Panel-->
+        <div class="card">
+            <div class="card-header grey darken-4 white-text">
+                积分榜
+            </div>
+            <div class="card-body">
+                <% if (typeof(tops) !== 'undefined') { %>
+                    <div class='inner'>
+                    <% if (tops.length > 0) { %>
+                    <ol>
+                        <%- partial('user/top', { collection: tops, as: 'user' }) %>
+                    </ol>
+                    <% } else { %>
+                    <p>无</p>
+                    <% } %>
+                    </div>
+                    <a class='dark pull-right' href='/users/top100'>TOP 100 &gt;&gt;</a>
+                <% } %>
+            </div>
+        </div>
+        <!--/.Panel-->
+    </div>
+
+    <div> 
+        <!--Panel-->
+        <div class="card">
+            <div class="card-header grey darken-4 white-text">
+                没有回复的话题
+            </div>
+            <div class="card-body">
+                <% if (typeof(no_reply_topics) !== 'undefined') { %>
+                <% if (no_reply_topics.length > 0) { %>
+                <ul class="list-inline">
+                <%- partial('topic/qrate2', { collection: no_reply_topics, as: 'topic' }) %>
+                </ul>
+                <% } else { %>
+                <p>无</p>
+                <% } %>
+                <% } %>
+            </div>
+        </div>
+        <!--/.Panel-->
+    </div>
 </div>  
 
 

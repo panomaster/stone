@@ -1,11 +1,37 @@
+<style>
+    .pano-tab-bar {
+        display: inline-block;
+        width: 45px;
+        margin: 0px;
+        padding: 8px;
+        background-color: grey;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        border-radius: 2px;
+        font-size: 12px;
+    }
+</style>
+
 <div class="container">
     <div class="row">
 
         <%- partial('sidebar') %>  
 
         <div class="col-lg-8 order-1">
-            <div class="card text-center z-depth-2" style="margin-bottom: 15px">
-                <div class="card-header grey darken-3 white-text">  
+            <%- partial('mainheader') %>  
+
+                <div class="text-left" style="border-bottom: 1px solid #eeeeee">  
+                    <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                    var value = pair[0];
+                    var text = pair[1]; %>
+                    <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
+                    <div class="pano-tab-bar pano-valign"><%= text %></div>
+                    </a>
+                    <% }) %>
+                </div>
+
+            <!-- <div class="card text-center z-depth-2" style="margin-bottom: 15px">
+                <div class="card-header grey darken-2 white-text" style="font-size: 12px">  
                     <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
                     var value = pair[0];
                     var text = pair[1]; %>
@@ -13,8 +39,8 @@
                     <div style="padding: 5px; display: inline-block;"><%= text %></div>
                     </a>
                     <% }) %>
-            </div>
-            </div>
+                </div>
+            </div> -->
 
             <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
             <div>

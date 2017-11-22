@@ -19015,19 +19015,6 @@ section .contact i {
   margin-left: auto;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
-.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
-.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
-.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
-.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
-.col-xl-auto {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
 @media (min-width: 576px) {
   .container {
     max-width: 576px;
@@ -19035,18 +19022,6 @@ section .contact i {
     padding-left: 0px;
     margin-right: auto;
     margin-left: auto;
-  }
-  .col-12, .col,
-  .col-auto, .col-sm-12, .col-sm,
-  .col-sm-auto, .col-md-12, .col-md,
-  .col-md-auto, .col-lg-12, .col-lg,
-  .col-lg-auto, .col-xl-12, .col-xl,
-  .col-xl-auto {
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 0px;
-    padding-left: 0px;
   }
 }
 
@@ -19397,29 +19372,31 @@ textarea.editor {
 }
 
 .topic-tab {
-  margin: 0 10px;
-  color: grey;
+  color: #faf9f9;
+  margin: 0px;
+  padding: 0px;
 }
 
 .topic-tab.current-tab {
-  color: white;
-  border-radius: 3px;
+  color: #05cbfd;
 }
 
 .topic-tab:hover {
   text-decoration: none;
+  color: #0b77f3;
 }
 
 .put_top,
 .put_good,
 .topiclist-tab {
-  float: right;
-  margin-right: 10px;
   margin-top: 10px;
+  float: right;
+  border-radius: 50px;
 }
 
 body {
   font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
+  background-color: white;
 }
 
 .main {
@@ -19451,10 +19428,9 @@ body {
 
 .pano-abstract-box {
   float: left;
-  background-color: white;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e0e0e0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #eeeeee;
 }
 
 .pano-abstract-bg {
@@ -19462,7 +19438,7 @@ body {
   background-position: center;
   background-size: cover;
   background-color: #bdbdbd;
-  height: 160px;
+  height: 120px;
 }
 
 .pano-qrate1-bg {
@@ -19474,7 +19450,8 @@ body {
 }
 
 .pano-abstract-body {
-  height: 160px;
+  background-color: white;
+  height: 120px;
   margin: 0px;
   padding-left: 15px;
   padding-right: 15px;
@@ -19483,14 +19460,13 @@ body {
 }
 
 .pano-abstract-contents {
-  height: 130px;
+  height: 85px;
 }
 
 .pano-abstract-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   color: #212121;
-  line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -19502,7 +19478,6 @@ body {
   font-size: 14px;
   color: #616161;
   height: 42px;
-  line-height: 22px;
   margin: 15px 0px 15px 0px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -19556,6 +19531,13 @@ body {
   body {
     font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
     background-color: #eeeeee;
+  }
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
   .pano-abstract-box {
     float: left;
@@ -19632,6 +19614,13 @@ body {
     -webkit-align-items: center;
     align-items: center;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
+    background-color: #eeeeee;
   }
 }
 

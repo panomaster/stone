@@ -1,0 +1,15 @@
+<li>
+    <div class="row py-2">
+            <div class="col-5">
+                <!--Image-->
+                <div class="pano-qrate-bg" style="background-image:URL(<%= topic.cover %>)">
+                </div>
+            </div>
+            <!--Excerpt-->
+            <div class="col-7">
+                <p class="pano-qrate-title-dark  pano-cut1"><strong><%= topic.title %></strong></p>
+                <p class="pano-qrate-desc-dark pano-cut1"><%= topic.desc %></p>   
+                <a class="pull-center btn btn-info btn-sm p-2" href="/topic/<%= topic._id %>" title="<%= topic.title %>">阅读</a>
+            </div>
+    </div>
+</li>

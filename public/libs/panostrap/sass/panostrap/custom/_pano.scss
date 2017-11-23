@@ -72,12 +72,27 @@ body{
   padding-right: 40px;
 }
 
-.pano-qrate1-bg {
+.pano-qrate-bg {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-color: #bdbdbd;
-  height: 100px;
+  height: 120px;
+}
+
+.pano-qrate-title-dark {
+  color: rgb(34, 33, 33);
+  font-weight: 300;
+  font-size: 14px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pano-qrate-desc-dark {
+  color: rgb(34, 33, 33);
+  font-size: 12px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .pano-abstract-box{ 
@@ -238,7 +253,7 @@ body{
     height: 180px;
   }
   
-  .pano-qrate1-bg {
+  .pano-qrate-bg {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

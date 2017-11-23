@@ -63,11 +63,11 @@
             <div class="card-header grey darken-4 white-text">
                 没有回复的话题
             </div>
-            <div class="card-body">
+            <div class="card-body px-0 py-2">
                 <% if (typeof(no_reply_topics) !== 'undefined') { %>
                 <% if (no_reply_topics.length > 0) { %>
                 <ul class="list-inline">
-                <%- partial('topic/no-reply-topic', { collection: no_reply_topics, as: 'topic' }) %>
+                <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
                 </ul>
                 <% } else { %>
                 <p>无</p>

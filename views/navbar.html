@@ -29,7 +29,7 @@
                         <% if (current_user.messages_count) { %>
                         <%= current_user.messages_count %>个
                         <% } %>
-                        <fa fa-message></fa>未读消息
+                        <i class="fa fa-envelope" aria-hidden="true"></i> 未读消息
                     </a>
                 </li>
                 <% } %>
@@ -37,23 +37,23 @@
                 <% if (current_user) { %>
                 <li class="nav-item">
                     <a class="nav-link" href='/topic/create' id='create_topic_btn'>
-                        发布话题
+                        <i class="fa fa-edit" aria-hidden="true"></i> 发布话题
                     </a>
                 </li>
                 <% } %>
 
                 <% if (current_user) { %>
-                <li class="nav-item"><a class="nav-link" href='/setting'>设置</a></li>
+                <li class="nav-item"><a class="nav-link" href='/setting'><i class="fa fa-gear" aria-hidden="true"></i> 设置</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href='/signout' data-method="post" rel="nofollow">退出</a>
+                    <a class="nav-link" href='/signout' data-method="post" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出</a>
                 </li>
                 <% } else { %>
-                <li class="nav-item"><a class="nav-link" href='/signup'>注册</a></li>
-                <li class="nav-item"><a class="nav-link" href='/signin'>登录</a></li>
+                <li class="nav-item"><a class="nav-link" href='/signup'><i class="fa fa-user" aria-hidden="true"></i> 注册</a></li>
+                <li class="nav-item"><a class="nav-link" href='/signin'><i class="fa fa-sign-in" aria-hidden="true"></i> 登录</a></li>
                 <% } %>   
 
-                <li class="nav-item"><a class="nav-link" href='/getstart'>测试1</a></li>
-                <li class="nav-item"><a class="nav-link" href='/mockup'>测试2</a></li>
+                <li class="nav-item"><a class="nav-link" href='/getstart'><i class="fa fa-code" aria-hidden="true"></i> 测试1</a></li>
+                <li class="nav-item"><a class="nav-link" href='/mockup'><i class="fa fa-code" aria-hidden="true"></i> 测试2</a></li>
             </ul>
         </div>
     </div>   

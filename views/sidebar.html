@@ -67,7 +67,7 @@
                 <% if (typeof(no_reply_topics) !== 'undefined') { %>
                 <% if (no_reply_topics.length > 0) { %>
                 <ul class="list-inline">
-                <%- partial('topic/qrate2', { collection: no_reply_topics, as: 'topic' }) %>
+                <%- partial('topic/no-reply-topic', { collection: no_reply_topics, as: 'topic' }) %>
                 </ul>
                 <% } else { %>
                 <p>无</p>

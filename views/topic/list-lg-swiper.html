@@ -1,0 +1,40 @@
+
+
+
+  <div class="swiper-container lg-swiper" style="margin-bottom: 20px; width:100%">
+    <div class="swiper-wrapper">
+      
+        <% if (typeof(no_reply_topics) !== 'undefined') { %>
+          <% if (no_reply_topics.length > 0) { %>
+            <%- partial('topic/abstract-lg-swiper', { collection: no_reply_topics, as: 'topic' }) %>
+          <% } %>
+        <% } %>
+      
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
+
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.lg-swiper', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+

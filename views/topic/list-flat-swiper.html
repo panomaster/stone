@@ -1,0 +1,53 @@
+
+
+
+  <div class="swiper-container swiper-container-adv">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide swiper-slide-adv" style="border: solid 1px grey"><img src="../public/libs/parts/img1.png" style="height:100%"></div>
+      <div class="swiper-slide swiper-slide-adv" style="border: solid 1px grey"><img src="../public/libs/parts/img2.png" style="height:100%"></div>
+      <div class="swiper-slide swiper-slide-adv" style="border: solid 1px grey"><img src="../public/libs/parts/img3.png" style="height:100%"></div>
+      <div class="swiper-slide swiper-slide-adv" style="border: solid 1px grey"><img src="../public/libs/parts/img4.png" style="height:100%"></div>
+      <div class="swiper-slide swiper-slide-adv" style="border: solid 1px grey"><img src="../public/libs/parts/img5.png" style="height:100%"></div>
+    </div>
+  </div>
+
+
+  <style>
+      .swiper-container-adv {
+        width: 100%;
+      }
+      .swiper-slide-adv {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        width: 200px;
+        height: 120px;
+        background-color: white;
+  
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+    </style>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container-adv', {
+      slidesPerView: 'auto',
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>

@@ -66,42 +66,34 @@
 </head>
 
 <body>
+    <header>
+        <%- partial('navbar') %>
+    </header>
 
 
-
-
-      <!-- Swiper -->
-<div class="swiper-container swiper-test">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-                <header>
-                    <%- partial('navbar') %>
-                </header>
-                <div class="main" id="main">
-                    <%- body %>
-                </div>
-                <footer>
-                </footer>
-        </div>
-        <div class="swiper-slide">Slide 2</div>
+    <div class="main" id="main">
+        <%- body %>
     </div>
-</div>
 
-
-<script>
-var swiper = new Swiper('.swiper-test');
-</script>
-
-
-
+    <footer>
+    </footer>
 </body>
-
 
 <script>
     new WOW().init();
 </script>
 
 
+    
+<!-- Initialize Swiper -->
+<script>
+var swiper = new Swiper('.swiper-test');
+</script>
+
 </html>
+
+
+
+ 
 
 

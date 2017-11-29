@@ -10,20 +10,21 @@
               <!-- Content -->
               <div class="text-white text-center align-items-center rgba-black-strong py-5 px-4">
                   <div>
-                      <span class="pano-abstract-label"><%- partial('./_top_good', {topic: topic}) %></span>
+                      <span><%= topic.tabName %></span>
                       <h3 class="card-title pt-2"><strong><%= topic.title %></strong></h3>
                       <p><%= topic.desc %></p>
                   </div>
               </div>
               <!-- Content -->
             </div>
-            <!-- Card -->               
-            <div>
-              <span>
-                发布于 <%= topic.create_at_ago() %>
-              </span>
+            <!-- Card -->   
+
+            <div class="text-center" style="font-size: 12px;">
               <span>
                 作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
+              </span>
+              <span>
+                发布于<%= topic.create_at_ago() %>
               </span>
               <span>
                 <%= topic.visit_count %> 次浏览
@@ -38,57 +39,69 @@
                 来自 <%= topic.tabName %>
               </span>
               <%}%>
+
+            </div>
+
+            <div class="text-center" style="font-size: 12px;">
               <% if (current_user) { %>
-                <input class="span-common <%= is_collect ? '' : 'span-success' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
-              <%}%>
-            </div>
-            <% if (current_user) { %>
-            <div id="manage_topic">
-              <% if (current_user.is_admin) { %>
-                <a href='/topic/<%= topic._id %>/top' data-method="post">
-                  <% if (topic.top) { %>
-                    取消置顶
-                  <% } else { %>
-                    置顶
+                  <% if (current_user.is_admin) { %>
+                    <a href='/topic/<%= topic._id %>/top' data-method="post">
+                      <% if (topic.top) { %>
+                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                      <% } else { %>
+                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                      <% } %>
+                    </a>
+                    <a href='/topic/<%= topic._id %>/good' data-method="post">
+                      <% if (topic.good) { %>
+                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                      <% } else { %>
+                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-star" aria-hidden="true"></i></span>
+                      <% } %>
+                    </a>
+                    <a href='/topic/<%= topic._id %>/lock' data-method="post">
+                      <% if (topic.lock) { %>
+                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                      <% } else { %>
+                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                      <% } %>
+                    </a>
+                    <a href='/topic/<%= topic._id %>/edit'>
+                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                    <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
+                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                    </a>
+                    <% } else { %>
+                    <% if (current_user._id.equals(topic.author_id)) { %>
+                    <a href='/topic/<%= topic._id %>/edit'>
+                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                    </a>
+                    <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
+                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                    </a>
+                    <% } %>
                   <% } %>
-                </a>
-                <a href='/topic/<%= topic._id %>/good' data-method="post">
-                  <% if (topic.good) { %>
-                    取消精华
-                  <% } else { %>
-                    加精华
-                  <% } %>
-                </a>
-                <a href='/topic/<%= topic._id %>/lock' data-method="post">
-                  <% if (topic.lock) { %>
-                    取消锁定
-                  <% } else { %>
-                    锁定（不可再回复）
-                  <% } %>
-                </a>
-                <a href='/topic/<%= topic._id %>/edit'>
-                  编辑
-                <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
-                  删除
-                </a>
-                <% } else { %>
-                <% if (current_user._id.equals(topic.author_id)) { %>
-                <a href='/topic/<%= topic._id %>/edit'>
-                  编辑
-                </a>
-                <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
-                  删除
-                </a>
                 <% } %>
-              <% } %>
-            </div>
-            <% } %>
+
+            </div>  
           </div>
+          <div class="clear-fix"></div>
           <div class='inner topic'>
             <div class='topic_content'>
               <!-- <%- markdown(topic.linkedContent) %> -->
               <%- topic.linkedContent %>
             </div>
+            <div class="text-center">
+              <% if (current_user) { %>
+                <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+              <%}%>
+              <% if (current_user) { %>
+                <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+              <%}%>
+              <% if (current_user) { %>
+                <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
+              <%}%>
+            </div>  
           </div>
 
           <div class="mdb-feed">
@@ -109,8 +122,6 @@
               </div>
             <hr>
           </div>
-
-
         </div>
         <% if (topic.replies && topic.replies.length > 0) { %>
         <div class='panel'>

@@ -69,9 +69,48 @@
     <header>
         <%- partial('navbar') %>
     </header>
-    <div class="main" id="main">
+
+
+    <div class="main hidden-sm" id="main">
         <%- body %>
     </div>
+
+
+    <!-- Swiper -->
+    <div class="swiper-container hidden-sm-up swiper-test" style="height: 100%">
+        <div class="swiper-wrapper"  style="height: 100%">
+            <div class="swiper-slide"  style="height: 100%; overflow:scroll">
+                <div class="main" id="main">
+                    <%- body %>
+                </div>
+            </div>
+            <div class="swiper-slide"  style="height: 100%; overflow:scroll">
+        <!--Panel-->
+        <div class="card pano-side-card">
+                <div class="card-header grey darken-4 white-text">
+                    没有回复的话题
+                </div>
+                <div class="card-body px-0 py-2">
+                    <% if (typeof(no_reply_topics) !== 'undefined') { %>
+                    <% if (no_reply_topics.length > 0) { %>
+                    <ul class="list-inline">
+                    <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
+                    </ul>
+                    <% } else { %>
+                    <p>无</p>
+                    <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <!--/.Panel-->
+            </div>
+            <div class="swiper-slide"  style="height: 100%; overflow:scroll">
+                    <%- partial('message/index') %>
+            </div>
+        </div>
+    </div>
+
+
     <footer>
     </footer>
 </body>
@@ -80,6 +119,17 @@
     new WOW().init();
 </script>
 
+
+    
+<!-- Initialize Swiper -->
+<script>
+var swiper = new Swiper('.swiper-test');
+</script>
+
 </html>
+
+
+
+ 
 
 

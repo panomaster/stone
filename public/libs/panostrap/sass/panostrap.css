@@ -19394,6 +19394,18 @@ body {
   margin-bottom: 8px;
 }
 
+.pano-tab-bar {
+  display: inline-block;
+  width: 45px;
+  margin: 0px;
+  padding: 8px;
+  background-color: grey;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
 .pano-topic-index-bg {
   background-repeat: no-repeat;
   background-position: center;
@@ -19671,6 +19683,36 @@ body {
   body {
     font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
     background-color: #eeeeee;
+  }
+}
+
+@media (min-width: 992px) {
+  .hidden-md-up {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .hidden-sm {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .hidden-sm-up {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+  }
+  .content {
+    height: 100%;
   }
 }
 

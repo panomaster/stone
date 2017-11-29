@@ -46,6 +46,18 @@ body{
   -webkit-align-items: center;
 }
 
+.pano-side-card {
+  margin-bottom: 8px;
+}
+
+.pano-topic-index-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #bdbdbd;
+  height: 300px; 
+}
+
 .pano-carousel-bg {
   background-repeat: no-repeat;
   background-position: center;
@@ -235,6 +247,14 @@ body{
     font-size: 12px;
     padding-left: 40px;
     padding-right: 40px;
+  }
+
+  .pano-topic-index-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #bdbdbd;
+    height: 180px; 
   }
 
   .pano-abstract-box{

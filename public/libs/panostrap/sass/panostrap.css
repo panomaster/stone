@@ -19007,42 +19007,6 @@ section .contact i {
   color: #6b89a5;
 }
 
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 576px;
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
 /* common */
 .user {
   -webkit-border-radius: 3px;
@@ -19426,6 +19390,18 @@ body {
   -webkit-align-items: center;
 }
 
+.pano-side-card {
+  margin-bottom: 8px;
+}
+
+.pano-topic-index-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #bdbdbd;
+  height: 300px;
+}
+
 .pano-carousel-bg {
   background-repeat: no-repeat;
   background-position: center;
@@ -19605,6 +19581,13 @@ body {
     font-size: 12px;
     padding-left: 40px;
     padding-right: 40px;
+  }
+  .pano-topic-index-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #bdbdbd;
+    height: 180px;
   }
   .pano-abstract-box {
     float: left;

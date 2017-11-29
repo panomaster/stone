@@ -1,17 +1,24 @@
 <div class="container">
   <div class="row">
+    <%- partial('topic-sidebar') %>
     <!--Main column-->
-    <div id="content" class="col-lg-8">
+    <div id="content" class="col-lg-8 order-1">
         <div class='panel'>
           <div class='header topic_header'>
-            <div class="pano-abstract-bg" style="background-image:URL(<%= topic.cover %>)">
-                <span class="pano-abstract-label"><%- partial('./_top_good', {topic: topic}) %></span>
+            <!-- Card -->
+            <div class="card card-image" style="background-image: url(<%= topic.cover %>);">            
+              <!-- Content -->
+              <div class="text-white text-center align-items-center rgba-black-strong py-5 px-4">
+                  <div>
+                      <span class="pano-abstract-label"><%- partial('./_top_good', {topic: topic}) %></span>
+                      <h3 class="card-title pt-2"><strong><%= topic.title %></strong></h3>
+                      <p><%= topic.desc %></p>
+                  </div>
+              </div>
+              <!-- Content -->
             </div>
-            <span class="topic_full_title">
-              <%- partial('./_top_good', {topic: topic}) %>
-              <%= topic.title %>
-            </span>
-            <div class="changes">
+            <!-- Card -->               
+            <div>
               <span>
                 发布于 <%= topic.create_at_ago() %>
               </span>
@@ -134,9 +141,7 @@
         </div>
         <% } %>
     </div>
-    <div class="col-lg-4">
-      <%- partial('topic-sidebar') %>
-    </div>  
+ 
   </div>
 </div>
 

@@ -5,21 +5,8 @@
     <div id="content" class="col-lg-8 order-1">
         <div class='panel'>
           <div class='header topic_header'>
-            <!-- Card -->
-            <div class="card card-image" style="background-image: url(<%= topic.cover %>);">            
-              <!-- Content -->
-              <div class="text-white text-center align-items-center rgba-black-strong py-5 px-4">
-                  <div>
-                      <span><%= topic.tabName %></span>
-                      <h3 class="card-title pt-2"><strong><%= topic.title %></strong></h3>
-                      <p><%= topic.desc %></p>
-                  </div>
-              </div>
-              <!-- Content -->
-            </div>
-            <!-- Card -->   
-
-            <div class="text-center" style="font-size: 12px;">
+              <%- partial('topic-index-head') %>
+            <div class="card-body text-center" style="font-size: 12px;">
               <span>
                 作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
               </span>
@@ -42,42 +29,42 @@
 
             </div>
 
-            <div class="text-center" style="font-size: 12px;">
+            <div class="card-body text-center" style="font-size: 12px;">
               <% if (current_user) { %>
                   <% if (current_user.is_admin) { %>
                     <a href='/topic/<%= topic._id %>/top' data-method="post">
                       <% if (topic.top) { %>
-                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm orange"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
                       <% } else { %>
-                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm orange"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
                       <% } %>
                     </a>
                     <a href='/topic/<%= topic._id %>/good' data-method="post">
                       <% if (topic.good) { %>
-                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm orange"><i class="fa fa-star-o" aria-hidden="true"></i></span>
                       <% } else { %>
-                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-star" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm orange"><i class="fa fa-star" aria-hidden="true"></i></span>
                       <% } %>
                     </a>
                     <a href='/topic/<%= topic._id %>/lock' data-method="post">
                       <% if (topic.lock) { %>
-                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm orange"><i class="fa fa-unlock" aria-hidden="true"></i></span>
                       <% } else { %>
-                        <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm orange"><i class="fa fa-lock" aria-hidden="true"></i></span>
                       <% } %>
                     </a>
                     <a href='/topic/<%= topic._id %>/edit'>
-                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm orange"><i class="fa fa-edit" aria-hidden="true"></i></span>
                     <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
-                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm orange"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                     </a>
                     <% } else { %>
                     <% if (current_user._id.equals(topic.author_id)) { %>
                     <a href='/topic/<%= topic._id %>/edit'>
-                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm orange"><i class="fa fa-edit" aria-hidden="true"></i></span>
                     </a>
                     <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
-                      <span class="btn-floating btn-sm blue-gradient"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm orange"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                     </a>
                     <% } %>
                   <% } %>
@@ -86,7 +73,7 @@
             </div>  
           </div>
           <div class="clear-fix"></div>
-          <div class='inner topic'>
+          <div class='card-body inner topic'>
             <div class='topic_content'>
               <!-- <%- markdown(topic.linkedContent) %> -->
               <%- topic.linkedContent %>
@@ -104,7 +91,7 @@
             </div>  
           </div>
 
-          <div class="mdb-feed">
+          <div class="card-body mdb-feed">
             <hr>
               <div class="news">
                   <div class="label">
@@ -123,38 +110,63 @@
             <hr>
           </div>
         </div>
-        <% if (topic.replies && topic.replies.length > 0) { %>
-        <div class='panel'>
-          <div class='header'>
-            <span class='col_fade'><%= topic.replies.length %> 回复</span>
-          </div>
-          <%- partial('../reply/reply', topic.replies) %>
-        </div>
-        <% } %>
-        <% if (current_user && typeof(topic) !== 'undefined') { %>
-        <div class='panel'>
-          <div class='header'>
-            <span class='col_fade'>添加回复</span>
-          </div>
-          <div class='inner reply'>
-            <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
-              <div class='markdown_editor in_editor'>
-                <div class='markdown_in_editor'>
-                  <textarea class='editor' name='r_content' rows='8'></textarea>
-                  <div class='editor_buttons'>
-                    <input class='span-primary submit_btn' type="submit" data-loading-text="回复中.." value="回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
-                  </div>
+        <!-- Accordion card -->
+        <div class="card pano-square-card"> 
+            <!-- Card header -->
+            <div class="card-header grey darken-4 py-1" role="tab" id="heading-Reply">
+                <a class="collapsed white-text" data-toggle="collapse" data-parent="#accordionEx" href="#collapse-Reply" aria-expanded="false" aria-controls="collapse-Reply">
+                    <span class="btn btn-info btn-sm px-3 my-0">添加回复</span>
+                </a>
+            </div>
+            <% if (current_user && typeof(topic) !== 'undefined') { %>
+            <!-- Card body -->
+            <div id="collapse-Reply" class="collapse" role="tabpanel" aria-labelledby="heading-Reply">
+                <div class="card-body">
+                    <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
+                      <div class='markdown_editor in_editor'>
+                        <div class='markdown_in_editor'>
+                          <textarea class='editor' name='r_content' rows='8'></textarea>
+                          <div class='editor_buttons'>
+                            <input class='pull-right btn btn-info btn-sm px-3' type="submit" data-loading-text="回复中.." value="发布回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
+                          </div>
+                        </div>
+                      </div>
+                      <input type='hidden' name='_csrf' id="_csrf" value='<%= csrf %>'/>
+                    </form>
                 </div>
+            </div>
+            <% } else { %>
+              <div id="collapse-Reply" class="collapse" role="tabpanel" aria-labelledby="heading-Reply">
+                  <div class="card-body text-center">
+                      <p>回复主题需要先登录</p>
+                      <a href='/signin'><span class="btn btn-sm btn-info bx-3 white-text">登录</span></a> | <a href='/signup'><span class="btn btn-sm btn-info bx-3 white-text">注册</span></a>
+                      <hr>
+                      <p><%= config.description %></p>
+                  </div>
               </div>
-              <input type='hidden' name='_csrf' id="_csrf" value='<%= csrf %>'/>
-            </form>
+            <% } %>
           </div>
+
+         
+        <!-- Accordion card -->
+        <% if (topic.replies && topic.replies.length > 0) { %>
+        <!--Panel-->
+        <div class="card pano-side-card">
+            <div class="card-header grey darken-4 white-text">
+                共 <%= topic.replies.length %> 个回复
+            </div>
+            <div class="card-body px-0 py-2">
+                <%- partial('../reply/reply', topic.replies) %>
+            </div>
         </div>
+        <!--/.Panel-->
         <% } %>
+
     </div>
  
   </div>
 </div>
+
 
 
 

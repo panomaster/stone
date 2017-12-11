@@ -162,11 +162,23 @@
 }
 
 textarea#title {
-  width: 98%;
+  width: 100%;
   border: none;
-  margin-bottom: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
   resize: none;
-  height: 20px;
+  height: 30px;
+  font-size: 10px;
+}
+
+textarea#desc {
+  width: 100%;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  resize: none;
+  height: 45px;
+  font-size: 10px;
 }
 
 .editor_buttons {

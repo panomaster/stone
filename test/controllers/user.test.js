@@ -75,7 +75,7 @@ describe('test/controllers/user.test.js', function () {
       .query({save: 'success'})
       .set('Cookie', support.normalUserCookie)
       .expect(200, function (err, res) {
-        res.text.should.containEql('保存成功。');
+        res.text.should.containEql('保存成功');
         done(err);
       });
     });
@@ -116,7 +116,7 @@ describe('test/controllers/user.test.js', function () {
       .set('Cookie', support.normalUserCookie)
       .send(userInfo)
       .expect(200, function (err, res) {
-        res.text.should.containEql('密码已被修改。');
+        res.text.should.containEql('密码已被修改');
         done(err);
       });
     });

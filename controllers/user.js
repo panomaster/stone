@@ -88,7 +88,7 @@ exports.showSetting = function (req, res, next) {
       return next(err);
     }
     if (req.query.save === 'success') {
-      user.success = '保存成功。';
+      user.success = '保存成功';
     }
     user.error = null;
     return res.render('user/setting', user);
@@ -160,7 +160,7 @@ exports.setting = function (req, res, next) {
             if (err) {
               return next(err);
             }
-            return showMessage('密码已被修改。', user, true);
+            return showMessage('密码已被修改', user, true);
 
           });
         }));

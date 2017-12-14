@@ -35,28 +35,29 @@
     </div>
     
     <!--Panel-->
-    <div class="card pano-side-card hidden-md-down">
-        <div class="card-header grey darken-4 white-text">
+
+        <div class="card-header grey darken-2 white-text">
             积分榜
         </div>
-        <div class="card-body">
+        <div class-="py-5">
             <% if (typeof(tops) !== 'undefined') { %>
                 <% if (tops.length > 0) { %>
                 <%- partial('user/top', { collection: tops, as: 'user' }) %>
                 <% } else { %>
                 <p>无</p>
                 <% } %>
-                <a class='dark badge cyan pull-right' style="padding: 6px;" href='/users/top100'>TOP 100 &gt;&gt;</a>
+                <a class='dark badge cyan' style="padding: 6px;" href='/users/top100'>TOP 100 &gt;&gt;</a>
             <% } %>
         </div>
-    </div>
+
     <!--/.Panel-->
 
 
     <!--Panel-->
-        <div class="card-header grey darken-4 white-text">
+        <div class="card-header grey darken-2 white-text">
             无人回复的话题
         </div>
+        <div class-="py-5">
             <% if (typeof(no_reply_topics) !== 'undefined') { %>
             <% if (no_reply_topics.length > 0) { %>
             <ul class="list-inline">
@@ -66,7 +67,7 @@
             <p>无</p>
             <% } %>
             <% } %>
-
+        </div>
 
 </div>  
 

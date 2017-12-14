@@ -1,5 +1,5 @@
-<li>
-  <img src="<%= proxy(user.avatar_url) %>" title="<%= user.loginname %>" class="rounded-circle" />
+<li class="chip pano-chip">
+  <img src="<%= proxy(user.avatar_url) %>" title="<%= user.loginname %>">
   <span><a href="/user/<%= user.loginname %>"><%= user.loginname %></a></span>
-  <span><%= user.score %></span>
+  <span>  <%= user.score %> 积分</span>
 </li>

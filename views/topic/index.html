@@ -2,23 +2,23 @@
   <div class="row">
     <%- partial('topic-sidebar') %>
     <!--Main column-->
-    <div id="content" class="col-lg-8 order-1">
+    <div id="content" class="col-lg-8 order-1" style="background-color: white">
         <div class='panel'>
           <div class='header topic_header'>
               <%- partial('topic-index-head') %>
             <div class="card-body text-center" style="font-size: 12px;">
               <span>
-                作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
+                作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a> | 
               </span>
               <span>
-                发布于<%= topic.create_at_ago() %>
+                发布于<%= topic.create_at_ago() %> | 
               </span>
               <span>
-                <%= topic.visit_count %> 次浏览
+                <%= topic.visit_count %> 次浏览  | 
               </span>
-              <% if (topic.create_at_ago() != topic.update_at_ago()) { %>
+              <% if (topic.create_at_ago() != topic.update_at_ago()) { %> | 
               <span>
-                最后一次编辑是 <%= topic.update_at_ago() %>
+                最后一次编辑是 <%= topic.update_at_ago() %> |
               </span>
               <% } %>
               <% if (topic.tab) { %>
@@ -29,42 +29,42 @@
 
             </div>
 
-            <div class="card-body text-center" style="font-size: 12px;">
+            <div class="text-center" style="font-size: 12px;">
               <% if (current_user) { %>
                   <% if (current_user.is_admin) { %>
                     <a href='/topic/<%= topic._id %>/top' data-method="post">
                       <% if (topic.top) { %>
-                        <span class="btn-floating btn-sm orange"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm grey"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
                       <% } else { %>
-                        <span class="btn-floating btn-sm orange"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm grey"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
                       <% } %>
                     </a>
                     <a href='/topic/<%= topic._id %>/good' data-method="post">
                       <% if (topic.good) { %>
-                        <span class="btn-floating btn-sm orange"><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm grey"><i class="fa fa-star-o" aria-hidden="true"></i></span>
                       <% } else { %>
-                        <span class="btn-floating btn-sm orange"><i class="fa fa-star" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm grey"><i class="fa fa-star" aria-hidden="true"></i></span>
                       <% } %>
                     </a>
                     <a href='/topic/<%= topic._id %>/lock' data-method="post">
                       <% if (topic.lock) { %>
-                        <span class="btn-floating btn-sm orange"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm grey"><i class="fa fa-unlock" aria-hidden="true"></i></span>
                       <% } else { %>
-                        <span class="btn-floating btn-sm orange"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <span class="btn-floating btn-sm grey"><i class="fa fa-lock" aria-hidden="true"></i></span>
                       <% } %>
                     </a>
                     <a href='/topic/<%= topic._id %>/edit'>
-                      <span class="btn-floating btn-sm orange"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm grey"><i class="fa fa-edit" aria-hidden="true"></i></span>
                     <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
-                      <span class="btn-floating btn-sm orange"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm grey"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                     </a>
                     <% } else { %>
                     <% if (current_user._id.equals(topic.author_id)) { %>
                     <a href='/topic/<%= topic._id %>/edit'>
-                      <span class="btn-floating btn-sm orange"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm grey"><i class="fa fa-edit" aria-hidden="true"></i></span>
                     </a>
                     <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
-                      <span class="btn-floating btn-sm orange"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                      <span class="btn-floating btn-sm grey"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                     </a>
                     <% } %>
                   <% } %>
@@ -93,22 +93,22 @@
 
           <div class="card-body mdb-feed">
             <hr>
-              <div class="news">
+              <div class="news offset-4">
                   <div class="label">
                       <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1-mini.jpg" class="rounded-circle z-depth-1-half">
-                     
                   </div>
                   <div class="excerpt">
-                      <div class="brief">
-                          <a class="name" href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a><div class="date">积分<%= topic.author.score %>，  发布于 <%= topic.create_at_ago() %></div>
+                      <div class="brief"  style="font-size: 13px">
+                          <a class="name"  style="font-size: 13px"  href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a><div class="date" style="font-size: 13px">积分<%= topic.author.score %></div>
                       </div>
-                      <div class="feed-footer">
+                      <div class="feed-footer" style="font-size: 13px">
                           <%= topic.author.signature%>
                       </div>
                   </div>
               </div>
             <hr>
           </div>
+          
         </div>
         <!-- Accordion card -->
         <div class="card pano-square-card"> 

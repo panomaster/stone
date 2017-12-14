@@ -25,49 +25,33 @@
                     </div>
                     <% } %>
                       <form id='setting_form' action='/setting' method='post'>
-                        <div class="row pano-form-row">
+                        <div class="row pano-form-row text-center">
                           <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
-                        
-                            <span>
-                               <input class='pano-form-control readonly' id='name' name='name' type='text' readonly='true' value="<%= loginname %>" />
-                            </span>
+                            <div class="pano-form-inline-div">用户名</div>
+                            <input class='pano-form-control readonly' id='name' name='name' type='text' readonly='true' value="<%= loginname %>" />
                           </div>
                           <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
-                        
-                            <span>
-                              <input class='pano-form-control readonly' id='email' name='email' type='text' readonly='true' value="<%= email %>" />
-                            </span>
-                          </div>
-
-                          <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
-                            
-                            <span>
-                              <input class='pano-form-control' id='url' name='url' type='text' value="<%= typeof(url) !== 'undefined' ? url : '' %>" />
-                            </span>
+                            <div class="pano-form-inline-div">电子邮件</div>
+                            <input class='pano-form-control readonly' id='email' name='email' type='text' readonly='true' value="<%= email %>" />
                           </div>
                           <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
-                            
-                            <span>
-                              <input class='pano-form-control' id='location' name='location' type='text' value="<%= typeof(location) !== 'undefined' ? location : '' %>"/>
-                            </span>
+                            <div class="pano-form-inline-div">个人网站</div>
+                            <input class='pano-form-control' id='url' name='url' type='text' value="<%= typeof(url) !== 'undefined' ? url : '' %>" />
                           </div>
-                   
                           <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
-                            
-                            <span>
-                              <input class='pano-form-control' id='weibo' name='weibo' type='text' value="<%= typeof(weibo) !== 'undefined' ? weibo : '' %>" placeholder="e.g. http://weibo.com/cnodejs" />
-                            </span>
+                            <div class="pano-form-inline-div">所在地点</div>
+                            <input class='pano-form-control' id='location' name='location' type='text' value="<%= typeof(location) !== 'undefined' ? location : '' %>"/>
                           </div>
-                          <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row' style="padding: 0px;">
-                            
+                          <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
+                            <div class="pano-form-inline-div">个人微博</div>
+                            <input class='pano-form-control' id='weibo' name='weibo' type='text' value="<%= typeof(weibo) !== 'undefined' ? weibo : '' %>" placeholder="e.g. http://weibo.com/cnodejs" />
+                          </div>
+                          <div class='col-sm-12 col-md-12 col-lg-6 pano-form-row'>
                             <div class="pano-form-inline-div">github</div>
-                            <input class='pano-form-control' id='github' name='github' type='text' value="<%= typeof(githubUsername) !== 'undefined' ? '@' + githubUsername : '' %>" placeholder="@username" readonly="readonly" />
-                            
+                            <input class='pano-form-control readonly' id='github' name='github' type='text' value="<%= typeof(githubUsername) !== 'undefined' ? '@' + githubUsername : '' %>" placeholder="@username" readonly="readonly" /> 
                           </div>
-                        
-
                           <div class="col-sm-12 col-md-12 col-lg-12 pano-form-row">
-                            <input class='pano-form-control' id='signature' name='signature' value="<%= typeof(signature) !== 'undefined' ? signature : "" %>" />
+                            <input class='pano-form-control' style="width:95%" id='signature' name='signature' value="<%= typeof(signature) !== 'undefined' ? signature : "" %>" />
                           </div>
                         </div> 
                         <input type='hidden' id='action' name='action' value='change_setting' />
@@ -78,19 +62,14 @@
                       </form>
 
                       <form id='change_pass_form' action='/setting' method='post'>
-
-                        <div class="row pano-form-row">
-                          <div class="col-sm-12 col-md-12 col-lg-12 pano-form-row"">
-                            <span style="width: 80px;" for='old_pass'>当前密码</span>
-                            <span>
-                              <input class='pano-form-control' type='password' id='old_pass' name='old_pass' />
-                            </span>
+                        <div class="row pano-form-row text-center">
+                          <div class="col-sm-12 col-md-12 col-lg-6 pano-form-row">
+                            <div class="pano-form-inline-div">当前密码</div>
+                            <input class='pano-form-control' type='password' id='old_pass' name='old_pass' />
                           </div>
-                          <div class="col-sm-12 col-md-12 col-lg-12 pano-form-row">
-                            <span style="width: 80px;" for='new_pass'>新密码</span>
-                            <span>
-                              <input class='pano-form-control' type='password' id='new_pass' name='new_pass' />
-                            </span>
+                          <div class="col-sm-12 col-md-12 col-lg-6 pano-form-row">
+                            <div class="pano-form-inline-div">新密码</div>
+                            <input class='pano-form-control' type='password' id='new_pass' name='new_pass' />
                           </div>
                         </div>
                         <input type='hidden' id='action' name='action' value='change_password' />
@@ -106,22 +85,18 @@
 </div>
 
 
-
-
-
 <style>
 
 .pano-form-inline-div {
     text-align: center;
     display: inline-block;
-    width: 30%;
+    width: 28%;
     padding: 0.375rem 0.75rem;
     font-size: 14px;
     line-height: 1.5;
     color: #495057;
-    background-color: #fff;
+    background-color: #ced4da;
     border: 1px solid #ced4da;
-    border-radius: 0.5rem;
     box-shadow: none;
   }
   
@@ -134,15 +109,19 @@
     color: #495057;
     background-color: #fff;
     border: 1px solid #ced4da;
-    border-radius: 0.5rem;
     box-shadow: none;
+    margin-left: -5px;
   }
-
 
   .pano-form-row {
     margin-top: 4px;
     margin-bottom: 4px;
     font-size: 14px;
-
+    padding:0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .readonly {
+    color:grey;
   }
 </style>

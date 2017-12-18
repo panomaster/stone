@@ -13,18 +13,6 @@
                 <% }) %>
             </div>
 
-            <!-- <div class="card text-center z-depth-2" style="margin-bottom: 15px">
-                <div class="card-header grey darken-2 white-text" style="font-size: 12px">  
-                    <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
-                    var value = pair[0];
-                    var text = pair[1]; %>
-                    <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
-                    <div style="padding: 5px; display: inline-block;"><%= text %></div>
-                    </a>
-                    <% }) %>
-                </div>
-            </div> -->
-
             <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
             <div>
                 <%- partial('topic/list', {
@@ -35,6 +23,7 @@
                 }) %>
             </div>
             <% } else { %>
+                
             <div>
                 <!--Panel-->
                 <div class="card">

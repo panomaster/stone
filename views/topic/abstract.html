@@ -15,7 +15,7 @@
           </p>
         </a>
       </div>
-      <div class="chip pano-abstract-chip offset-3">    
+      <div class="chip pano-abstract-chip offset-1">    
         <a href="/user/<%= topic.author.loginname %>">
           <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" />
         </a>
@@ -24,19 +24,3 @@
     </div>
 </div>
 
-
-<!--  some other information
-
-            <% if (topic.reply && topic.reply.author) {%>
-            <a class='last_time pull-right' href="/topic/<%= topic._id %><%- '#' + topic.reply._id %>">
-              <img class="" src="<%= proxy(topic.reply.author.avatar_url) %>">
-              <span class="last_active_time"><%= topic.reply.create_at_ago() %></span>
-            </a>
-            <% } %>
-            <% if (!topic.reply) {%>
-              <span class='last_time pull-right'>
-                <span class="last_active_time"><%= topic.create_at_ago() %></span>
-              </span>
-            <% } %>
-
-            --> 

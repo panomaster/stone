@@ -1,22 +1,5 @@
 <div class="col-lg-4 order-2">
-  <div class="hidden-md-down pano-side-card">
-      <!--Panel-->
-          <% if (typeof(user) !== 'undefined' || current_user) { %>
-          <% } else { %>
-          <div class="card testimonial-card" style="margin-bottom: 10px;">
-              <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
-              </div>
-              <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-black.png" class="rounded-circle">
-              </div>
-              <div class="card-body">
-                  <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
-                  <hr>
-                  <p><%= config.description %></p>
-              </div>
-          </div>
-          <% } %>
-      <!--/.Panel-->
-  </div>
+
   <!-- Card -->
   <div class="card card-image pano-side-card" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">            
       <!-- Content -->
@@ -31,24 +14,24 @@
       <!-- Content -->
   </div>
   <!-- Card -->   
-  <!--Panel-->
-  <div class="card pano-side-card">
-    <div class="card-header grey darken-4 white-text">
-        没有回复的话题
+  <div class="hidden-md-down pano-side-card">
+        <!--Panel-->
+            <% if (typeof(user) !== 'undefined' || current_user) { %>
+            <% } else { %>
+            <div class="card testimonial-card" style="margin-bottom: 10px;">
+                <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
+                </div>
+                <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-black.png" class="rounded-circle">
+                </div>
+                <div class="card-body">
+                    <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
+                    <hr>
+                    <p><%= config.description %></p>
+                </div>
+            </div>
+            <% } %>
+        <!--/.Panel-->
     </div>
-    <div class="card-body px-0 py-2">
-        <% if (typeof(no_reply_topics) !== 'undefined') { %>
-        <% if (no_reply_topics.length > 0) { %>
-        <ul class="list-inline">
-        <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
-        </ul>
-        <% } else { %>
-        <p>无</p>
-        <% } %>
-        <% } %>
-    </div>
-  </div>
-  <!--/.Panel-->
   <!--Panel-->
   <div class="card pano-side-card">
       <div class="card-header grey darken-4 white-text">

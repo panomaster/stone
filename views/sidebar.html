@@ -1,14 +1,13 @@
 <div class="col-lg-4 order-2">  
 
     <!-- Card -->
-    <div class="card card-image pano-side-card" style="max-height: 300px; background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">            
+    <div class="card card-image pano-side-card" style="border-radius:0px; height: 300px; background-image: url(public/images/bg11.jpg);">            
         <!-- Content -->
-        <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+        <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4" style="height: 300px;">
             <div>
                 <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
                 <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam.</p>
-                <a class="btn btn-pink"><i class="fa fa-clone left"></i> View project</a>
             </div>
         </div>
         <!-- Content -->
@@ -36,20 +35,19 @@
     
     <!--Panel-->
 
-        <div class="card-header grey darken-2 white-text">
+        <div class="card-header grey darken-2 hidden-md-down white-text">
             积分榜
         </div>
-        <div class-="py-5">
+        <div class="py-2 px-2 hidden-md-down ">
             <% if (typeof(tops) !== 'undefined') { %>
                 <% if (tops.length > 0) { %>
                 <%- partial('user/top', { collection: tops, as: 'user' }) %>
                 <% } else { %>
                 <p>无</p>
                 <% } %>
-                <a class='dark badge cyan' style="padding: 6px;" href='/users/top100'>TOP 100 &gt;&gt;</a>
+                <a class='dark badge cyan offset-6' style="padding: 6px;" href='/users/top100'>TOP 100</a>
             <% } %>
         </div>
-
     <!--/.Panel-->
 
 
@@ -57,12 +55,12 @@
         <div class="card-header grey darken-2 white-text">
             无人回复的话题
         </div>
-        <div class-="py-5">
+        <div class="py-2">
             <% if (typeof(no_reply_topics) !== 'undefined') { %>
             <% if (no_reply_topics.length > 0) { %>
-            <ul class="list-inline">
+            
             <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
-            </ul>
+           
             <% } else { %>
             <p>无</p>
             <% } %>

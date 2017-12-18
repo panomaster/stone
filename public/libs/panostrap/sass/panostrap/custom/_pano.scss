@@ -75,6 +75,16 @@ body{
 .pano-topic-index-caption {
   height: 300px;
   padding-top: 130px;
+  margin-top: -300px;
+}
+
+.pano-cover-caption {
+  width: 0px;
+  z-index: 0;
+	height: 0px;
+    border-top: 300px solid rgb(2, 171, 250);
+    border-left: 100px solid rgb(2, 171, 250);
+    border-right: 200px solid transparent;
 }
 
 
@@ -181,7 +191,7 @@ body{
 
 .pano-abstract-title {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   color: #212121;
 
   overflow: hidden;
@@ -273,7 +283,17 @@ body{
   .pano-topic-index-caption {
     height: 200px;
     padding-top: 50px;
+    margin-top: -200px;
 }
+
+  .pano-cover-caption {
+    width: 0px;
+    height: 0px;
+      border-top: 200px solid rgba(85, 85, 85, 0.5);
+      border-left: 100px solid rgba(85, 85, 85, 0.5);
+      border-right: 200px solid transparent;
+  }
+
   .pano-carousel-bg {
     background-repeat: no-repeat;
     background-position: center;
@@ -347,7 +367,7 @@ body{
   
   .pano-abstract-title {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     color: #212121;
     line-height: 1.2;
     margin: 5px 0px 5px 0px;

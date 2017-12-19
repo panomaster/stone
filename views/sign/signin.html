@@ -1,56 +1,72 @@
-
 <div class="container">
   <div class="row">
-    <!--Main column-->
-    <div class="col-lg-8">
-      <div class='panel'>
-        <div class='header'>
-          <ul class='breadcrumb'>
-            <li><a href='/'>主页</a><span class='divider'>/</span></li>
-            <li class='active'>登录</li>
-          </ul>
-        </div>
-        <div class='inner'>
-          <% if(typeof(error) !== 'undefined' && error){ %>
-          <div class="alert alert-error">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong><%= error %></strong>
-          </div>
-          <% } %>
-          <form id='signin_form' class='form-horizontal' action='/signin' method='post'>
-            <div class='control-group'>
-              <label class='control-label' for='name'>用户名</label>
-
-              <div class='controls'>
-                <input class='input-xlarge' id='name' name='name' size='30' type='text'/>
+      <div class="col-lg-9 hidden-md-down text-center pano-landing-bg" style="height: 600px; background-image: url(../public/images/bg8.jpg);">
+        <div class='white-text' style="padding-top: 200px">
+            <div class='panel'>
+                <div class='inner' style="max-width: 320px; margin-left: auto; margin-right:auto;">
+                  <% if(typeof(error) !== 'undefined' && error){ %>
+                  <div class="alert alert-error">
+                    <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    <strong>
+                      <%= error %>
+                    </strong>
+                  </div>
+                  <% } %>
+                  <form id='signin_form' action='/signin' method='post' style="padding-top: 60px;">
+                    <div class="py-1">
+                      <div>
+                        <input class='form-control' id='name' name='name' type='text' placeholder="用户名/手机号/邮箱地址" style="font-size: 12px; box-shadow: none"/>
+                      </div>
+                    </div>
+                    <div class="py-1">
+                      <div>
+                        <input class='form-control' id='pass' name='pass' type='password' placeholder="密码" style="font-size: 12px; box-shadow: none"/>
+                      </div>
+                    </div>
+                    <input type='hidden' name='_csrf' value='<%= csrf %>' />
+                    <div class="py-3">
+                      <input type='submit' class='btn btn-sm btn-info' value='账号登录' />
+                      <div class='btn btn-sm btn-info'><a class=" white-text" id="forgot_password" href='#'>微信登录</a></div>
+                      <hr>
+                      <div class='btn btn-sm btn-info' style="width: 100%"><a class="white-text" id="forgot_password" href='/search_pass'>取回密码</a></div>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </div>
-            <div class='control-group'>
-              <label class='control-label' for='pass'>密码</label>
-
-              <div class='controls'>
-                <input class='input-xlarge' id='pass' name='pass' size='30' type='password'/>
-              </div>
-            </div>
-            <input type='hidden' name='_csrf' value='<%= csrf %>'/>
-
-            <div class='form-actions'>
-              <input type='submit' class='span-primary' value='登录'/>
-              <a href="/auth/github">
-                <span class="span-info">
-                  通过 GitHub 登录
-                </span>
-              </a>
-              <a id="forgot_password" href='/search_pass'>忘记密码了?</a>
-            </div>
-          </form>
         </div>
       </div>
-    </div>  
-    <!--Sidebar-->
-    <div class="col-lg-4 hidden-md-down">
-      <%- partial('../sign/sidebar') %>
-    </div>    
-    <!--/.Sidebar-->       
-  </div>    
+      <div class="col-lg-3 col-md-12 col-sm-12 col-12 text-center" style="height: 600px">
+        <div class='panel'>
+          <div class='inner' style="max-width: 320px; margin-left: auto; margin-right:auto;">
+            <% if(typeof(error) !== 'undefined' && error){ %>
+            <div class="alert alert-error">
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+              <strong>
+                <%= error %>
+              </strong>
+            </div>
+            <% } %>
+            <form id='signin_form' action='/signin' method='post' style="padding-top: 60px;">
+              <div class="py-1">
+                <div>
+                  <input class='form-control' id='name' name='name' type='text' placeholder="用户名/手机号/邮箱地址" style="font-size: 12px; box-shadow: none"/>
+                </div>
+              </div>
+              <div class="py-1">
+                <div>
+                  <input class='form-control' id='pass' name='pass' type='password' placeholder="密码" style="font-size: 12px; box-shadow: none"/>
+                </div>
+              </div>
+              <input type='hidden' name='_csrf' value='<%= csrf %>' />
+              <div class="py-3">
+                <input type='submit' class='btn btn-sm btn-info' value='账号登录' />
+                <div class='btn btn-sm btn-info'><a class=" white-text" id="forgot_password" href='#'>微信登录</a></div>
+                <hr>
+                <div class='btn btn-sm btn-info' style="width: 100%"><a class="white-text" id="forgot_password" href='/search_pass'>取回密码</a></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>

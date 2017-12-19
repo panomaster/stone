@@ -1,38 +1,44 @@
 
 <div class="col-lg-4 order-2">
+
+    <!--Panel-->
+    <div class="gradient-pattern-2" style="height:300px; margin-bottom: 5px;">
+            <p class="retro">Panorizon</p>
+        </div>
+    <!--/.Panel-->
     <!--Panel-->
    
     <div class="card-header grey darken-4 white-text">
-            作者其他话题
-        </div>
-        <div class="py-2">
-            <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
-          
-            <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>
-     
-            <% } else { %>
-            <p>无</p>
-            <% } %>
-        </div>
+        作者其他话题
+    </div>
+    <div class="py-2">
+        <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
+        
+        <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>
+    
+        <% } else { %>
+        <p>无</p>
+        <% } %>
+    </div>
 
     <!--/.Panel-->
     <!--Panel-->
   
-        <div class="card-header grey darken-4 white-text">
-            没有回复的话题
-        </div>
-        <div class="py-2">
-            <% if (typeof(no_reply_topics) !== 'undefined') { %>
-            <% if (no_reply_topics.length > 0) { %>
-       
-            <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
-   
-            <% } else { %>
-            <p>无</p>
-            <% } %>
-            <% } %>
-        </div>
- 
+    <div class="card-header grey darken-4 white-text">
+        没有回复的话题
+    </div>
+    <div class="py-2">
+        <% if (typeof(no_reply_topics) !== 'undefined') { %>
+        <% if (no_reply_topics.length > 0) { %>
+    
+        <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
+
+        <% } else { %>
+        <p>无</p>
+        <% } %>
+        <% } %>
+    </div>
+
     <!--/.Panel-->
     <!-- Card -->
     <div class="card card-image pano-side-card" style="border-radius:0px; height: 300px; background-image: url(../public/images/bg11.jpg);">            

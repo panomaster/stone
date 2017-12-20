@@ -28,21 +28,21 @@ exports.signup = function (req, res, next) {
 
   // 验证信息的正确性
   if ([loginname, pass, rePass, email].some(function (item) { return item === ''; })) {
-    ep.emit('prop_err', '信息不完整。');
+    ep.emit('prop_err', '请填写完整信息');
     return;
   }
   if (loginname.length < 5) {
-    ep.emit('prop_err', '用户名至少需要5个字符。');
+    ep.emit('prop_err', '用户名至少需要5个字符');
     return;
   }
   if (!tools.validateId(loginname)) {
-    return ep.emit('prop_err', '用户名不合法。');
+    return ep.emit('prop_err', '用户名不合规范');
   }
   if (!validator.isEmail(email)) {
-    return ep.emit('prop_err', '邮箱不合法。');
+    return ep.emit('prop_err', '邮箱地址不和规范');
   }
   if (pass !== rePass) {
-    return ep.emit('prop_err', '两次密码输入不一致。');
+    return ep.emit('prop_err', '两次密码输入不一致');
   }
   // END 验证信息的正确性
 
@@ -55,7 +55,7 @@ exports.signup = function (req, res, next) {
       return next(err);
     }
     if (users.length > 0) {
-      ep.emit('prop_err', '用户名或邮箱已被使用。');
+      ep.emit('prop_err', '输入的用户名或邮箱已被使用');
       return;
     }
 
@@ -69,7 +69,7 @@ exports.signup = function (req, res, next) {
         // 发送激活邮件
         mail.sendActiveMail(email, utility.md5(email + passhash + config.session_secret), loginname);
         res.render('sign/signup', {
-          success: '欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
+          success: '欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请确认邮件并点击里面的链接激活您的帐号'
         });
       });
 
@@ -115,7 +115,7 @@ exports.login = function (req, res, next) {
 
   if (!loginname || !pass) {
     res.status(422);
-    return res.render('sign/signin', { error: '信息不完整。' });
+    return res.render('sign/signin', { error: '输入的信息不完整' });
   }
 
   var getUser;
@@ -146,7 +146,7 @@ exports.login = function (req, res, next) {
         // 重新发送激活邮件
         mail.sendActiveMail(user.email, utility.md5(user.email + passhash + config.session_secret), user.loginname);
         res.status(403);
-        return res.render('sign/signin', { error: '此帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收。' });
+        return res.render('sign/signin', { error: '该帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收并激活' });
       }
       // store session cookie
       authMiddleWare.gen_session(user, res);
@@ -183,10 +183,10 @@ exports.activeAccount = function (req, res, next) {
     }
     var passhash = user.pass;
     if (!user || utility.md5(user.email + passhash + config.session_secret) !== key) {
-      return res.render('notify/notify', {error: '信息有误，帐号无法被激活。'});
+      return res.render('notify/notify', {error: '信息有误，帐号无法被激活'});
     }
     if (user.active) {
-      return res.render('notify/notify', {error: '帐号已经是激活状态。'});
+      return res.render('notify/notify', {error: '帐号已经是激活状态'});
     }
     user.active = true;
     user.save(function (err) {
@@ -205,7 +205,7 @@ exports.showSearchPass = function (req, res) {
 exports.updateSearchPass = function (req, res, next) {
   var email = validator.trim(req.body.email).toLowerCase();
   if (!validator.isEmail(email)) {
-    return res.render('sign/search_pass', {error: '邮箱不合法', email: email});
+    return res.render('sign/search_pass', {error: '邮箱错误', email: email});
   }
 
   // 动态生成retrive_key和timestamp到users collection,之后重置密码进行验证
@@ -214,7 +214,7 @@ exports.updateSearchPass = function (req, res, next) {
 
   User.getUserByMail(email, function (err, user) {
     if (!user) {
-      res.render('sign/search_pass', {error: '没有这个电子邮箱。', email: email});
+      res.render('sign/search_pass', {error: '没有这个电子邮箱', email: email});
       return;
     }
     user.retrieve_key = retrieveKey;
@@ -225,7 +225,7 @@ exports.updateSearchPass = function (req, res, next) {
       }
       // 发送重置密码邮件
       mail.sendResetPassMail(email, retrieveKey, user.loginname);
-      res.render('notify/notify', {success: '我们已给您填写的电子邮箱发送了一封邮件，请在24小时内点击里面的链接来重置密码。'});
+      res.render('notify/notify', {success: '我们已给您填写的电子邮箱发送了一封邮件，请在24小时内点击里面的链接来重置密码'});
     });
   });
 };
@@ -267,7 +267,7 @@ exports.updatePass = function (req, res, next) {
   ep.fail(next);
 
   if (psw !== repsw) {
-    return res.render('sign/reset', {name: name, key: key, error: '两次密码输入不一致。'});
+    return res.render('sign/reset', {name: name, key: key, error: '两次密码输入不一致'});
   }
   User.getUserByNameAndKey(name, key, ep.done(function (user) {
     if (!user) {
@@ -283,7 +283,7 @@ exports.updatePass = function (req, res, next) {
         if (err) {
           return next(err);
         }
-        return res.render('notify/notify', {success: '你的密码已重置。'});
+        return res.render('notify/notify', {success: '你的密码已重置成功'});
       });
     }));
   }));

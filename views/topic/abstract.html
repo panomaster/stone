@@ -1,14 +1,18 @@
 <div class="col-lg-12 col-md-6 col-sm-6 col-12 pano-abstract-box">
     <a href="/topic/<%= topic._id %>">
       <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg" style="background-image:URL(<%= topic.cover %>)">
-          <span><%- partial('./_top_good', {topic: topic}) %></span>
+          <%- partial('./_top_good', {topic: topic}) %>
       </div>
     </a>
     <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body">
       <div class="pano-abstract-contents">
         <a href="/topic/<%= topic._id %>">
           <p class="pano-abstract-title">
-              <%= topic.title %>    
+              <%= topic.title %>   
+              <% if (topic.tabName === '视频' && topic.tabName) { %>
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+              <% } %>
+                 
           </p>
           <p class="pano-abstract-desc">          
               <%= topic.desc %>           

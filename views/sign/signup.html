@@ -1,82 +1,42 @@
-<div class="container">
+<div class="sign-container">
   <div class="row">
-    <!--Main column-->
-    <div class="col-lg-8">
-      <div class='panel'>
-        <div class='header'>
-          <ul class='breadcrumb'>
-            <li><a href='/'>主页</a><span class='divider'>/</span></li>
-            <li class='active'>注册</li>
-          </ul>
-        </div>
-        <div class='inner'>
-          <% if (typeof(error) !== 'undefined' && error) { %>
-          <div class="alert alert-error">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong><%= error %></strong>
-          </div>
-          <% } %>
-          <% if (typeof(success) !== 'undefined' && success) { %>
-          <div class="alert alert-success">
-            <strong><%= success %></strong>
-          </div>
-          <% } else { %>
-          <form id='signup_form' class='form-horizontal' action='/signup' method='post'>
-            <div class='control-group'>
-              <label class='control-label' for='loginname'>用户名</label>
-
-              <div class='controls'>
-                <% if (typeof(loginname) !== 'undefined') { %>
-                <input class='input-xlarge' id='loginname' name='loginname' size='30' type='text' value='<%= loginname %>'/>
-                <% } else { %>
-                <input class='input-xlarge' id='loginname' name='loginname' size='30' type='text' value=''/>
-                <% } %>
-              </div>
+    <div class="sign-page">
+        <div class="form">
+          <form class="register-form" form id='signup_form' action='/signup' method='post'>
+            <% if (typeof(success) !== 'undefined' && success) { %>
+            <div class="alert alert-success">
+              <strong><%= success %></strong>
             </div>
-            <div class='control-group'>
-              <label class='control-label' for='pass'>密码</label>
-
-              <div class='controls'>
-                <input class='input-xlarge' id='pass' name='pass' size='30' type='password'/>
-              </div>
-            </div>
-            <div class='control-group'>
-              <label class='control-label' for='re_pass'>确认密码</label>
-
-              <div class='controls'>
-                <input class='input-xlarge' id='re_pass' name='re_pass' size='30' type='password'/>
-              </div>
-            </div>
-            <div class='control-group'>
-              <label class='control-label' for='email'>电子邮箱</label>
-
-              <div class='controls'>
-                <% if (typeof(email) !== 'undefined') { %>
-                <input class='input-xlarge' id='email' name='email' size='30' type='text' value='<%= email %>'/>
-                <% } else { %>
-                <input class='input-xlarge' id='email' name='email' size='30' type='text'/>
-                <% } %>
-              </div>
-            </div>
+            <% } else { %>
+              <% if (typeof(loginname) !== 'undefined') { %>
+            <input id='loginname' name='loginname' type='text' value='<%= loginname %>' placeholder="用户名"/>
+            <% } else { %>
+            <input id='loginname' name='loginname' type='text' value='' placeholder="用户名"/>
+            <% } %>
+            <input id='pass' name='pass' type='password' placeholder="输入密码"/>
+            <input id='re_pass' name='re_pass' type='password' placeholder="重新输入密码"/>
+            <% if (typeof(email) !== 'undefined') { %>
+            <input id='email' name='email' type='text' value='<%= email %>' placeholder="邮箱地址"/>
+            <% } else { %>
+            <input id='email' name='email' type='text' placeholder="邮箱地址"/>
+            <% } %>
+            <input type="text" placeholder="手机号码"/>
             <input type='hidden' name='_csrf' value='<%= csrf %>'/>
-
-            <div class='form-actions'>
-              <input type='submit' class='span-primary' value='注册'/>
-              <a href="/auth/github">
-                <span class="span-info">
-                  通过 GitHub 登录
-                </span>
-              </a>
+            <% if (typeof(error) !== 'undefined' && error) { %>
+            <div class="alert alert-error">
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+              <span class="red-text" style="font-size: 12px"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= error %></span>
             </div>
+            <% } %>
+            <button>创建账号</button>
+            <p class="message">已有账号? <a href="/signin">点击登录</a></p>
+            <% } %>
           </form>
-          <% } %>
         </div>
       </div>
-    </div>
-    <!--Sidebar-->
-    <div class="col-lg-4 hidden-md-down">
-      <%- partial('../sign/sidebar') %>
-    </div>    
-    <!--/.Sidebar-->           
-  </div>  
+      <div class="verti-hidden text-center" style="color: rgb(199, 199, 199); font-size: 12px; padding: 20px; width: 100%">
+        <img style="height: 80px;" src="../public/images/logo-white.png">
+        <p class="py-2">panorizon - 户外新地平线</p>
+      </div>
+  </div>
 </div>

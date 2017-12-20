@@ -1,34 +1,29 @@
 
-<div class="container">
+<div class="sign-container">
   <div class="row">
-    <!--Main column-->
-    <div class="col-lg-8">
-      <div class='panel'>
-        <div class='header'>
-          <ul class='breadcrumb'>
-            <li><a href='/'>主页</a><span class='divider'>/</span></li>
-            <li class='active'>通知</li>
-          </ul>
-        </div>
-        <div class='inner'>
-          <% if(typeof(error) !== 'undefined' && error){ %>
-          <div class="alert alert-error">
-            <strong><%= error %></strong>
-          </div>
-          <% } %>
-          <% if(typeof(success) !== 'undefined' && success){ %>
-          <div class="alert alert-success">
-            <strong><%= success %></strong>
-          </div>
-          <% } %>
-            <a href="<%- typeof(referer) !== 'undefined' ? referer : '/' %>"><span class="span-common">返回</span></a>
-        </div>
+    <div class="sign-page px-3 text-center">
+      <% if(typeof(error) !== 'undefined' && error){ %>
+      <div class="alert alert-error">
+        <span class="red-text" style="font-size: 12px"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= error %></span>
       </div>
+      <% } %>
+      <% if(typeof(success) !== 'undefined' && success){ %>
+      <div class="alert alert-success text-center">
+          <span class="blue-text" style="font-size: 12px"><i class="fa fa-check-square" aria-hidden="true"></i> </br> <%= success %></span>
+      </div>
+      <% } %>
+      <hr>
+      <button class="btn btn-success"><a class="white-text" href="<%- typeof(referer) !== 'undefined' ? referer : '/' %>">返回</a></button>
     </div>
-    <!--Sidebar-->
-    <div class="col-lg-4 hidden-md-down">
-        <%- partial('sidebar') %>
-    </div>    
-    <!--/.Sidebar-->    
-  </div>  
+    <div class="verti-hidden text-center" style="color: rgb(199, 199, 199); font-size: 12px; padding: 20px; width: 100%">
+      <% if (config.site_logo) {%>
+          <img style="height:80px" src="<%- staticFile(config.site_logo) %>" />
+      <%} else {%>
+          <%- config.name %>
+      <%}%>
+      <p class="py-2">panorizon - 户外新地平线</p>
+    </div>
+  </div>
 </div>
+  
+  

@@ -78,6 +78,7 @@
               <!-- <%- markdown(topic.linkedContent) %> -->
               <%- topic.linkedContent %>
             </div>
+
             <div class="text-center">
               <% if (current_user) { %>
                 <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
@@ -88,8 +89,14 @@
               <% if (current_user) { %>
                 <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
               <%}%>
-            </div>  
+              
+
+
+            </div> 
+
           </div>
+
+
 
           <div class="card-body mdb-feed">
             <hr>
@@ -168,7 +175,9 @@
 </div>
 
 
-
+<script type="text/javascript">
+  $("img").removeAttr("style"); 
+</script>
 
 
 <% if (current_user && typeof(topic) !== 'undefined') { %>

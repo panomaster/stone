@@ -1,45 +1,31 @@
-<div class="container">
+
+
+<div class="sign-container">
   <div class="row">
-    <!--Main column-->
-    <div class="col-lg-8">
-      <div class='panel'>
-        <div class='header'>
-          <ul class='breadcrumb'>
-            <li><a href='/'>主页</a><span class='divider'>/</span></li>
-            <li class='active'>取回密码</li>
-          </ul>
-        </div>
-        <div class='inner'>
-          <% if (typeof(error) !== 'undefined' && error) { %>
-          <div class="alert alert-error">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <strong><%= error %></strong>
-          </div>
-          <% } %>
-          <form id='search_pass_form' class='form-horizontal' action='/search_pass' method='post'>
-            <div class='control-group'>
-              <label class='control-label' for='email'>电子邮箱</label>
-              <div class='controls'>
-                <% if (typeof(email) !== 'undefined') { %>
-                <input class='input-xlarge' id='email' name='email' size='30' type='text' value='<%= email %>'/>
-                <% } else { %>
-                <input class='input-xlarge' id='email' name='email' size='30' type='text'/>
-                <% } %>
-                <p class='help-block'>请输入您注册帐户时使用的电子邮箱</p>
-              </div>
-              <input type='hidden' name='_csrf' value='<%= csrf %>'/>
+    <div class="sign-page">
+        <div class="form">
+          <form class="login-form" id='search_pass_form' action='/search_pass' method='post'>
+            <p class='help-block' style="font-size: 12px">请输入您注册帐户时使用的电子邮箱地址</p>
+            <% if (typeof(email) !== 'undefined') { %>
+            <input id='email' name='email' type='text' value='<%= email %>' placeholder="邮箱地址"/>
+            <% } else { %>
+            <input id='email' name='email' type='text' placeholder="邮箱地址"/>
+            <% } %>
+            
+            <input type='hidden' name='_csrf' value='<%= csrf %>'/>
+            <% if (typeof(error) !== 'undefined' && error) { %>
+            <div class="alert alert-error">
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+              <span class="red-text" style="font-size: 12px"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= error %></span>
             </div>
-            <div class='form-actions'>
-              <input type='submit' class='span-primary' value='提交'/>
-            </div>
+            <% } %>
+            <button>提交</button>
           </form>
         </div>
       </div>
-    </div>
-    <!--Sidebar-->
-    <div class="col-lg-4 hidden-md-down">
-      <%- partial('../sign/sidebar') %>
-    </div>    
-    <!--/.Sidebar-->    
-  </div>  
+      <div class="verti-hidden text-center" style="color: rgb(199, 199, 199); font-size: 12px; padding: 20px; width: 100%">
+        <img style="height: 80px;" src="../public/images/logo-white.png">
+        <p class="py-2">panorizon - 户外新地平线</p>
+      </div>
+  </div>
 </div>

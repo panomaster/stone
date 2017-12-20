@@ -1,9 +1,9 @@
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark black h6" style="font-size: 12px; background-image:URL(../public/libs/panostrap/img/overlays/navbg3.jpg)">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark black h6 verti-hidden" style="font-size: 12px; background-image:URL(../public/libs/panostrap/img/overlays/navbg3.jpg)">
     <div class="container">
         <a class='brand px-10' href='/'>
             <% if (config.site_logo) {%>
-                <img style="height:32px" src="<%- staticFile(config.site_logo) %>" />
+                <img class="pano-nav-brand" src="<%- staticFile(config.site_logo) %>" />
             <%} else {%>
                 <%- config.name %>
             <%}%>

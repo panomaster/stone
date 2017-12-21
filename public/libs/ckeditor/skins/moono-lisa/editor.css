@@ -31,7 +31,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
   position: static;
   transition: none;
   border-collapse: collapse;
-  font: normal normal normal 12px Arial, Helvetica, Tahoma, Verdana, Sans-Serif;
+  font: normal normal normal 12px 'Microsoft Yahei', Arial, Helvetica, Tahoma, Verdana, Sans-Serif;
   color: #000;
   text-align: left;
   white-space: nowrap;
@@ -516,6 +516,7 @@ a.cke_button_disabled .cke_button_arrow {
   display: none;
 }
 .cke_button_label {
+  font-family: 'Microsoft Yahei';
   display: none;
   padding-left: 3px;
   margin-top: 1px;
@@ -988,6 +989,7 @@ a.cke_combo_button {
   height: 0;
 }
 .cke_combo_text {
+  font-family: 'Microsoft Yahei';
   line-height: 26px;
   padding-left: 10px;
   text-overflow: ellipsis;

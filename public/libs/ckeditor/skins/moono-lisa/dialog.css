@@ -516,7 +516,7 @@ select.cke_dialog_ui_input_select {
   border: 1px ridge #bcbcbc;
   overflow: scroll;
   height: 200px;
-  width: 300px;
+  width: 100%;
   padding: 2px;
   background-color: white;
 }

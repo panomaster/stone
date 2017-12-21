@@ -30,7 +30,7 @@ CKEDITOR.lang["zh-cn"] = {
     langDirLtr: "从左到右 (LTR)",
     langDirRtl: "从右到左 (RTL)",
     langCode: "语言代码",
-    longDescr: "详细说明 URL",
+    longDescr: "详细说明",
     cssClass: "样式类名称",
     advisoryTitle: "标题",
     cssStyle: "行内样式",

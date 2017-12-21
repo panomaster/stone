@@ -67,10 +67,30 @@
                 }, {
                     type: "hbox",
                     children: [{
+                        id: "width",
+                        type: "text",
+                        requiredContent: "iframe[width]",
+                        style: "width:100%",
+                        labelLayout: "vertical",
+                        label: a.width,
+                        validate: CKEDITOR.dialog.validate.htmlLength(a.invalidHtmlLength.replace("%1", a.width)),
+                        setup: c,
+                        commit: d
+                    }, {
+                        id: "height",
+                        type: "text",
+                        requiredContent: "iframe[height]",
+                        style: "width:100%",
+                        labelLayout: "vertical",
+                        label: a.height,
+                        /* validate: CKEDITOR.dialog.validate.htmlLength(a.invalidHtmlLength.replace("%1", a.height)), */
+                        setup: c,
+                        commit: d
+                    }, {
                         id: "align",
                         type: "select",
                         requiredContent: "iframe[align]",
-                        "default": "middle",
+                        "default": "",
                         items: [
                             [a.notSet, ""],
                             [a.alignLeft, "left"],
@@ -99,7 +119,21 @@
                 }, {
                     type: "hbox",
                     widths: ["50%", "50%"],
-                    children: []
+                    children: [{
+                        id: "scrolling",
+                        type: "checkbox",
+                        requiredContent: "iframe[scrolling]",
+                        label: f.scrolling,
+                        setup: c,
+                        commit: d
+                    }, {
+                        id: "frameborder",
+                        type: "checkbox",
+                        requiredContent: "iframe[frameborder]",
+                        label: f.border,
+                        setup: c,
+                        commit: d
+                    }]
                 }, {
                     type: "hbox",
                     widths: ["50%", "50%"],
@@ -126,7 +160,11 @@
                     setup: c,
                     commit: d
                 }]
-            }]
+            }, e && e.createAdvancedTab(b, {
+                id: 1,
+                classes: 1,
+                styles: 1
+            }, "iframe")]
         }
     })
 })();

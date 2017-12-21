@@ -82,11 +82,24 @@
             <script type="text/javascript">
               $("img").removeAttr("style"); 
             </script>
+
             <style>
               .topic_content img{
                 width: 100%;
                 height: auto;
               }
+              .topic_content iframe{
+                width: 100%;
+                height: 400px;
+                text-align: center
+              }
+              @media (max-width: 576px) {
+                .topic_content iframe{
+                  width: 100%;
+                  height: 210px;
+                  text-align: center
+                }
+              }  
             </style>
 
             <div class="text-center">

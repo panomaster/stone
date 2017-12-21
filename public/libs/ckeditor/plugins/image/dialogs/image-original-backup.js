@@ -285,7 +285,7 @@
               children: [
                 {
                   type: "hbox",
-                  widths: ["300px;"],
+                  widths: ["280px", "110px"],
                   align: "right",
                   className: "cke_dialog_image_url",
                   children: [
@@ -376,13 +376,413 @@
               type: "hbox",
               children: [
                 {
+                  id: "basic",
+                  type: "vbox",
+                  children: [
+                    {
+                      type: "hbox",
+                      requiredContent: "img{width,height}",
+                      widths: ["50%", "50%"],
+                      children: [
+                        {
+                          type: "vbox",
+                          padding: 1,
+                          children: [
+                            {
+                              type: "text",
+                              width: "45px",
+                              id: "txtWidth",
+                              label: d.lang.common.width,
+                              onKeyUp: A,
+                              onChange: function() {
+                                k.call(this, "advanced:txtdlgGenStyle");
+                              },
+                              validate: function() {
+                                var a = this.getValue().match(z);
+                                (a = !(!a || 0 === parseInt(a[1], 10))) ||
+                                  alert(d.lang.common.invalidWidth);
+                                return a;
+                              },
+                              setup: C,
+                              commit: function(a, b) {
+                                var c = this.getValue();
+                                1 == a
+                                  ? (c &&
+                                    d.activeFilter.check("img{width,height}")
+                                      ? b.setStyle(
+                                          "width",
+                                          CKEDITOR.tools.cssLength(c)
+                                        )
+                                      : b.removeStyle("width"),
+                                    b.removeAttribute("width"))
+                                  : 4 == a
+                                    ? c.match(m)
+                                      ? b.setStyle(
+                                          "width",
+                                          CKEDITOR.tools.cssLength(c)
+                                        )
+                                      : ((c = this.getDialog().originalElement),
+                                        "true" == c.getCustomData("isReady") &&
+                                          b.setStyle("width", c.$.width + "px"))
+                                    : 8 == a &&
+                                      (b.removeAttribute("width"),
+                                      b.removeStyle("width"));
+                              }
+                            },
+                            {
+                              type: "text",
+                              id: "txtHeight",
+                              width: "45px",
+                              label: d.lang.common.height,
+                              onKeyUp: A,
+                              onChange: function() {
+                                k.call(this, "advanced:txtdlgGenStyle");
+                              },
+                              validate: function() {
+                                var a = this.getValue().match(z);
+                                (a = !(!a || 0 === parseInt(a[1], 10))) ||
+                                  alert(d.lang.common.invalidHeight);
+                                return a;
+                              },
+                              setup: C,
+                              commit: function(a, b) {
+                                var c = this.getValue();
+                                1 == a
+                                  ? (c &&
+                                    d.activeFilter.check("img{width,height}")
+                                      ? b.setStyle(
+                                          "height",
+                                          CKEDITOR.tools.cssLength(c)
+                                        )
+                                      : b.removeStyle("height"),
+                                    b.removeAttribute("height"))
+                                  : 4 == a
+                                    ? c.match(m)
+                                      ? b.setStyle(
+                                          "height",
+                                          CKEDITOR.tools.cssLength(c)
+                                        )
+                                      : ((c = this.getDialog().originalElement),
+                                        "true" == c.getCustomData("isReady") &&
+                                          b.setStyle(
+                                            "height",
+                                            c.$.height + "px"
+                                          ))
+                                    : 8 == a &&
+                                      (b.removeAttribute("height"),
+                                      b.removeStyle("height"));
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          id: "ratioLock",
+                          type: "html",
+                          className: "cke_dialog_image_ratiolock",
+                          style: "margin-top:30px;width:40px;height:40px;",
+                          onLoad: function() {
+                            var a = CKEDITOR.document.getById(y),
+                              b = CKEDITOR.document.getById(t);
+                            a &&
+                              (a.on(
+                                "click",
+                                function(a) {
+                                  B(this);
+                                  a.data && a.data.preventDefault();
+                                },
+                                this.getDialog()
+                              ),
+                              a.on(
+                                "mouseover",
+                                function() {
+                                  this.addClass("cke_btn_over");
+                                },
+                                a
+                              ),
+                              a.on(
+                                "mouseout",
+                                function() {
+                                  this.removeClass("cke_btn_over");
+                                },
+                                a
+                              ));
+                            b &&
+                              (b.on(
+                                "click",
+                                function(a) {
+                                  n(this);
+                                  var b = this.originalElement,
+                                    d = this.getValueOf("info", "txtWidth");
+                                  "true" == b.getCustomData("isReady") &&
+                                    d &&
+                                    ((b = b.$.height / b.$.width * d),
+                                    isNaN(b) ||
+                                      (this.setValueOf(
+                                        "info",
+                                        "txtHeight",
+                                        Math.round(b)
+                                      ),
+                                      e(this)));
+                                  a.data && a.data.preventDefault();
+                                },
+                                this.getDialog()
+                              ),
+                              b.on(
+                                "mouseover",
+                                function() {
+                                  this.addClass("cke_btn_over");
+                                },
+                                b
+                              ),
+                              b.on(
+                                "mouseout",
+                                function() {
+                                  this.removeClass("cke_btn_over");
+                                },
+                                b
+                              ));
+                          },
+                          html:
+                            '\x3cdiv\x3e\x3ca href\x3d"javascript:void(0)" tabindex\x3d"-1" title\x3d"' +
+                            d.lang.image.lockRatio +
+                            '" class\x3d"cke_btn_locked" id\x3d"' +
+                            t +
+                            '" role\x3d"checkbox"\x3e\x3cspan class\x3d"cke_icon"\x3e\x3c/span\x3e\x3cspan class\x3d"cke_label"\x3e' +
+                            d.lang.image.lockRatio +
+                            '\x3c/span\x3e\x3c/a\x3e\x3ca href\x3d"javascript:void(0)" tabindex\x3d"-1" title\x3d"' +
+                            d.lang.image.resetSize +
+                            '" class\x3d"cke_btn_reset" id\x3d"' +
+                            y +
+                            '" role\x3d"button"\x3e\x3cspan class\x3d"cke_label"\x3e' +
+                            d.lang.image.resetSize +
+                            "\x3c/span\x3e\x3c/a\x3e\x3c/div\x3e"
+                        }
+                      ]
+                    },
+                    {
+                      type: "vbox",
+                      padding: 1,
+                      children: [
+                        {
+                          type: "text",
+                          id: "txtBorder",
+                          requiredContent: "img{border-width}",
+                          width: "60px",
+                          label: d.lang.image.border,
+                          default: "",
+                          onKeyUp: function() {
+                            e(this.getDialog());
+                          },
+                          onChange: function() {
+                            k.call(this, "advanced:txtdlgGenStyle");
+                          },
+                          validate: CKEDITOR.dialog.validate.integer(
+                            d.lang.image.validateBorder
+                          ),
+                          setup: function(a, b) {
+                            if (1 == a) {
+                              var c;
+                              c =
+                                (c =
+                                  (c = b.getStyle("border-width")) &&
+                                  c.match(/^(\d+px)(?: \1 \1 \1)?$/)) &&
+                                parseInt(c[1], 10);
+                              isNaN(parseInt(c, 10)) &&
+                                (c = b.getAttribute("border"));
+                              this.setValue(c);
+                            }
+                          },
+                          commit: function(a, b) {
+                            var c = parseInt(this.getValue(), 10);
+                            1 == a || 4 == a
+                              ? (isNaN(c)
+                                  ? !c &&
+                                    this.isChanged() &&
+                                    b.removeStyle("border")
+                                  : (b.setStyle(
+                                      "border-width",
+                                      CKEDITOR.tools.cssLength(c)
+                                    ),
+                                    b.setStyle("border-style", "solid")),
+                                1 == a && b.removeAttribute("border"))
+                              : 8 == a &&
+                                (b.removeAttribute("border"),
+                                b.removeStyle("border-width"),
+                                b.removeStyle("border-style"),
+                                b.removeStyle("border-color"));
+                          }
+                        },
+                        {
+                          type: "text",
+                          id: "txtHSpace",
+                          requiredContent: "img{margin-left,margin-right}",
+                          width: "60px",
+                          label: d.lang.image.hSpace,
+                          default: "",
+                          onKeyUp: function() {
+                            e(this.getDialog());
+                          },
+                          onChange: function() {
+                            k.call(this, "advanced:txtdlgGenStyle");
+                          },
+                          validate: CKEDITOR.dialog.validate.integer(
+                            d.lang.image.validateHSpace
+                          ),
+                          setup: function(a, b) {
+                            if (1 == a) {
+                              var c, d;
+                              c = b.getStyle("margin-left");
+                              d = b.getStyle("margin-right");
+                              c = c && c.match(r);
+                              d = d && d.match(r);
+                              c = parseInt(c, 10);
+                              d = parseInt(d, 10);
+                              c = c == d && c;
+                              isNaN(parseInt(c, 10)) &&
+                                (c = b.getAttribute("hspace"));
+                              this.setValue(c);
+                            }
+                          },
+                          commit: function(a, b) {
+                            var c = parseInt(this.getValue(), 10);
+                            1 == a || 4 == a
+                              ? (isNaN(c)
+                                  ? !c &&
+                                    this.isChanged() &&
+                                    (b.removeStyle("margin-left"),
+                                    b.removeStyle("margin-right"))
+                                  : (b.setStyle(
+                                      "margin-left",
+                                      CKEDITOR.tools.cssLength(c)
+                                    ),
+                                    b.setStyle(
+                                      "margin-right",
+                                      CKEDITOR.tools.cssLength(c)
+                                    )),
+                                1 == a && b.removeAttribute("hspace"))
+                              : 8 == a &&
+                                (b.removeAttribute("hspace"),
+                                b.removeStyle("margin-left"),
+                                b.removeStyle("margin-right"));
+                          }
+                        },
+                        {
+                          type: "text",
+                          id: "txtVSpace",
+                          requiredContent: "img{margin-top,margin-bottom}",
+                          width: "60px",
+                          label: d.lang.image.vSpace,
+                          default: "",
+                          onKeyUp: function() {
+                            e(this.getDialog());
+                          },
+                          onChange: function() {
+                            k.call(this, "advanced:txtdlgGenStyle");
+                          },
+                          validate: CKEDITOR.dialog.validate.integer(
+                            d.lang.image.validateVSpace
+                          ),
+                          setup: function(a, b) {
+                            if (1 == a) {
+                              var c, d;
+                              c = b.getStyle("margin-top");
+                              d = b.getStyle("margin-bottom");
+                              c = c && c.match(r);
+                              d = d && d.match(r);
+                              c = parseInt(c, 10);
+                              d = parseInt(d, 10);
+                              c = c == d && c;
+                              isNaN(parseInt(c, 10)) &&
+                                (c = b.getAttribute("vspace"));
+                              this.setValue(c);
+                            }
+                          },
+                          commit: function(a, b) {
+                            var c = parseInt(this.getValue(), 10);
+                            1 == a || 4 == a
+                              ? (isNaN(c)
+                                  ? !c &&
+                                    this.isChanged() &&
+                                    (b.removeStyle("margin-top"),
+                                    b.removeStyle("margin-bottom"))
+                                  : (b.setStyle(
+                                      "margin-top",
+                                      CKEDITOR.tools.cssLength(c)
+                                    ),
+                                    b.setStyle(
+                                      "margin-bottom",
+                                      CKEDITOR.tools.cssLength(c)
+                                    )),
+                                1 == a && b.removeAttribute("vspace"))
+                              : 8 == a &&
+                                (b.removeAttribute("vspace"),
+                                b.removeStyle("margin-top"),
+                                b.removeStyle("margin-bottom"));
+                          }
+                        },
+                        {
+                          id: "cmbAlign",
+                          requiredContent: "img{float}",
+                          type: "select",
+                          widths: ["35%", "65%"],
+                          style: "width:90px",
+                          label: d.lang.common.align,
+                          default: "",
+                          items: [
+                            [d.lang.common.notSet, ""],
+                            [d.lang.common.alignLeft, "left"],
+                            [d.lang.common.alignCenter, "center"],
+                            [d.lang.common.alignRight, "right"]
+                          ],
+                          onChange: function() {
+                            e(this.getDialog());
+                            k.call(this, "advanced:txtdlgGenStyle");
+                          },
+                          setup: function(a, b) {
+                            if (1 == a) {
+                              var c = b.getStyle("float");
+                              switch (c) {
+                                case "inherit":
+                                case "none":
+                                  c = "";
+                              }
+                              !c &&
+                                (c = (b.getAttribute("align") || ""
+                                ).toLowerCase());
+                              this.setValue(c);
+                            }
+                          },
+                          commit: function(a, b) {
+                            var c = this.getValue();
+                            if (1 == a || 4 == a) {
+                              if (
+                                (c
+                                  ? b.setStyle("float", c)
+                                  : b.removeStyle("float"),
+                                1 == a)
+                              )
+                                switch (((c = (b.getAttribute("align") || ""
+                                ).toLowerCase()),
+                                c)) {
+                                  case "left":
+                                  case "right":
+                                    b.removeAttribute("align");
+                                }
+                            } else 8 == a && b.removeStyle("float");
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
                   type: "vbox",
                   height: "250px",
                   children: [
                     {
                       type: "html",
                       id: "htmlPreview",
-                      style: "width:100%; max-width: 500px;",
+                      style: "width:95%;",
                       html:
                         "\x3cdiv\x3e" +
                         CKEDITOR.tools.htmlEncode(d.lang.common.preview) +

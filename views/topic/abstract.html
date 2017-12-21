@@ -12,7 +12,6 @@
               <% if (topic.tabName === '视频' && topic.tabName) { %>
                 <i class="fa fa-play-circle" aria-hidden="true"></i>
               <% } %>
-                 
           </p>
           <p class="pano-abstract-desc">          
               <%= topic.desc %>           
@@ -23,7 +22,7 @@
         <a href="/user/<%= topic.author.loginname %>">
           <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" />
         </a>
-          &nbsp; <%= topic.author.loginname %> | <%= topic.create_at_ago() %> | <%= topic.reply_count %>回复 | <%= topic.visit_count %>点击
+          &nbsp; <%= topic.author.loginname %> <%= topic.create_at_ago() %>发布 | <i class="fa fa-reply" aria-hidden="true"></i> <%= topic.reply_count %> | <i class="fa fa-eye" aria-hidden="true"></i> <%= topic.visit_count %>
       </div>
     </div>
 </div>

@@ -113,17 +113,21 @@ exports.index = function (req, res, next) {
 
 exports.create = function (req, res, next) {
   res.render('topic/edit', {
-    tabs: config.tabs
+    tabs: config.tabs,
+    mtabs: config.mtabs
   });
 };
+
 
 
 exports.put = function (req, res, next) {
   var title   = validator.trim(req.body.title);
   var tab     = validator.trim(req.body.tab);
+  var mtab    = validator.trim(req.body.mtab);
   var content = validator.trim(req.body.t_content);
   var desc = validator.trim(req.body.desc);
   var cover = validator.trim(req.body.cover);
+  var origin = validator.trim(req.body.origin);
 
 
   // 得到所有的 tab, e.g. ['ask', 'share', ..]
@@ -150,11 +154,12 @@ exports.put = function (req, res, next) {
       edit_error: editError,
       title: title,
       content: content,
-      tabs: config.tabs
+      tabs: config.tabs,
+      mtabs:config.mtabs
     });
   }
 
-  Topic.newAndSave(title, content, tab, desc, cover, req.session.user._id, function (err, topic) {
+  Topic.newAndSave(title, content, tab, mtab, desc, cover, origin, req.session.user._id, function (err, topic) {
     if (err) {
       return next(err);
     }
@@ -195,8 +200,11 @@ exports.showEdit = function (req, res, next) {
         content: topic.content,
         desc:topic.desc,
         cover:topic.cover,
+        origin:topic.origin,
         tab: topic.tab,
-        tabs: config.tabs
+        mtab: topic.mtab,
+        tabs: config.tabs,
+        mtabs:config.mtabs,
       });
     } else {
       res.renderError('对不起，你不能编辑此话题。', 403);
@@ -208,6 +216,7 @@ exports.update = function (req, res, next) {
   var topic_id = req.params.tid;
   var title    = req.body.title;
   var tab      = req.body.tab;
+  var mtab      = req.body.mtab;
   var content  = req.body.t_content;
 
   Topic.getTopicById(topic_id, function (err, topic, tags) {
@@ -219,6 +228,7 @@ exports.update = function (req, res, next) {
     if (topic.author_id.equals(req.session.user._id) || req.session.user.is_admin) {
       title   = validator.trim(title);
       tab     = validator.trim(tab);
+      mtab     = validator.trim(mtab);
       content = validator.trim(content);
 
       // 验证
@@ -229,6 +239,8 @@ exports.update = function (req, res, next) {
         editError = '标题字数太多或太少。';
       } else if (!tab) {
         editError = '必须选择一个版块。';
+      }else if (!mtab) {
+        editError = '必须选择一个运动类型。';
       }
       // END 验证
 
@@ -238,7 +250,8 @@ exports.update = function (req, res, next) {
           edit_error: editError,
           topic_id: topic._id,
           content: content,
-          tabs: config.tabs
+          tabs: config.tabs,
+          mtabs:config.mtabs,
         });
       }
 
@@ -246,6 +259,7 @@ exports.update = function (req, res, next) {
       topic.title     = title;
       topic.content   = content;
       topic.tab       = tab;
+      topic.mtab      = mtab;
       topic.update_at = new Date();
 
       topic.save(function (err) {

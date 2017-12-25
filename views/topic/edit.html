@@ -38,11 +38,12 @@
                       上传封面
                     </div>
                   <!-- 封面图片显示区 -->
-                    <span id="cover_url">&nbsp;<%= typeof(cover) !== 'undefined' && cover || '' %>
+                    <span id="cover_url" style="font-size: 12px;">
+                      &nbsp;<%= typeof(cover) !== 'undefined' && cover || '' %>
                     </span>
                 </div>
-                <div>    
-                  <select class='form-control' style="font-size: 12px; width: 120px; height: 30px;" name="tab" id="tab-value">
+                <div style="margin-bottom: 4px;">    
+                  <select class='form-control float-left' style="font-size: 12px; width: 120px; height: 30px; margin-bottom: 4px;" name="tab" id="tab-value">
                     <option value="">选择板块</option>
                     <%
                     var tabValue = '';
@@ -56,11 +57,25 @@
                     <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
                     <%});%>
                   </select>
+                  <select class='form-control float-left' style="font-size: 12px; width: 120px; height: 30px; margin-bottom: 4px;"  name="mtab" id="mtab-value">
+                    <option value="">话题类型</option>
+                    <%
+                    var mtabValue = '';
+                    if (typeof(mtab) !== 'undefined') {
+                      mtabValue = mtab;
+                    }
+                    mtabs.forEach(function (pair) {
+                      var value = pair[0];
+                      var text = pair[1];
+                      %>
+                    <option value="<%=value%>" <%= mtabValue === value ? 'selected': '' %>><%=text%></option>
+                    <%});%>
+                  </select>
                 </div>
 
                 <span id="topic_create_warn"></span>
                 <!-- 内容标题 -->		
-                <textarea autofocus class='form-control' id='title' name='title' rows='1' maxlength="20"
+                <textarea autofocus class='form-control' id='title' name='title' rows='1' maxlength="20" 
                           placeholder="标题字数 10 字以上"><%= typeof(title) !== 'undefined' && title || '' %></textarea>
                 <!-- 内容简介 -->						
                 <textarea class='form-control' id='desc' name='desc' rows='1' maxlength="40"
@@ -81,6 +96,8 @@
             <input type='hidden' name='_csrf' value='<%= csrf %>'>
             <input type='hidden' name='_csrf1' value='<%= csrf %>'>
             <input type='hidden' id='cover' name="cover" value=''>
+            <input type='checkbox' id='origin' name="origin" value=''>
+            <label for="origin" class="grey-text" style="font-size: 12px">原创</label>
             </fieldset>
           </form>
         </div>

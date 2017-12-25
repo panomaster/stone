@@ -215,13 +215,15 @@ exports.reduceCount = function (id, callback) {
   });
 };
 
-exports.newAndSave = function (title, content, tab,  desc, cover, authorId, callback) {
+exports.newAndSave = function (title, content, tab,  mtab, desc, cover, origin, authorId, callback) {
   var topic       = new Topic();
   topic.title     = title;
   topic.content   = content;
   topic.tab       = tab;
+  topic.mtab      = mtab;
   topic.desc      = desc;
-  topic.cover     = cover,
+  topic.cover     = cover;
+  topic.origin    = origin;
   topic.author_id = authorId;
 
   topic.save(callback);

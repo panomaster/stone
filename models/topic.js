@@ -21,9 +21,11 @@ var TopicSchema = new Schema({
   last_reply_at: { type: Date, default: Date.now },
   content_is_html: { type: Boolean },
   tab: {type: String},
+  mtab: {type: String},
   deleted: {type: Boolean, default: false},
   desc:{type: String},
   cover:{type: String},
+  origin:{type: Boolean, default: false},
 });
 
 TopicSchema.plugin(BaseModel);

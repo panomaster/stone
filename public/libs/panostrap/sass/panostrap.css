@@ -19379,17 +19379,6 @@ textarea.editor {
   text-shadow: grey;
 }
 
-.put_top-caption,
-.put_good-caption,
-.topiclist-tab-caption {
-  width: 0px;
-  z-index: 0;
-  height: 0px;
-  box-shadow: grey;
-  border-top: 60px solid #02abfa;
-  border-right: 60px solid transparent;
-}
-
 body {
   font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
   background-color: white;
@@ -21166,6 +21155,4 @@ button.swiper-pagination-bullet {
   color: #777;
   font-weight: normal;
 }
- 
-
- /*# sourceMappingURL= panostrap.css.map */
+/*# sourceMappingURL=panostrap.css.map */

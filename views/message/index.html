@@ -1,39 +1,35 @@
 <div class="container">
-  <div class="row">
-    <!--Main column-->
-    <div class="col-lg-8">
-      <div class='panel'>
-        <div class='header'>
-          <ul class='breadcrumb'>
-            <li><a href='/'>主页</a><span class='divider'>/</span></li>
-            <li class='active'>新消息</li>
-          </ul>
+    <div class="row">
+        <%- partial('sidebar-simple') %>
+      <!--Main column-->
+      <div id="content" class="col-lg-8 order-1" style="background-color: white">
+        <div class="card testimonial-card">
+          <div class="card-body text-left">
+
+              <span class='col_fade'>新消息</span>   
+              <% if (typeof(hasnot_read_messages) !== 'undefined' && hasnot_read_messages.length > 0) { %>
+                <%- partial('../message/message', { collection: hasnot_read_messages, as: 'message' }) %>
+              <% } else { %>
+                <div class='inner text-center'>
+                  <p>没有新的消息</p>
+                </div>
+              <% } %>
+                        
+              <span class='col_fade'>过往信息</span>          
+              <% if (typeof(has_read_messages) !== 'undefined' && has_read_messages.length > 0) { %>
+                <%- partial('../message/message', { collection: has_read_messages, as: 'message' }) %>
+              <% } else { %>
+              <div class='inner text-center'>
+                <p>没有消息</p>
+              </div>
+              <% } %>
+        
+
+          </div>
         </div>
-        <% if (typeof(hasnot_read_messages) !== 'undefined' && hasnot_read_messages.length > 0) { %>
-        <%- partial('../message/message', { collection: hasnot_read_messages, as: 'message' }) %>
-        <% } else { %>
-        <div class='inner'>
-          <p>无消息</p>
         </div>
-        <% } %>
-      </div>
-      <div class='panel'>
-        <div class='header'>
-          <span class='col_fade'>过往信息</span>
-        </div>
-        <% if (typeof(has_read_messages) !== 'undefined' && has_read_messages.length > 0) { %>
-        <%- partial('../message/message', { collection: has_read_messages, as: 'message' }) %>
-        <% } else { %>
-        <div class='inner'>
-          <p>无消息</p>
-        </div>
-        <% } %>
-      </div>
     </div>
-    <!--Sidebar-->
-    <div class="col-lg-4 hidden-md-down">
-        <%- partial('sidebar') %>
-    </div>    
-    <!--/.Sidebar-->
-  </div>
-</div>
+    </div>
+
+
+

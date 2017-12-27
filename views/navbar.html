@@ -27,9 +27,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href='/my/messages'>
                         <% if (current_user.messages_count) { %>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> 
                         <%= current_user.messages_count %>个
                         <% } %>
-                        <i class="fa fa-envelope" aria-hidden="true"></i> 未读消息
+                        未读消息
                     </a>
                 </li>
                 <% } %>

@@ -36,8 +36,8 @@
   <!-- Card -->  
         
     <div class='panel'  style="background-color:white">
-      <div class='inner userinfo'>
-        <div class='user_profile'>
+      <div class='inner userinfo' style="font-size: 12px">
+        <div class='text-center'>
             <span class='col_fade'>
                 <%= user.create_at_ago() %> 注册 
             </span>
@@ -67,37 +67,38 @@
               </a>
             <% } %>
         </div>
-
+        <hr>
+        <div class="text-center" style="border:1px solid grey">
+          管理用户/话题<br>
             <% if (current_user && current_user.is_admin) { %>
               <% if (!user.is_star) { %>
-                <span class='span-common' id='set_star_btn' action='set_star'>设为达人</span>
-                <% } else { %>
-                  <span class='span-common' id='set_star_btn' action='cancel_star'>取消达人</span>
-                  <% } %>
+                <span class='btn btn-sm btn-success' id='set_star_btn' action='set_star'>设为达人</span>
+              <% } else { %>
+                <span class='btn btn-sm btn-default' id='set_star_btn' action='cancel_star'>取消达人</span>
+              <% } %>
 
-                    <% if (!user.is_block) { %>
-                      <span class='span-common' id='set_block_btn' action='set_block'>屏蔽用户</span>
-                      <% } else { %>
-                        <span class='span-common' id='set_block_btn' action='cancel_block'>取消屏蔽用户</span>
-                        <% } %>
+              <% if (!user.is_block) { %>
+                <span class='btn btn-sm btn-success' id='set_block_btn' action='set_block'>屏蔽用户</span>
+              <% } else { %>
+                <span class='btn btn-sm btn-default' id='set_block_btn' action='cancel_block'>取消屏蔽用户</span>
+              <% } %>
 
-                          <span class="span-common" id="delete_all">删除所有发言</span>
-
-                          <br/>
-                          <br/> Email (Seen by Administrator):
-                          <a href="mailto:<%= user.email %>">
-                            <%= user.email %>
-                          </a>
-                          <% if (!user.active) { %>
-                            <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>" target="_blank">
-                              <span class="span-common">
-                                激活账号
-                              </span>
-                            </a>
-                            <% } %>
-                              <% } %>
-          </div>
+              <span class="btn btn-sm btn-success" id="delete_all">删除所有发言</span>
+              <br/> Email (管理者可见):
+              <a href="mailto:<%= user.email %>">
+                <%= user.email %>
+              </a>
+              <% if (!user.active) { %>
+                <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>" target="_blank">
+                  <span class="btn btn-sm btn-success">
+                    激活账号
+                  </span>
+                </a>
+              <% } %>
+            <% } %>
         </div>
+      </div>
+    </div>
 
         <div class='panel'  style="background-color:white">
           <div class='header'>

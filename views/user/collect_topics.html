@@ -1,14 +1,10 @@
 
-  <div class="container">
-      <div class="row">
-        <!--Main column-->
-        <div class="col-lg-8">
+<div class="container">
+    <div class="row">
+        <%- partial('sidebar-simple') %>
+        <div class="col-lg-8 order-1">
   <div class='panel'>
     <div class='header'>
-      <ul class='breadcrumb'>
-        <li><a href='/'>主页</a><span class='divider'>/</span></li>
-        <li class='active'><%= user.loginname %> 收藏的话题</li>
-      </ul>
     </div>
     <div class='inner no-padding'>
       <% if (topics.length > 0) { %>
@@ -20,10 +16,6 @@
     </div>
   </div>
 </div>
-<!--Sidebar-->
-<div class="col-lg-4 hidden-md-down">
-    <%- partial('../sidebar') %>
-</div>    
-<!--/.Sidebar-->
+
 </div>
 </div>

@@ -1,10 +1,9 @@
 <div class="container">
     <div class="row">
+        <%- partial('main-header') %>
         <%- partial('sidebar') %>  
         <div class="col-lg-8 order-1">
-            <%- partial('main-header') %>  
-
-            <div class="text-center py-2" style="border-bottom: 1px solid #eeeeee">  
+            <div class="py-2" style="border-bottom: 1px solid #cfcfcf">  
                 <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
                 var value = pair[0];
                 var text = pair[1]; %>

@@ -19348,18 +19348,22 @@ textarea.editor {
 }
 
 .topic-tab {
-  color: #faf9f9;
-  margin: 0px;
-  padding: 0px;
+  color: #3f3d3d;
+  font-size: 12px;
 }
 
 .topic-tab.current-tab {
-  color: #05cbfd;
+  color: #111111;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 4px solid #0b77f3;
 }
 
 .topic-tab:hover {
   text-decoration: none;
   color: #0b77f3;
+  font-size: 14px;
+  border-bottom: 4px solid #afafaf;
 }
 
 .put_top,
@@ -19462,14 +19466,9 @@ body {
 
 .pano-tab-bar {
   display: inline-block;
-  width: 45px;
-  margin: 0px;
-  padding: 8px;
-  background-color: grey;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  border-radius: 2px;
-  font-size: 12px;
+  width: 50px;
+  height: 30px;
+  text-align: center;
 }
 
 .pano-topic-index-bg {

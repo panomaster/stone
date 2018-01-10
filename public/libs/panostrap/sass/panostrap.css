@@ -19348,7 +19348,7 @@ textarea.editor {
 }
 
 body {
-  font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
+  font-family: 'Microsoft Yahei',Tahoma,Helvetica,'SimSun',sans-serif;
   background-color: white;
 }
 
@@ -19396,9 +19396,25 @@ body {
   margin-bottom: 8px;
 }
 
+.pano-banner-adv {
+  height: 80px;
+  border: 1px solid grey;
+  background-color: white;
+}
+
+.pano-banner-adv img {
+  height: 100%;
+}
+
 .pano-square-card {
   margin-bottom: 8px;
   border-radius: 0px;
+}
+
+.pano-main-header-caption {
+  height: 100%;
+  padding-top: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .pano-topic-index-head {
@@ -19532,7 +19548,7 @@ body {
 
 .pano-abstract-title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   color: #212121;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -19637,9 +19653,15 @@ body {
 }
 
 .topiclist-video {
-  font-size: 50px;
+  font-size: 23px;
+  width: 38px;
+  height: 38px;
   opacity: 0.8;
-  text-shadow: grey;
+  border: white solid 2px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  text-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 @media (max-width: 576px) {
@@ -19852,8 +19874,14 @@ body {
   .content {
     height: 100%;
   }
+  .pano-main-header-caption {
+    height: 100%;
+    padding-top: 25%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
+/* normal */
 .pano-abstract-chip {
   box-shadow: none;
   background-color: transparent;

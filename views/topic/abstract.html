@@ -4,7 +4,7 @@
 
         <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
           <% if (topic.mtab === 'video' && topic.mtab) { %>
-            <div class="white-text topiclist-video align-self-center"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>   
+            <div class="white-text topiclist-video align-self-center"><i class="fa fa-play" aria-hidden="true"></i></div>   
           <% } %>
         </div>
         <div style="margin-top: -35px;"><%- partial('./_top_good', {topic: topic}) %></div>
@@ -14,13 +14,12 @@
       <div class="pano-abstract-contents">
         <a href="/topic/<%= topic._id %>">
           <p class="pano-abstract-title">
+              <%= topic.title %>
               <% if (topic.mtab === 'video' && topic.mtab) { %>
                 <i class="fa fa-play-circle" aria-hidden="true"></i>
               <% } else if (topic.mtab !== 'undefined' &&  topic.mtab) { %>
                 <%= topic.mtab %>
               <% } %>
-              <%= topic.title %>   
-
           </p>
           <p class="pano-abstract-desc">          
               <%= topic.desc %>           

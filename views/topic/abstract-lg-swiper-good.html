@@ -1,0 +1,20 @@
+
+<div class="swiper-slide text-center">
+
+    <div class="pano-carousel-bg text-center" style="background-image:URL(<%= topic.cover %>)">
+        <div class="pano-main-header-caption">
+            <a href="/topic/<%= topic._id %>">
+                <span class="pano-carousel-title pano-cut2">
+                    <%= topic.title %>
+                </span>
+            </a>
+            <a href="/topic/<%= topic._id %>">
+                <span class="pano-carousel-desc pano-cut2">
+                        <%= topic.desc %> 
+                </span>  
+                <p class="btn btn-default btn-sm mx-auto hidden-md-down">阅读</p>  
+            </a>
+        </div>
+    </div>
+          
+</div>

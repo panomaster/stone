@@ -12,46 +12,39 @@
         </div>
         <!-- Content -->
     </div>
-    <!-- Card -->   
+    <!-- /Card -->   
 
-    <div class="hidden-md-down pano-side-card">
-        <!--Panel-->
-            <% if (typeof(user) !== 'undefined' || current_user) { %>
-            <% } else { %>
-            <div class="card testimonial-card" style="font-size: 13px;">
-                <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
-                </div>
-                <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-black.png" class="rounded-circle">
-                </div>
-                <div class="card-body">
-                    <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
-                    <hr>
-                    <p><%= config.description %></p>
-                </div>
+
+    <!--Panel-->
+    <div class="hidden-md-down pano-side-card">        
+        <% if (typeof(user) !== 'undefined' || current_user) { %>
+        <% } else { %>
+        <div class="card testimonial-card" style="font-size: 13px;">
+            <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
             </div>
-            <% } %>
-        <!--/.Panel-->
+            <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-black.png" class="rounded-circle">
+            </div>
+            <div class="card-body">
+                <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
+                <hr>
+                <p><%= config.description %></p>
+            </div>
+        </div>
+        <% } %>
     </div>
+    <!--/.Panel-->
+
     
     <!--Panel-->
-        <div class="py-2 px-2 text-center my-2" style="border: 1px solid grey; background-color: white">
+        <div class="pano-banner-adv text-center py-2 px-2 my-2">
             <a href="http://www.tnc.org.cn/">
                 <img src="public/images/tnc.jpg">
             </a>
         </div>
     <!--/.Panel-->
-    <!--Panel-->
-        <div class="gradient-pattern-2">
-            <p class="retro">Panorizon</p>
-        </div>
-    <!--/.Panel-->
-    <div class="fancy-banner">
-        <div class="line">
-            <span>panorizon</span>
-        </div>
-    </div>
-    <!--Panel-->
 
+    <!--Panel ------------------------------- display none ... not ready -->
+    <div style="display:none">
         <div class="card-header grey darken-2 hidden-md-down white-text">
             积分榜
         </div>
@@ -65,48 +58,51 @@
                 <a class='dark badge cyan offset-6' style="padding: 6px;" href='/users/top100'>TOP 100</a>
             <% } %>
         </div>
+    </div>
     <!--/.Panel-->
 
 
+    <!--Panel-->
+    <div class="pano-banner-adv text-center py-2 px-2 my-2">
+        <a href="http://kolonschool.kolonsport.cn/">
+            <img src="public/images/kolon.png">
+        </a>
+    </div>
+    <!--/.Panel-->  
 
-        <!--Panel-->
-        <div class="py-2 px-2 text-center my-2" style="border: 1px solid grey; background-color: white">
-            <a href="http://kolonschool.kolonsport.cn/">
-                <img src="public/images/kolon.png">
-            </a>
-        </div>
-        <!--/.Panel-->  
 
     <!--Panel-->
-        <div class="card-header grey darken-2 white-text">
-            无人回复的话题
-        </div>
-        <div class="py-2">
-            <% if (typeof(no_reply_topics) !== 'undefined') { %>
-            <% if (no_reply_topics.length > 0) { %>
-            
-            <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
-           
-            <% } else { %>
-            <p>无</p>
-            <% } %>
-            <% } %>
-        </div>
-    
-        <!--Panel-->
-        <div class="py-2 px-2 text-center my-2" style="border: 1px solid grey; background-color: white">
-            <a href="http://www.blackyak.cn/">
-                <img src="public/images/blackyak.gif" style="width: 100%">
-            </a>
-        </div>
-        <!--/.Panel-->    
-        <!--Panel-->
-        <div class="py-2 px-2 text-center my-2" style="border: 1px solid grey; background-color: white">
-            <a href="http://www.wwfchina.org/">
-                <img src="public/images/wwf.jpg">
-            </a>
-        </div>
-        <!--/.Panel-->  
+    <div class="card-header grey darken-2 white-text">
+        无人回复的话题
+    </div>
+    <div class="py-2">
+        <% if (typeof(no_reply_topics) !== 'undefined') { %>
+        <% if (no_reply_topics.length > 0) { %>
+        
+        <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
+        
+        <% } else { %>
+        <p>无</p>
+        <% } %>
+        <% } %>
+    </div>
+    <!--/.Panel-->  
+
+    <!--Panel-->
+    <div class="pano-banner-adv text-center py-2 px-2 my-2">
+        <a href="http://www.blackyak.cn/">
+            <img src="public/images/blackyak.gif">
+        </a>
+    </div>
+    <!--/.Panel-->  
+
+    <!--Panel-->
+    <div class="pano-banner-adv text-center py-2 px-2 my-2">
+        <a href="http://www.wwfchina.org/">
+            <img src="public/images/wwf.jpg">
+        </a>
+    </div>
+    <!--/.Panel-->  
 
 </div>  
 

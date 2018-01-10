@@ -1,22 +1,24 @@
 
-<div class="swiper-slide text-center">
-
-    <div class="pano-carousel-bg text-center" style="background-image:URL(<%= topic.cover %>)">
-        <div style="height: 100%; padding-top: 15%; background-color: rgba(0, 0, 0, 0.3);">
-            <a href="/topic/<%= topic._id %>">
-                <p class="pano-carousel-title pano-cut2">
-                    <%= topic.title %>
-                </p>
-            </a>
-            <a href="/topic/<%= topic._id %>">
-                <p class="pano-carousel-desc pano-cut2">
-                    <i class="fa fa-quote-left"></i>
-                        <%= topic.desc %> 
-                    <i class="fa fa-quote-right"></i>
-                </p>  
-                <p class="btn btn-default btn-sm mx-auto hidden-md-down">阅读</p>  
-            </a>
+<div class="swiper-slide text-center inline-block">
+    <div class="pano-carousel-bg text-center">
+        <div class="pano-topic-index-head inline-block pull-left" style="width: 20%; background-color:#02abfa">
+                <div class="pano-valign text-white" style="width: 60px; height: 60px; border: 5px solid rgb(255, 255, 255); margin: 20px;">
+                    <%= topic.tabName %>
+                </div>
         </div>
+        <div class=" inline-block pull-right" style="width: 80%">
+            <div class="pano-topic-index-head" style="background-image: url(<%= topic.cover %>);">    
+                <div class="pano-cover-caption" style="z-index:0;"></div>        
+                <div class="pano-topic-index-caption text-white text-left" style="margin-left: -50px;">
+                    <a href="/topic/<%= topic._id %>">
+                        <p class="pano-carousel-title pano-cut2 px-0"  style="text-shadow: grey"><strong><%= topic.title %></strong><p>
+                        <p class="pano-carousel-desc pano-cut2 px-0" style="font-size: 12px; text-shadow: grey"><%= topic.desc %></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
-          
+
 </div>
+

@@ -19425,6 +19425,12 @@ body {
   background-color: #bdbdbd;
 }
 
+.pano-full-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .pano-topic-index-caption {
   height: 300px;
   padding-top: 130px;
@@ -19441,6 +19447,15 @@ body {
   height: 0px;
   border-top: 300px solid #02abfa;
   border-left: 100px solid #02abfa;
+  border-right: 200px solid transparent;
+}
+
+.pano-cover-adv-caption {
+  width: 0px;
+  z-index: 0;
+  height: 0px;
+  border-top: 300px solid #3bd116;
+  border-left: 100px solid #3bd116;
   border-right: 200px solid transparent;
 }
 

@@ -1,19 +1,9 @@
 <div class="container">
   <div class="row">
-    <%- partial('editor-sidebar') %>
+    <%- partial('sidebar-simple') %>
     <!--Main column-->
     <div class="col-lg-8 order-1">
       <div class="panel">
-        <div class='header'>
-            <ol class='breadcrumb'>
-              <li><a href='/'>主页</a><span class='divider'>/</span></li>
-              <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
-              <li class='active'>编辑话题</li>
-              <% }else{ %>
-              <li class='active'>发布话题</li>
-              <% } %>
-            </ol>
-        </div>
         <div class='inner post'>
           <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
           <div class="alert alert-error">

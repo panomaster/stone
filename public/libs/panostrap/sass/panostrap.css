@@ -12360,7 +12360,7 @@ a.pswp__share--download:hover {
 .chip {
   display: inline-block;
   height: 32px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
   line-height: 32px;
@@ -19392,6 +19392,15 @@ body {
   margin: 0px;
 }
 
+.pano-toic-index-blockquote {
+  margin: 10px 20px 10px;
+  font-style: italic;
+  padding: .5rem 1rem;
+  font-size: 14px;
+  border-left: 6px solid #06a7f8;
+  color: #363636;
+}
+
 .pano-side-card {
   margin-bottom: 8px;
 }
@@ -19433,30 +19442,52 @@ body {
 
 .pano-topic-index-caption {
   height: 300px;
-  padding-top: 130px;
+  padding-top: 200px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.pano-main-header-txt {
+  margin-left: -30%;
   margin-top: -300px;
+  background-color: none;
+  height: 100%;
+  padding-top: 10%;
 }
 
 .pano-nav-brand {
   height: 32px;
 }
 
-.pano-cover-caption {
+.pano-cover-shape-border {
   width: 0px;
   z-index: 0;
   height: 0px;
   border-top: 300px solid #02abfa;
-  border-left: 100px solid #02abfa;
-  border-right: 200px solid transparent;
+  border-right: 100px solid transparent;
 }
 
-.pano-cover-adv-caption {
+.pano-cover-shape-border-right {
+  width: 0px;
+  z-index: 0;
+  height: 0px;
+  border-bottom: 300px solid #02abfa;
+  border-left: 100px solid transparent;
+}
+
+.pano-cover-shape-border-adv {
   width: 0px;
   z-index: 0;
   height: 0px;
   border-top: 300px solid #3bd116;
-  border-left: 100px solid #3bd116;
-  border-right: 200px solid transparent;
+  border-right: 100px solid transparent;
+}
+
+.pano-cover-shape-border-adv-right {
+  width: 0px;
+  z-index: 0;
+  height: 0px;
+  border-bottom: 300px solid #3bd116;
+  border-left: 100px solid transparent;
 }
 
 .pano-topic-index-bg {
@@ -19465,6 +19496,10 @@ body {
   background-size: cover;
   background-color: #bdbdbd;
   height: 300px;
+}
+
+.pano-responsive-width {
+  width: 70%;
 }
 
 .pano-carousel-bg {
@@ -19576,7 +19611,6 @@ body {
   font-size: 14px;
   color: #616161;
   height: 42px;
-  margin: 15px 0px 15px 0px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -19730,15 +19764,49 @@ body {
   }
   .pano-topic-index-caption {
     height: 200px;
-    padding-top: 50px;
-    margin-top: -200px;
+    padding-top: 100px;
+    text-shadow: 1px 1px 1px black;
   }
-  .pano-cover-caption {
+  .pano-cover-shape-border {
     width: 0px;
+    z-index: 0;
     height: 0px;
-    border-top: 200px solid rgba(85, 85, 85, 0.5);
-    border-left: 100px solid rgba(85, 85, 85, 0.5);
-    border-right: 200px solid transparent;
+    border-top: 200px solid transparent;
+    border-right: 100px solid transparent;
+  }
+  .pano-cover-shape-border-right {
+    width: 0px;
+    z-index: 0;
+    height: 0px;
+    border-bottom: 200px solid transparent;
+    border-left: 100px solid transparent;
+  }
+  .pano-cover-shape-border-adv {
+    width: 0px;
+    z-index: 0;
+    height: 0px;
+    border-top: 200px solid transparent;
+    border-right: 100px solid transparent;
+  }
+  .pano-cover-shape-border-adv-right {
+    width: 0px;
+    z-index: 0;
+    height: 0px;
+    border-bottom: 200px solid transparent;
+    border-left: 100px solid transparent;
+  }
+  .pano-main-header-txt {
+    text-align: center;
+    margin-left: 0%;
+    margin-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: -200px;
+    height: 100%;
+    width: 100%;
+  }
+  .pano-responsive-width {
+    width: 100%;
   }
   .pano-carousel-bg {
     background-repeat: no-repeat;
@@ -19753,8 +19821,9 @@ body {
     text-shadow: grey;
     font-weight: 700;
     font-size: 16px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
   .pano-carousel-desc {
     color: white;
@@ -20672,36 +20741,36 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+  /*  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); */
   left: 10px;
   right: auto;
 }
 
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+  /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E"); */
   right: 10px;
   left: auto;
 }
 
 .swiper-button-prev.swiper-button-white,
 .swiper-container-rtl .swiper-button-next.swiper-button-white {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+  /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); */
 }
 
 .swiper-button-next.swiper-button-white,
 .swiper-container-rtl .swiper-button-prev.swiper-button-white {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+  /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); */
 }
 
 .swiper-button-prev.swiper-button-black,
 .swiper-container-rtl .swiper-button-next.swiper-button-black {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+  /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E"); */
 }
 
 .swiper-button-next.swiper-button-black,
 .swiper-container-rtl .swiper-button-prev.swiper-button-black {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E");
+  /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E"); */
 }
 
 .swiper-pagination {
@@ -20772,12 +20841,12 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 
 .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   display: inline-block;
   border-radius: 100%;
-  background: #000;
-  opacity: 0.2;
+  background: white;
+  box-shadow: 1px 1px 1px black;
 }
 
 button.swiper-pagination-bullet {
@@ -21220,4 +21289,6 @@ button.swiper-pagination-bullet {
   color: #777;
   font-weight: normal;
 }
-/*# sourceMappingURL=panostrap.css.map */
+ 
+
+ /*# sourceMappingURL= panostrap.css.map */

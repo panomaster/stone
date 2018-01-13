@@ -2,7 +2,7 @@
 
 <div class="col-12">
 
-<div class="swiper-container lg-swiper" style="margin-bottom: 20px; width:100%">
+<div class="swiper-container lg-swiper" style="margin-bottom: 10px; width:100%; box-shadow: 0px 1px 0px rgb(219, 219, 219)">
     <div class="swiper-wrapper">
         
         <% if (typeof(no_reply_topics) !== 'undefined') { %>
@@ -11,17 +11,19 @@
             <% } %>
         <% } %>
 
-
         <%- partial('adv/main-header-adv') %> 
-            
             
     </div>
 
     <!-- Add Arrows -->
-    <div class="swiper-button-next swiper-button-white"></div>
-    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white white-text h1" style="text-shadow: 1px 1px 1px grey">
+        <i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>
+    </div>
+    <div class="swiper-button-prev swiper-button-white white-text h1" style="text-shadow: 1px 1px 1px grey">
+        <i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+    </div>
+    <div class="swiper-pagination"></div>
 </div>
-
 </div>
 
 <!-- Initialize Swiper -->

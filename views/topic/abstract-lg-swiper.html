@@ -1,42 +1,41 @@
-
-<div class="swiper-slide text-center inline-block">
-    <div class="pano-carousel-bg text-center">
-        <div class="pano-topic-index-head inline-block pull-left" style="width: 20%; background-color:#02abfa">
-            <div class="d-flex flex-row m-3">    
-                <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
-                    原创
-                </div> 
-                <% if (topic.top) { %>
-                <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
-                    置顶
-                </div>
-                <% } else if (topic.good) { %>
-                <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
-                    精华
-                </div>
-                <% } %>
-            </div>
-
+<div class="swiper-slide inline-block">
+    <div class="pano-carousel-bg">
+        <div class="pano-topic-index-head inline-block pull-left hidden-sm" style="width: 30%; background-color:#02abfa">
         </div>
-        <div class="inline-block pull-right" style="width: 80%">
+        <div class="inline-block pull-right pano-responsive-width">
             <div class="pano-topic-index-head" style="background-image: url(<%= topic.cover %>);">    
-
-                <div class="pano-cover-caption" style="z-index:0;"></div>  
-                <div class="pano-topic-index-caption text-white text-left" style="margin-left: -70px; width: 80%">
- 
-                    <% if (typeof(tab) !== 'undefined' &&  tab === 'all' && topic.tabName) { %>
-                        <p style="font-size: 12px"><strong><%= topic.tabName %></strong></p>
-                    <% } %>
-                    <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; padding:10px 0; color:#FFF; ">
-                        <p class="pano-carousel-title pano-cut2 px-0"  style="text-shadow: grey"><strong><%= topic.title %></strong><p>
-                        <p class="pano-carousel-desc pano-cut2 px-0" style="font-size: 12px; text-shadow: grey"><%= topic.desc %></p>
-                    </a>
-                </div>
-                
+                <div class="pano-cover-shape-border" style="z-index:0;"></div>  
+                <div class="pano-main-header-txt text-white">
+                    <div class="d-flex flex-row hidden-md-down" style="margin-top: -60px; margin-left: -60px; margin-bottom: 80px;">    
+                        <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
+                            <div style="margin-top: -4px;"><strong>原创</strong></div>
+                        </div> 
+                        <% if (topic.good) { %>
+                        <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
+                            <div style="margin-top: -4px;"><strong>精华</strong></div>
+                        </div>
+                        <% } %>
+                        <% if (topic.mtab === 'video' && topic.mtab) { %>
+                            <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
+                                <div style="margin-top: -4px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
+                            </div>  
+                        <% } %>
+                    </div>
+                    <div class="pull-left" style="width: 100%">
+                        <% if (typeof(tab) !== 'undefined' &&  tab === 'all' && topic.tabName) { %>
+                            <p class="pano-carousel-desc" style="text-shadow:1px 1px 1px #000; font-size: 12px; place-holder: tab"><strong><%= topic.tabName %></strong></p>
+                        <% } %>
+                    </div>
+                    <div>    
+                        <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; ">
+                            <p class="pano-carousel-title pano-cut2"><strong><%= topic.title %></strong><p>
+                            <p class="pano-carousel-desc pano-cut2 hidden-md-down" style="font-size: 12px;"><%= topic.desc %></p>
+                        </a>
+                    </div>
+                </div> 
+                <div class="pano-cover-shape-border-right pull-right" style="z-index:0; margin-top:-300px;"></div>  
             </div>
         </div>
-
     </div>
-
 </div>
 

@@ -98,13 +98,13 @@ exports.index = function (req, res, next) {
     }));
 
     var options2 = { limit: 5, sort: '-top -last_reply_at'};
-    var query2 = { tab: topic.tab};
+    var query2 = { tab: topic.tab, _id: { '$nin': [ topic._id ] } };
     Topic.getTopicsByQuery(query2, options2, ep.done('tab_topics', function(tab_topics){
       return tab_topics;
     }));
 
     var options3 = { limit: 5, sort: '-last_reply_at'};
-    var query3 = { mtab:topic.mtab};
+    var query3 = { mtab:topic.mtab, _id: { '$nin': [ topic._id ] } };
     Topic.getTopicsByQuery(query3, options3, ep.done('mtab_topics', function(mtab_topics){
       return mtab_topics;
     }));

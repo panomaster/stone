@@ -88,7 +88,6 @@ body{
 
 .pano-main-header-caption {
   height: 100%; 
-  padding-top: 10%; 
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -117,7 +116,8 @@ body{
   margin-top: -300px;
   background-color: none;
   height: 100%; 
-  padding-top: 10%; 
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .pano-nav-brand {
@@ -207,11 +207,23 @@ body{
   background-position: center;
   background-size: cover;
   background-color: #bdbdbd;
-  height: 100px;
+  height: 70px;
 }
 
 .pano-qrate-bg-caption {
-  height: 100px;
+  height: 70px;
+}
+
+.pano-qrate-tab-lable {
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 100%;
+  background-color: #f1f1f1;
+  border-left: solid 10px #2196f3;
+  border-right: solid 3px #2196f3;
+  color: #2196f3;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .pano-qrate-title-dark {
@@ -347,13 +359,13 @@ body{
     color: rgb(17, 17, 17);
     font-size: 18px;
     font-weight: 700;
-    border-bottom: 2px solid rgb(11, 119, 243);
+    border-bottom: 4px solid #2196f3;
   }
   &:hover {
     text-decoration: none;
     color: rgb(63, 61, 61);
     font-size: 18px;
-    border-bottom: 2px solid rgb(175, 175, 175);
+    border-bottom: 4px solid rgb(175, 175, 175);
   }
 }
 
@@ -503,7 +515,6 @@ body{
     text-shadow: grey;
     font-weight: 700;
     font-size: 16px;
-    padding-top: 70px;
     padding-left: 30px;
     padding-right: 30px;
   }
@@ -549,10 +560,10 @@ body{
     background-position: center;
     background-size: cover;
     background-color: #bdbdbd;
-    height: 100px;
+    height: 70px;
   }
   .pano-qrate-bg-caption {
-    height: 100px;
+    height: 70px;
   }
 
   .pano-abstract-body{

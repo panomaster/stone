@@ -1,100 +1,6 @@
 
 <div class="col-lg-4 order-2">
 
-    <!--Panel-->
-    <div class="card-header grey darken-4 white-text">
-        <strong>[<%= topic.tabName %>]</strong>板块其他话题
-    </div>
-    <div class="py-2">
-        <% if (typeof(tab_topics) === 'undefined' || tab_topics.length > 0) { %>
-        
-        <%- partial('../topic/abstract-qrate', { collection: tab_topics, as: 'topic' }) %>
-    
-        <% } else { %>
-        <p class="text-center">暂时没有相关话题</p>
-        <% } %>
-    </div>
-    <!--/.Panel-->
-
-    <!--Panel-->
-    <div class="card-header grey darken-4 white-text">
-        其他<strong>[<%= topic.mtabName %>]</strong>主题
-    </div>
-    <div class="py-2">
-        <% if (typeof(mtab_topics) === 'undefined' || mtab_topics.length > 0) { %>
-        
-        <%- partial('../topic/abstract-qrate', { collection: mtab_topics, as: 'topic' }) %>
-    
-        <% } else { %>
-        <p class="text-center">暂时没有相关话题</p>
-        <% } %>
-    </div>
-    <!--/.Panel-->
-
- 
-
-    <!--Panel-->
-    
-    <div class="card-header grey darken-4 white-text">
-        热门话题
-    </div>
-    <div class="py-2">
-        <% if (typeof(silder_topics) !== 'undefined') { %>
-        
-        <%- partial('../topic/abstract-qrate', { collection: silder_topics, as: 'topic' }) %>
-    
-        <% } else { %>
-        <p class="text-center">暂时没有热门话题</p>
-        <% } %>
-    </div>
-    <!--/.Panel-->
-    <!--Panel-->
-    
-    <div class="card-header grey darken-4 white-text">
-            [<%= topic.author.name %>]发布的其他话题
-    </div>
-    <div class="py-2">
-        <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
-        
-        <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>
-    
-        <% } else { %>
-        <p class="text-center">该作者暂时没有其他话题</p>
-        <% } %>
-    </div>
-    <!--/.Panel-->
-
-    <!--Panel-->
-    
-    <div class="card-header grey darken-4 white-text">
-        没有回复的话题
-    </div>
-    <div class="py-2">
-        <% if (typeof(no_reply_topics) !== 'undefined') { %>
-        <% if (no_reply_topics.length > 0) { %>
-    
-        <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
-
-        <% } else { %>
-        <p>无</p>
-        <% } %>
-        <% } %>
-    </div>
-
-    <!--/.Panel-->
-    <!-- Card -->
-    <div class="card card-image pano-side-card" style="border-radius:0px; height: 300px; background-image: url(../public/images/bg11.jpg);">            
-        <!-- Content -->
-        <div class="text-white text-center d-flex align-items-center rgba-black-light py-5 px-4" style="height: 300px;">
-            <div>
-                <h5 class="pink-text"><i class="fa fa-pie-chart"></i> Marketing</h5>
-                <h3 class="card-title pt-2"><strong>This is card title</strong></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam.</p>
-            </div>
-        </div>
-        <!-- Content -->
-    </div>
-    <!-- Card -->   
     <div class="hidden-md-down pano-side-card">
         <!--Panel-->
             <% if (typeof(user) !== 'undefined' || current_user) { %>
@@ -113,6 +19,68 @@
             <% } %>
         <!--/.Panel-->
     </div>
+
+    <!--Panel-->
+    <div class="mb-2">
+        <% if (typeof(tab_topics) === 'undefined' || tab_topics.length > 0) { %>
+        <div class="pano-qrate-tab-lable"><%= topic.tabName %>板块其他话题</div>
+        <%- partial('../topic/abstract-qrate', { collection: tab_topics, as: 'topic' }) %>
+        <% } else { %>
+        
+        <% } %>
+    </div>
+    <!--/.Panel-->
+
+    <!--Panel-->
+    <div class="mb-2">
+        <% if (typeof(mtab_topics) === 'undefined' || mtab_topics.length > 0) { %>
+        <div class="pano-qrate-tab-lable"><%= topic.mtabName %>板块其他话题</div>
+        <%- partial('../topic/abstract-qrate', { collection: mtab_topics, as: 'topic' }) %>
+        <% } else { %>
+
+        <% } %>
+    </div>
+    <!--/.Panel-->
+
+    <!--Panel-->
+    <div class="mb-2">
+        <% if (typeof(silder_topics) !== 'undefined') { %>
+        <div class="pano-qrate-tab-lable">其他热门话题</div>
+        <%- partial('../topic/abstract-qrate', { collection: silder_topics, as: 'topic' }) %>
+        <% } else { %>
+
+        <% } %>
+    </div>
+    <!--/.Panel-->
+
+    <!--Panel-->
+    <div class="mb-2">
+        <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
+        <div class="pano-qrate-tab-lable">作者其他话题</div>
+        <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>
+        <% } else { %>
+ 
+        <% } %>
+    </div>
+    <!--/.Panel-->
+
+    <!--Panel-->
+    <div class="mb-2">
+        <% if (typeof(no_reply_topics) !== 'undefined') { %>
+        <% if (no_reply_topics.length > 0) { %>
+        <div class="pano-qrate-tab-lable">没有回复的话题</div>
+        <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
+
+        <% } else { %>
+
+        <% } %>
+        <% } %>
+    </div>
+
+    <!--/.Panel-->
+
+    
+
 
 
 </div> 

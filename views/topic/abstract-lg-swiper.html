@@ -6,7 +6,7 @@
             <div class="pano-topic-index-head" style="background-image: url(<%= topic.cover %>);">    
                 <div class="pano-cover-shape-border" style="z-index:0;"></div>  
                 <div class="pano-main-header-txt text-white">
-                    <div class="d-flex flex-row hidden-md-down" style="margin-top: -60px; margin-left: -60px; margin-bottom: 80px;">    
+                    <div class="d-flex flex-row hidden-md-down" style="margin-left: -60px; margin-bottom: 80px;">    
                         <% if (topic.origin) { %>
                         <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
                             <div style="margin-top: -4px;"><strong>原创</strong></div>
@@ -21,18 +21,17 @@
                             <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
                                 <div style="margin-top: -4px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
                             </div>  
-                        <% } else { %>
-                            <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
-                                <div style="margin-top: -4px;"><%= topic.tabName %></div>
-                            </div> 
                         <% } %>   
+                        <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px;">
+                        </div>  
                     </div>
 
                     
 
                     <div>    
                         <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; ">
-                            <p class="pano-carousel-title pano-cut2"><strong><%= topic.mtabName %><%= topic.title %></strong><p>
+                            <p class="pano-carousel-desc white-text" style="font-size: 12px;"><%= topic.tabName %> | <%= topic.mtabName %></p>
+                            <p class="pano-carousel-title pano-cut2"><strong><%= topic.title %></strong><p>
                             <p class="pano-carousel-desc pano-cut2 hidden-md-down" style="font-size: 12px;"><%= topic.desc %></p>
                         </a>
                     </div>

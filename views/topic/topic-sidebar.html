@@ -8,6 +8,21 @@
         作者其他话题
     </div>
     <div class="py-2">
+        <% if (typeof(silder_topics) !== 'undefined') { %>
+        
+        <%- partial('../topic/abstract-qrate', { collection: silder_topics, as: 'topic' }) %>
+    
+        <% } else { %>
+        <p class="text-center">该作者暂时没有其他话题</p>
+        <% } %>
+    </div>
+    <!--/.Panel-->
+    <!--Panel-->
+   
+    <div class="card-header grey darken-4 white-text">
+        热门话题
+    </div>
+    <div class="py-2">
         <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
         
         <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>

@@ -41,15 +41,16 @@ exports.index = function (req, res, next) {
   var options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
 
   Topic.getTopicsByQuery(query, options, proxy.done('topics', function (topics) {
+     // get slider_topics
+    var options = { limit: 5, sort: '-top -last_reply_at'};
+    var query = { top: true};
+    Topic.getTopicsByQuery(query, options, proxy.done('silder_topics', function(silder_topics){
+      return silder_topics;
+    }));
     return topics;
   }));
 
-   // get slider_topics
-   var options = { limit: 5, sort: '-top -last_reply_at'};
-   var query = { top: true};
-   Topic.getTopicsByQuery(query, options, proxy.done('silder_topics', function(silder_topics){
-     return silder_topics;
-   }));
+  
 
   // 取排行榜上的用户
   cache.get('tops', proxy.done(function (tops) {

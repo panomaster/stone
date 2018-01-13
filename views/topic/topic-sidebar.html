@@ -31,6 +31,8 @@
     </div>
     <!--/.Panel-->
 
+ 
+
     <!--Panel-->
     
     <div class="card-header grey darken-4 white-text">
@@ -94,23 +96,23 @@
     </div>
     <!-- Card -->   
     <div class="hidden-md-down pano-side-card">
-            <!--Panel-->
-                <% if (typeof(user) !== 'undefined' || current_user) { %>
-                <% } else { %>
-                <div class="card testimonial-card" style="margin-bottom: 10px;">
-                    <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
-                    </div>
-                    <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-black.png" class="rounded-circle">
-                    </div>
-                    <div class="card-body">
-                        <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
-                        <hr>
-                        <p><%= config.description %></p>
-                    </div>
+        <!--Panel-->
+            <% if (typeof(user) !== 'undefined' || current_user) { %>
+            <% } else { %>
+            <div class="card testimonial-card" style="margin-bottom: 10px;">
+                <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
                 </div>
-                <% } %>
-            <!--/.Panel-->
-        </div>
+                <div class="avatar" style="background-color: rgb(70, 69, 69)"><img src="public/images/logo-black.png" class="rounded-circle">
+                </div>
+                <div class="card-body">
+                    <a href='/signin'>登录</a> | <a href='/signup'>注册</a>
+                    <hr>
+                    <p><%= config.description %></p>
+                </div>
+            </div>
+            <% } %>
+        <!--/.Panel-->
+    </div>
 
 
 </div> 

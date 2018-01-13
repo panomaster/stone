@@ -21,16 +21,18 @@
                             <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
                                 <div style="margin-top: -4px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
                             </div>  
-                        <% } %>
+                        <% } else { %>
+                            <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
+                                <div style="margin-top: -4px;"><%= topic.tabName %></div>
+                            </div> 
+                        <% } %>   
                     </div>
-                    <div class="pull-left" style="width: 100%">
-                        <% if (typeof(tab) !== 'undefined' &&  tab === 'all' && topic.tabName) { %>
-                            <p class="pano-carousel-desc" style="text-shadow:1px 1px 1px #000; font-size: 12px; place-holder: tab"><strong><%= topic.tabName %></strong></p>
-                        <% } %>
-                    </div>
+
+                    
+
                     <div>    
                         <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; ">
-                            <p class="pano-carousel-title pano-cut2"><strong><%= topic.title %></strong><p>
+                            <p class="pano-carousel-title pano-cut2"><strong><%= topic.mtabName %><%= topic.title %></strong><p>
                             <p class="pano-carousel-desc pano-cut2 hidden-md-down" style="font-size: 12px;"><%= topic.desc %></p>
                         </a>
                     </div>

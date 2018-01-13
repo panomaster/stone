@@ -3,9 +3,10 @@
         <%- partial('main-header') %>
         <%- partial('sidebar') %>  
         <div class="col-lg-8 order-1">
+            
             <div>
                 <div style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf; ">  
-                    <%[['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                    <%[['good', '精华']].concat(tabs).concat([['all', '全部']]).forEach(function (pair) {
                     var value = pair[0];
                     var text = pair[1];%>
                     <a href="<%= value ? '/?tab=' + value: '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
@@ -14,7 +15,7 @@
                     <% }) %>
                 </div>
                 
-                <div style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf;">  
+                <div class="text-center" style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf;">  
                     <% [['all', '全部'], ].concat(mtabs).forEach(function (pair) {
                     var value = pair[0];
                     var text = pair[1]; %>
@@ -46,7 +47,7 @@
                 </div>
                 <% } %>
             </div>
-            
+
         </div>
 
 

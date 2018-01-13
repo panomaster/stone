@@ -215,7 +215,7 @@ exports.reduceCount = function (id, callback) {
   });
 };
 
-exports.newAndSave = function (title, content, tab,  mtab, desc, cover, origin, authorId, callback) {
+exports.newAndSave = function (title, content, tab,  mtab, desc, cover, thumbnail, origin, authorId, callback) {
   var topic       = new Topic();
   topic.title     = title;
   topic.content   = content;
@@ -223,6 +223,7 @@ exports.newAndSave = function (title, content, tab,  mtab, desc, cover, origin, 
   topic.mtab      = mtab;
   topic.desc      = desc;
   topic.cover     = cover;
+  topic.thumbnail = thumbnail;
   topic.origin    = origin;
   topic.author_id = authorId;
 

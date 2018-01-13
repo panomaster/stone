@@ -156,6 +156,7 @@ exports.put = function (req, res, next) {
   var content = validator.trim(req.body.t_content);
   var desc = validator.trim(req.body.desc);
   var cover = validator.trim(req.body.cover);
+  var thumbnail = validator.trim(req.body.thumbnail);
   var origin = false
   if(req.body.origin){
     origin = validator.trim(req.body.origin);
@@ -191,7 +192,7 @@ exports.put = function (req, res, next) {
     });
   }
 
-  Topic.newAndSave(title, content, tab, mtab, desc, cover, origin, req.session.user._id, function (err, topic) {
+  Topic.newAndSave(title, content, tab, mtab, desc, cover, thumbnail, origin, req.session.user._id, function (err, topic) {
     if (err) {
       return next(err);
     }
@@ -250,6 +251,8 @@ exports.update = function (req, res, next) {
   var tab      = req.body.tab;
   var mtab      = req.body.mtab;
   var content  = req.body.t_content;
+  var cover  = req.body.cover;
+  var thumbnail  = req.body.thumbnail;
   var origin = false
   if(req.body.origin){
     origin = validator.trim(req.body.origin);
@@ -290,6 +293,8 @@ exports.update = function (req, res, next) {
           origin: origin,
           tabs: config.tabs,
           mtabs:config.mtabs,
+          cover:cover,
+          thumbnail:thumbnail,
         });
       }
 
@@ -299,6 +304,8 @@ exports.update = function (req, res, next) {
       topic.origin   = origin;
       topic.tab       = tab;
       topic.mtab      = mtab;
+      topic.cover      = cover;
+      topic.thumbnail      = thumbnail;
       topic.update_at = new Date();
 
       topic.save(function (err) {

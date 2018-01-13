@@ -25,6 +25,7 @@ var TopicSchema = new Schema({
   deleted: {type: Boolean, default: false},
   desc:{type: String},
   cover:{type: String},
+  thumbnail:{type: String},
   origin:{type: Boolean, default: false},
 });
 

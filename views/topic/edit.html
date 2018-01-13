@@ -83,7 +83,7 @@
               </div>
             </div>
             <div>
-              <input type='checkbox' id='origin' name="origin" value='<%= false %>'>
+              <input type='checkbox' id='origin' name="origin" value="<%= origin%>" <%= origin ? 'checked': ''%>>
               <label id="originornot" name="originornot" for="origin" class="grey-text" style="font-size: 12px">原创</label>
             </div>
             
@@ -110,7 +110,7 @@
 <script>
   (function () {
 	    CKEDITOR.replace( 'editor' );
-    $('#origin').val(false);
+    //$('#origin').val(false);
 		
     $('#cover_btn').on('click', function(){
       var toolImage = new ToolImage1();
@@ -118,8 +118,12 @@
     });
 
     $('#originornot').on('click', function(){
-      $('#origin').val(true);
-      alert($('#origin').val())
+      var ori = eval($('#origin').val());
+      if(!ori){alert(1)
+        $('#origin').val(true);
+      }else{alert(2)
+        $('#origin').val(false);
+      }
     });
 
     // 版块选择的检查，必须选择

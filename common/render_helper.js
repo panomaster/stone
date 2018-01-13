@@ -80,6 +80,14 @@ exports.tabName = function (tab) {
     return pair[1];
   }
 };
+exports.mtabName = function (mtab) {
+  var pair = _.find(config.mtabs, function (pair) {
+    return pair[0] === mtab;
+  });
+  if (pair) {
+    return pair[1];
+  }
+};
 
 exports.proxy = function (url) {
   return url;

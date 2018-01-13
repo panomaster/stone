@@ -2,7 +2,7 @@
 <div class="col-12 py-2 px-0">
     <a href="/topic/<%= topic._id %>" title="<%= topic.title %>">
         <div class="col-4 col-left pano-qrate-bg" style="background-image:URL(<%= topic.cover %>);">
-                <%- partial('./_top_good_qrate', {topic: topic}) %>
+                <span class="badge badge-default topiclist-tab"><%= topic.tabName %></span>
         </div>
         <!--Excerpt-->
         <div class="col-8 col-left px-2" style="background-color:white; height: 100px;" >

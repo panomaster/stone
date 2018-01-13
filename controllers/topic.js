@@ -41,15 +41,18 @@ exports.index = function (req, res, next) {
   if (topic_id.length !== 24) {
     return res.render404('此话题不存在或已被删除。');
   }
-  var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect'];
+  var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect', 'silder_topics', 'tab_topics', 'mtab_topics'];
   var ep = EventProxy.create(events,
-    function (topic, other_topics, no_reply_topics, is_collect) {
+    function (topic, other_topics, no_reply_topics, is_collect, silder_topics, tab_topics, mtab_topics) {
     res.render('topic/index', {
       topic: topic,
       author_other_topics: other_topics,
       no_reply_topics: no_reply_topics,
       is_uped: isUped,
       is_collect: is_collect,
+      silder_topics:silder_topics,
+      tab_topics:tab_topics,
+      mtab_topics:mtab_topics
     });
   });
 
@@ -87,6 +90,24 @@ exports.index = function (req, res, next) {
     var options = { limit: 5, sort: '-last_reply_at'};
     var query = { author_id: topic.author_id, _id: { '$nin': [ topic._id ] } };
     Topic.getTopicsByQuery(query, options, ep.done('other_topics'));
+    
+    var options1 = { limit: 5, sort: '-top -last_reply_at'};
+    var query1 = { top: true};
+    Topic.getTopicsByQuery(query1, options1, ep.done('silder_topics', function(silder_topics){
+      return silder_topics;
+    }));
+
+    var options2 = { limit: 5, sort: '-top -last_reply_at'};
+    var query2 = { tab: topic.tab};
+    Topic.getTopicsByQuery(query2, options2, ep.done('tab_topics', function(tab_topics){
+      return tab_topics;
+    }));
+
+    var options3 = { limit: 5, sort: '-last_reply_at'};
+    var query3 = { mtab:topic.mtab};
+    Topic.getTopicsByQuery(query3, options3, ep.done('mtab_topics', function(mtab_topics){
+      return mtab_topics;
+    }));
 
     // get no_reply_topics from cache
     // cache.get('no_reply_topics', ep.done(function (no_reply_topics) {
@@ -121,7 +142,8 @@ exports.index = function (req, res, next) {
 exports.create = function (req, res, next) {
   res.render('topic/edit', {
     tabs: config.tabs,
-    mtabs: config.mtabs
+    mtabs: config.mtabs,
+    origin:false,
   });
 };
 
@@ -228,6 +250,10 @@ exports.update = function (req, res, next) {
   var tab      = req.body.tab;
   var mtab      = req.body.mtab;
   var content  = req.body.t_content;
+  var origin = false
+  if(req.body.origin){
+    origin = validator.trim(req.body.origin);
+  }
 
   Topic.getTopicById(topic_id, function (err, topic, tags) {
     if (!topic) {
@@ -240,6 +266,7 @@ exports.update = function (req, res, next) {
       tab     = validator.trim(tab);
       mtab     = validator.trim(mtab);
       content = validator.trim(content);
+      origin = origin;
 
       // 验证
       var editError;
@@ -260,6 +287,7 @@ exports.update = function (req, res, next) {
           edit_error: editError,
           topic_id: topic._id,
           content: content,
+          origin: origin,
           tabs: config.tabs,
           mtabs:config.mtabs,
         });
@@ -268,6 +296,7 @@ exports.update = function (req, res, next) {
       //保存话题
       topic.title     = title;
       topic.content   = content;
+      topic.origin   = origin;
       topic.tab       = tab;
       topic.mtab      = mtab;
       topic.update_at = new Date();

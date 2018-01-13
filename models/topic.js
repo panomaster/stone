@@ -45,5 +45,17 @@ TopicSchema.virtual('tabName').get(function () {
     return '';
   }
 });
+TopicSchema.virtual('mtabName').get(function () {
+  var mtab  = this.mtab;
+  var pair = _.find(config.mtabs, function (_pair) {
+    return _pair[0] === mtab;
+  });
+
+  if (pair) {
+    return pair[1];
+  } else {
+    return '';
+  }
+});
 
 mongoose.model('Topic', TopicSchema);

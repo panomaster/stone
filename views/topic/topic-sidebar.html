@@ -1,11 +1,25 @@
 
 <div class="col-lg-4 order-2">
 
+    <!--Panel-->
+    <div class="card-header grey darken-4 white-text">
+        相关板块话题
+    </div>
+    <div class="py-2">
+        <% if (typeof(tab_topics) === 'undefined' || tab_topics.length > 0) { %>
+        
+        <%- partial('../topic/abstract-qrate', { collection: tab_topics, as: 'topic' }) %>
+    
+        <% } else { %>
+        <p class="text-center">暂时没有相关话题</p>
+        <% } %>
+    </div>
+    <!--/.Panel-->
 
     <!--Panel-->
-   
+    
     <div class="card-header grey darken-4 white-text">
-        作者其他话题
+        热门话题
     </div>
     <div class="py-2">
         <% if (typeof(silder_topics) !== 'undefined') { %>
@@ -13,14 +27,14 @@
         <%- partial('../topic/abstract-qrate', { collection: silder_topics, as: 'topic' }) %>
     
         <% } else { %>
-        <p class="text-center">该作者暂时没有其他话题</p>
+        <p class="text-center">暂时没有热门话题</p>
         <% } %>
     </div>
     <!--/.Panel-->
     <!--Panel-->
-   
+    
     <div class="card-header grey darken-4 white-text">
-        热门话题
+        作者其他话题
     </div>
     <div class="py-2">
         <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
@@ -28,13 +42,13 @@
         <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>
     
         <% } else { %>
-        <p>无</p>
+        <p class="text-center">该作者暂时没有其他话题</p>
         <% } %>
     </div>
-
     <!--/.Panel-->
+
     <!--Panel-->
-  
+    
     <div class="card-header grey darken-4 white-text">
         没有回复的话题
     </div>

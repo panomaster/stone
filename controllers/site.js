@@ -23,6 +23,7 @@ exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
   page = page > 0 ? page : 1;
   var tab = req.query.tab || 'all';
+  var mtab = req.query.mtab || 'all';
 
   var proxy = new eventproxy();
   proxy.fail(next);
@@ -36,12 +37,16 @@ exports.index = function (req, res, next) {
       query.tab = tab;
     }
   }
+  if (mtab && mtab !== 'all') {
+      query.mtab = mtab;
+  }
 
   var limit = config.list_topic_count;
   var options = { skip: (page - 1) * limit, limit: limit, sort: '-top -last_reply_at'};
 
   Topic.getTopicsByQuery(query, options, proxy.done('topics', function (topics) {
-     // get slider_topics
+    
+    // get slider_topics
     var options = { limit: 5, sort: '-top -last_reply_at'};
     var query = { top: true};
     Topic.getTopicsByQuery(query, options, proxy.done('silder_topics', function(silder_topics){
@@ -50,7 +55,6 @@ exports.index = function (req, res, next) {
     return topics;
   }));
 
-  
 
   // 取排行榜上的用户
   cache.get('tops', proxy.done(function (tops) {
@@ -103,7 +107,6 @@ exports.index = function (req, res, next) {
   var tabName = renderHelper.tabName(tab);
   proxy.all('topics', 'tops', 'no_reply_topics', 'pages', 'silder_topics',
     function (topics, tops, no_reply_topics, pages, silder_topics) {
-      logger.error('getFullTopic error silder_topics: ' + silder_topics)
       res.render('index', {
         topics: topics,
         current_page: page,
@@ -112,7 +115,9 @@ exports.index = function (req, res, next) {
         no_reply_topics: no_reply_topics,
         pages: pages,
         tabs: config.tabs,
+        mtabs: config.mtabs,
         tab: tab,
+        mtab: mtab,
         pageTitle: tabName && (tabName + '版块'),
         silder_topics:silder_topics,
       });

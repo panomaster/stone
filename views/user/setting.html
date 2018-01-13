@@ -6,8 +6,9 @@
             <div class="card-up grey lighten-1 pano-abstract-bg" style="background-image: url(public/images/bg11.jpg);">
             </div>
             <div class="avatar" style="background-color: rgb(70, 69, 69)">
-              <img src="public/images/logo-black.png" class="rounded-circle">
+              <img id="aaa" src="<%=avatar %>" class="rounded-circle">
             </div>
+
             <div class="card-body text-left">
               <% if(typeof(error) !== 'undefined' && error){ %>
                 <div class="alert alert-error text-center">
@@ -53,6 +54,17 @@
                           <div class="col-sm-12 col-md-12 col-lg-12 pano-form-row">
                             <input class='pano-form-control' style="width:95%" id='signature' name='signature' value="<%= typeof(signature) !== 'undefined' ? signature : "" %>" />
                           </div>
+                          <!--用来存放文件信息-->
+                          <div id="uploader" class="wu-example">
+                              <div id="thelist" class="uploader-list"></div>
+                              <div class="btns">
+                                  <div id="picker">选择文件</div>
+                                  <!-- <button id="ctlBtn" class="btn btn-default">开始上传</button> -->
+                                  <input class="pano-form-control readonly" style="width:300%" id='avatar' name='avatar' value="" />
+                              </div>
+                          </div>
+                          <input type='hidden' name='_csrf1' value='<%= csrf %>'>
+                          <!--用来存放文件信息-->
                         </div> 
                         <input type='hidden' id='action' name='action' value='change_setting' />
                         <input type='hidden' name='_csrf' value='<%= csrf %>' />
@@ -77,12 +89,86 @@
                         <div class='d-flex justify-content-center'>
                           <input type='submit' class='btn btn-primary btn-sm submit_btn' data-loading-text="更改中.." value='更改密码' />
                         </div>
+                        
                       </form>
             </div>
           </div>
       </div>
   </div>
 </div>
+<%- partial('../includes/ckeditor') %>
+<script>
+  //$('#avatar').val('http://o6n42lyyn.bkt.clouddn.com/FmCKeevi8RBT2SgoLjxVm6zqT_k5');
+  //$("#aaa").attr('src', 'http://o6n42lyyn.bkt.clouddn.com/FmCKeevi8RBT2SgoLjxVm6zqT_k5'); 
+    var _csrf1 = $('[name=_csrf1]').val();
+    this.uploader = WebUploader.create({
+      swf: '/public/libs/webuploader/Uploader.swf',
+      server: '/upload?_csrf=' + _csrf1,
+      pick: '#picker',
+      auto: true,
+      fileSingleSizeLimit: 2 * 1024 * 1024,
+      //sendAsBinary: true,
+      // 只允许选择图片文件。
+      accept: {
+        title: 'Images',
+        extensions: 'gif,jpg,jpeg,bmp,png',
+        mimeTypes: 'image/*'
+      }
+    });
+
+    this.uploader.on('beforeFileQueued', function(file){
+      console.log("11111111111111111111111111");
+    });
+
+    this.uploader.on('uploadProgress', function(file, percentage){
+      console.log("22222222222222222222222222222")
+      console.log(percentage);
+    });
+
+    this.uploader.on('uploadSuccess', function(file, res){
+      console.log("333333333333333333333333");
+      console.log(JSON.stringify(res));
+      $('#avatar').val(res.url);
+      $("#aaa").attr('src', res.url); 
+      // if(res.success){
+      //   self.$win.modal('hide');
+      //   console.log(JSON.stringify(res));
+      //   $('#cover_url').text(res.url);
+      //   $('#cover').val(res.url);
+      //   //self.editor.push('!['+ file.name +']('+ res.url +')');
+      //   self.showError(res.url || '服务器走神了，上传失败!!!!!!!!!!!!!!!!!');
+      // }
+      // else{
+      //   self.removeFile();
+      //   self.showError(res.msg || '服务器走神了，上传失败');
+      // }
+    });
+
+    this.uploader.on('uploadComplete', function(file){
+      console.log("4444444444444444444444")
+      
+    });
+
+    this.uploader.on('error', function(type){
+      console.log("555555555555555555555555555")
+      switch(type){
+        case 'Q_EXCEED_SIZE_LIMIT':
+        case 'F_EXCEED_SIZE':
+          alert('文件太大了, 不能超过2M');
+          break;
+        case 'Q_TYPE_DENIED':
+        alert('只能上传图片');
+          break;
+        default:
+        alert('发生未知错误');
+      }
+    });
+
+    this.uploader.on('uploadError', function(){
+      console.log("6666666666666666666666")
+      alert('服务器走神了，上传失败');
+    });
+</script>
 
 
 <style>

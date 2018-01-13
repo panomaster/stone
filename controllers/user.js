@@ -109,6 +109,7 @@ exports.setting = function (req, res, next) {
       location: data.location,
       signature: data.signature,
       weibo: data.weibo,
+      avatar: data.avatar,
       accessToken: data.accessToken,
     };
     if (isSuccess) {
@@ -126,12 +127,14 @@ exports.setting = function (req, res, next) {
     var location = validator.trim(req.body.location);
     var weibo = validator.trim(req.body.weibo);
     var signature = validator.trim(req.body.signature);
+    var avatar = validator.trim(req.body.avatar);
 
     User.getUserById(req.session.user._id, ep.done(function (user) {
       user.url = url;
       user.location = location;
       user.signature = signature;
       user.weibo = weibo;
+      user.avatar = avatar;
       user.save(function (err) {
         if (err) {
           return next(err);

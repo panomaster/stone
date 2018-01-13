@@ -6,27 +6,26 @@
             <div class="pano-topic-index-head" style="background-image: url(<%= topic.cover %>);">    
                 <div class="pano-cover-shape-border" style="z-index:0;"></div>  
                 <div class="pano-main-header-txt text-white">
-                    <div class="d-flex flex-row hidden-md-down" style="margin-left: -60px; margin-bottom: 80px;">    
+                    <div class="d-flex flex-row pano-main-header-ribon-box">    
                         <% if (topic.origin) { %>
-                        <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
+                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
                             <div style="margin-top: -4px;"><strong>原创</strong></div>
                         </div> 
                         <% } %>
                         <% if (topic.good) { %>
-                        <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
+                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
                             <div style="margin-top: -4px;"><strong>精华</strong></div>
                         </div>
                         <% } %>
                         <% if (topic.mtab === 'video' && topic.mtab) { %>
-                            <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px; background-image: url(public/images/leaf-banner.png);">
-                                <div style="margin-top: -4px;"><i class="fa fa-video-camera" aria-hidden="true"></i></div>
-                            </div>  
+                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
+                            <div style="margin-top: -4px;"><strong>视频</strong></div>
+                        </div>  
                         <% } %>   
-                        <div class="pano-full-bg pano-valign text-white m-2" style="width: 50px; height: 38px; font-size: 12px;">
+                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon">
                         </div>  
                     </div>
 
-                    
 
                     <div>    
                         <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; ">

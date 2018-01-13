@@ -19425,6 +19425,17 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.pano-main-header-ribon-box {
+  margin-bottom: 80px;
+  margin-left: -60px;
+}
+
+.pano-main-header-ribon {
+  width: 50px;
+  height: 38px;
+  font-size: 12px;
+}
+
 .pano-topic-index-head {
   height: 300px;
   background-repeat: no-repeat;
@@ -19783,8 +19794,8 @@ body {
     width: 0px;
     z-index: 0;
     height: 0px;
-    border-top: 200px solid transparent;
-    border-right: 100px solid transparent;
+    border-top: 200px solid #2196f3;
+    border-right: 80px solid transparent;
   }
   .pano-cover-shape-border-right {
     width: 0px;
@@ -19816,6 +19827,15 @@ body {
     margin-top: -200px;
     height: 100%;
     width: 100%;
+  }
+  .pano-main-header-ribon-box {
+    margin-bottom: 40px;
+    margin-left: -10px;
+  }
+  .pano-main-header-ribon {
+    width: 30px;
+    height: 21px;
+    font-size: 8px;
   }
   .pano-responsive-width {
     width: 100%;

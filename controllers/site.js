@@ -17,6 +17,7 @@ var cache        = require('../common/cache');
 var xmlbuilder   = require('xmlbuilder');
 var renderHelper = require('../common/render_helper');
 var _            = require('lodash');
+var logger       = require('../common/logger');
 
 exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
@@ -42,6 +43,13 @@ exports.index = function (req, res, next) {
   Topic.getTopicsByQuery(query, options, proxy.done('topics', function (topics) {
     return topics;
   }));
+
+   // get slider_topics
+   var options = { limit: 5, sort: '-top -last_reply_at'};
+   var query = { top: true};
+   Topic.getTopicsByQuery(query, options, proxy.done('silder_topics', function(silder_topics){
+     return silder_topics;
+   }));
 
   // 取排行榜上的用户
   cache.get('tops', proxy.done(function (tops) {
@@ -92,8 +100,9 @@ exports.index = function (req, res, next) {
   // END 取分页数据
 
   var tabName = renderHelper.tabName(tab);
-  proxy.all('topics', 'tops', 'no_reply_topics', 'pages',
-    function (topics, tops, no_reply_topics, pages) {
+  proxy.all('topics', 'tops', 'no_reply_topics', 'pages', 'silder_topics',
+    function (topics, tops, no_reply_topics, pages, silder_topics) {
+      logger.error('getFullTopic error silder_topics: ' + silder_topics)
       res.render('index', {
         topics: topics,
         current_page: page,
@@ -104,6 +113,7 @@ exports.index = function (req, res, next) {
         tabs: config.tabs,
         tab: tab,
         pageTitle: tabName && (tabName + '版块'),
+        silder_topics:silder_topics,
       });
     });
 };

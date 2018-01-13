@@ -88,20 +88,27 @@ exports.index = function (req, res, next) {
     var query = { author_id: topic.author_id, _id: { '$nin': [ topic._id ] } };
     Topic.getTopicsByQuery(query, options, ep.done('other_topics'));
 
-    // get no_reply_topics
-    cache.get('no_reply_topics', ep.done(function (no_reply_topics) {
-      if (no_reply_topics) {
-        ep.emit('no_reply_topics', no_reply_topics);
-      } else {
-        Topic.getTopicsByQuery(
-          { reply_count: 0, tab: {$ne: 'job'}},
-          { limit: 5, sort: '-create_at'},
-          ep.done('no_reply_topics', function (no_reply_topics) {
-            cache.set('no_reply_topics', no_reply_topics, 60 * 1);
-            return no_reply_topics;
-          }));
-      }
-    }));
+    // get no_reply_topics from cache
+    // cache.get('no_reply_topics', ep.done(function (no_reply_topics) {
+    //   if (no_reply_topics) {
+    //     ep.emit('no_reply_topics', no_reply_topics);
+    //   } else {
+    //     Topic.getTopicsByQuery(
+    //       { reply_count: 0, tab: {$ne: 'job'}},
+    //       { limit: 5, sort: '-create_at'},
+    //       ep.done('no_reply_topics', function (no_reply_topics) {
+    //         cache.set('no_reply_topics', no_reply_topics, 60 * 1);
+    //         return no_reply_topics;
+    //       }));
+    //   }
+    // }));
+    // get no_reply_topics from db
+    Topic.getTopicsByQuery(
+      { reply_count: 0, tab: {$ne: 'job'}},
+      { limit: 5, sort: '-create_at'},
+      ep.done('no_reply_topics', function (no_reply_topics) {
+        return no_reply_topics;
+      }));
   }));
 
   if (!currentUser) {
@@ -127,7 +134,10 @@ exports.put = function (req, res, next) {
   var content = validator.trim(req.body.t_content);
   var desc = validator.trim(req.body.desc);
   var cover = validator.trim(req.body.cover);
-  var origin = validator.trim(req.body.origin);
+  var origin = false
+  if(req.body.origin){
+    origin = validator.trim(req.body.origin);
+  }
 
 
   // 得到所有的 tab, e.g. ['ask', 'share', ..]

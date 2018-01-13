@@ -3,37 +3,55 @@
         <%- partial('main-header') %>
         <%- partial('sidebar') %>  
         <div class="col-lg-8 order-1">
-            <div style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf; ">  
-                <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
-                var value = pair[0];
-                var text = pair[1]; %>
-                <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
-                <div class="pano-valign"><%= text %></div>
-                </a>
-                <% }) %>
-            </div>
-
-            <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
             <div>
-                <%- partial('topic/list', {
-                topics: topics,
-                pages: pages,
-                current_page: current_page,
-                base: '/'
-                }) %>
-            </div>
-            <% } else { %>
-                
-            <div>
-                <!--Panel-->
-                <div class="card">
-                    <div class="card-body">
-                        <p class="text-center">此版块暂时还没有话题</p>
-                    </div>
+                <div style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf; ">  
+                    <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
+                    var value = pair[0];
+                    var text = pair[1]; %>
+                    <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
+                    <div class="pano-valign"><%= text %></div>
+                    </a>
+                    <% }) %>
                 </div>
-                <!--/.Panel-->
+                
+                <div style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf;">  
+                    <% [['all', '全部'], ].concat(tabs).forEach(function (pair) {
+                    var value = pair[0];
+                    var text = pair[1]; %>
+                    <a href="<%= value ? '/?tab=' + value : '/' %>" class="topic-tab <%= value === tab ? 'current-tab' : '' %>">
+                    <div class="pano-valign" style="font-size: 12px;"><%= text %></div>
+                    </a>
+                    <% }) %>
+                </div>
+
+                <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
+                <div>
+                    <%- partial('topic/list', {
+                    topics: topics,
+                    pages: pages,
+                    current_page: current_page,
+                    base: '/'
+                    }) %>
+                </div>
+                <% } else { %>
+                    
+                <div>
+                    <!--Panel-->
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="text-center">此版块暂时还没有话题</p>
+                        </div>
+                    </div>
+                    <!--/.Panel-->
+                </div>
+                <% } %>
             </div>
-            <% } %>
+            
         </div>
+
+
+
+        
     </div> 
+
 </div> 

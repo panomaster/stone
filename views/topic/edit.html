@@ -82,13 +82,16 @@
                 </div>
               </div>
             </div>
+            <div>
+              <input type='checkbox' id='origin' name="origin" value='<%= false %>'>
+              <label id="originornot" name="originornot" for="origin" class="grey-text" style="font-size: 12px">原创</label>
+            </div>
+            
             <input type='hidden' type='text' id='topic_tags' name='topic_tags' value=''>
             <input type='hidden' name='_csrf' value='<%= csrf %>'>
             <input type='hidden' name='_csrf1' value='<%= csrf %>'>
             <input type='hidden' id='cover' name="cover" value=''>
-            <input type='checkbox' id='origin' name="origin" value=''>
-            <label for="origin" class="grey-text" style="font-size: 12px">原创</label>
-            </fieldset>
+          </fieldset>
           </form>
         </div>
         <% } %>
@@ -101,29 +104,36 @@
  
 </div>
 
-
-
-
-
-
-
 <!-- markdown editor -->
 		<%- partial('../includes/ckeditor') %>
 	
 <script>
   (function () {
 	    CKEDITOR.replace( 'editor' );
-
+    $('#origin').val(false);
 		
     $('#cover_btn').on('click', function(){
       var toolImage = new ToolImage1();
       toolImage.bind();
     });
+
+    $('#originornot').on('click', function(){
+      $('#origin').val(true);
+      alert($('#origin').val())
+    });
+
     // 版块选择的检查，必须选择
     $('#create_topic_form').on('submit', function (e) {
       var tabValue = $('#tab-value').val();
       if (!tabValue) {
         alert('必须选择一个版块！');
+        $('.submit_btn').button('reset');
+        $('.tab-selector').css('color', 'red');
+        return false;
+      }
+      var mTabValue = $('#mtab-value').val();
+      if (!mTabValue) {
+        alert('必须选择一个类型！');
         $('.submit_btn').button('reset');
         $('.tab-selector').css('color', 'red');
         return false;

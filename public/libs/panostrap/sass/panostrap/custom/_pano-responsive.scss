@@ -67,19 +67,11 @@
   }
 
   .pano-cover-shape-border {
-    width: 0px;
-    z-index: 0;
-    height: 0px;
-      border-top: 200px solid #2196f3;
-      border-right: 80px solid transparent;
+    display: none;
   }
 
   .pano-cover-shape-border-right {
-    width: 0px;
-    z-index: 0;
-    height: 0px;
-      border-bottom: 200px solid transparent;
-      border-left: 100px solid transparent;
+    display: none;
   }
 
   .pano-cover-shape-border-adv  {
@@ -104,9 +96,9 @@
     margin-top: 0px;
     padding-left: 20px; 
     padding-right: 20px; 
-    margin-top: -200px;
     height: 100%; 
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.432)
   }
 
   .pano-header-ribon-box {
@@ -223,6 +215,55 @@
     color: #616161;
     padding: 0px;
   }
+
+    /* typografy */
+
+  .pano-responsive-t1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0px;
+  }
+  .pano-responsive-t2 {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0px; 
+    margin: 0px;
+  }
+  .pano-responsive-t3 {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0px; 
+    margin: 0px;
+  }
+  .pano-responsive-t4 {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 0px; 
+    margin: 0px;
+  }
+
+  .pano-responsive-d1 {
+    font-size: 26px;
+    font-weight: 600;
+    padding: 0px; 
+    margin: 0px;
+  }
+  .pano-responsive-d2 {
+    font-size: 20px;
+    padding: 0px; 
+    margin: 0px;
+  }
+  .pano-responsive-d3 {
+    font-size: 14px;
+    padding: 0px; 
+    margin: 0px;
+  }
+  .pano-responsive-d4 {
+    font-size: 10px;
+    padding: 0px; 
+    margin: 0px;
+  }
+
 
 }
 

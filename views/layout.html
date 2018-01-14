@@ -26,7 +26,7 @@
   <%- Loader('/public/stylesheets/index.min.css')
   .css('/public/libs/panostrap/sass/bootstrap.css') <!-- bootstrap upgrade to 4.0 -->
   .css('/public/libs/panostrap/sass/panostrap.css') <!-- mdb style update -->
-  .css('/public/libs/panostrap/sass/style.css') <!-- mdb style update -->
+  <!--.css('/public/libs/panostrap/sass/style.css') <!-- mdb style update -->
   .css('/public/libs/editor/editor.css')
   .css('/public/libs/webuploader/webuploader.css')
   .css('/public/libs/code-prettify/prettify.css')
@@ -37,10 +37,11 @@
   <!-- scripts -->
   <%- Loader('/public/index.min.js')
   .js('/public/libs/panostrap/js/jquery-3.2.1.min.js') <!-- jquery update to 3.2.1 -->
-  .js('/public/libs/panostrap/js/bootstrap.js') <!-- bootstrap js upgrade -->
-  .js('/public/libs/panostrap/js/popper.min.js') <!-- MDB POPPER js upgrade -->
-  <!-- .js('/public/libs/panostrap/js/compiled.js') MDB POPPER js upgrade need to remove due to the performance issue -->
-  .js('/public/libs/panostrap/js/panostrap.js') <!-- MDB js upgrade -->
+  <!-- .js('/public/libs/panostrap/js/bootstrap.js') <!-- bootstrap js upgrade -->
+  .js('/public/libs/panostrap/js/bootstrap.bundle.js') <!-- bootstrap js upgrade -->
+  <!-- .js('/public/libs/panostrap/js/popper.min.js') <!-- MDB POPPER js upgrade -->
+  <!-- .js('/public/libs/panostrap/js/compiled.js') <!-- MDB POPPER js upgrade need to be removed due to the performance issue -->
+  <!-- .js('/public/libs/panostrap/js/panostrap.js') <!-- MDB js upgrade -->
   .js('/public/libs/lodash.compat.js')
   .js('/public/libs/jquery-ujs.js')
   .js('/public/libs/jquery.caret.js')

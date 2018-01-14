@@ -114,6 +114,13 @@ body{
   background-color: #bdbdbd;
 } 
 
+.pano-full-bg-grey {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: rgb(196, 196, 196);
+} 
+
 .pano-full-bg {
   background-repeat: no-repeat;
   background-position: center;
@@ -268,26 +275,22 @@ body{
   background-position: center;
   background-size: cover;
   background-color: #bdbdbd;
-  height: 120px; 
+  height: 130px; 
 }
 .pano-abstract-bg-caption {
-  height: 120px; 
+  height: 130px; 
 }
-
 
 .pano-abstract-body{
   background-color: white;
-  height: 120px;
+  height: 130px;
   margin: 0px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-
 }
 
 .pano-abstract-contents{
-  height: 85px;
+  height: 100px;
 }
 
 
@@ -303,7 +306,7 @@ body{
 }
 
 .pano-abstract-desc {
-  font-size: 14px;
+  font-size: 12px;
   color: #616161;
   height: 42px;
   overflow: hidden;
@@ -574,11 +577,11 @@ body{
     background-position: center;
     background-size: cover;
     background-color: #bdbdbd;
-    height: 180px;
+    height: 140px;
   }
 
   .pano-abstract-bg-caption {
-    height: 180px;
+    height: 140px;
   }
   
   .pano-qrate-bg {
@@ -595,22 +598,22 @@ body{
   .pano-abstract-body{
     height: auto;
     margin: 0px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 
   .pano-abstract-contents{
-    height: auto;
+    height: 70px;
   }
   
   .pano-abstract-title {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     color: #212121;
     line-height: 1.2;
-    margin: 5px 0px 5px 0px;
+    margin: 3px 0px 3px 0px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -619,10 +622,10 @@ body{
   }
   
   .pano-abstract-desc {
-    font-size: 12px;
+    font-size: 10px;
     color: #616161;
     line-height: 22px;
-    margin: 5px 0px 5px 0px;
+    margin: 3px 0px 3px 0px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -631,24 +634,9 @@ body{
     }
   
   .pano-abstract-information {
-    height: 20px;
-    font-size: 12px;
+    font-size: 10px;
     color: #616161;
     padding: 0px;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    cursor: pointer;
   }
 
 }

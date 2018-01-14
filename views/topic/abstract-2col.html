@@ -1,6 +1,6 @@
 <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1" style="background-color: transparent">
     <a href="/topic/<%= topic._id %>">
-      <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg" style="background-image:URL(<%= topic.thumbnail %>)">
+      <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-full-bg-grey" style="background-image:URL(<%= topic.thumbnail %>)">
           <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
             <% if (topic.mtab === 'video' && topic.mtab) { %>
               <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
@@ -11,23 +11,40 @@
       </div>
     </a>
     <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body">
-      <div class="pano-abstract-contents">
-        <a href="/topic/<%= topic._id %>">
-          <span style="font-size: 10px">
-            <%= topic.tabName%> 
-            <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
-            <% } else { %> 
-              | <%= topic.mtabName%>
-            <% } %>
-          </span>  
-          <p class="pano-abstract-title pano-cut1">  
-            <%= topic.title %>    
-          </p>
-          <p class="pano-abstract-desc">          
-            <%= topic.desc %>           
-          </p>
-        </a>
-      </div>
+          <div class="pano-abstract-contents">
+            <span style="font-size: 10px; color: grey">
+              <%= topic.tabName%> 
+              <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
+              <% } else { %> 
+                | <%= topic.mtabName%>
+              <% } %>
+            </span>  
+            <a href="/topic/<%= topic._id %>">
+              <div class="pano-abstract-title pano-cut2">  
+                <%= topic.title %>    
+              </div>
+              <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                <%= topic.desc %>           
+              </div>
+            </a>
+          </div>
+          <div class="pano-abstract-information"  style="height: 30px;">    
+            <div class="pull-left px-1">
+              <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>">
+            </div>
+            <div class="hidden-sm px-1">
+              <div style="font-size: 10px">
+                <%= topic.author.name %> | <%= topic.create_at_ago() %> | <%= topic.reply_count %> 个回复 | 热度 <%= topic.visit_count %>
+              </div>
+            </div>
+            <div class="hidden-sm-up px-1">
+              <div style="font-size: 10px">
+                <div><%= topic.author.name %> | <%= topic.create_at_ago() %></div>
+                <div><%= topic.reply_count %> 个回复 | 热度 <%= topic.visit_count %></div>
+              </div>
+            </div>
+          </div>
+
     </div>
 </div>
 

@@ -29,7 +29,13 @@
 
                     <div>    
                         <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; ">
-                            <p class="pano-carousel-desc white-text" style="font-size: 12px;"><%= topic.tabName %> | <%= topic.mtabName %></p>
+                            <p class="pano-carousel-desc white-text" style="font-size: 12px;">
+                                    <%= topic.tabName%> 
+                                    <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
+                                    <% } else { %> 
+                                      | <%= topic.mtabName%>
+                                    <% } %>
+                            </p>
                             <p class="pano-carousel-title pano-cut2"><strong><%= topic.title %></strong><p>
                             <p class="pano-carousel-desc pano-cut2 hidden-md-down" style="font-size: 12px;"><%= topic.desc %></p>
                         </a>

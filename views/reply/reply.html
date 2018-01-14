@@ -4,11 +4,11 @@
   <a class="anchor" id="<%= reply._id %>"></a>
 
   <div class='author_content'>
-    <a href="/user/<%= reply.author.loginname %>">
-      <img src="<%= proxy(reply.author.avatar_url) %>" class="user-avatar rounded-circle z-depth-1-half" style="height: 40px; "title="<%= reply.author.loginname %>"/>
+    <a href="/user/<%= reply.author.name %>">
+      <img src="<%= proxy(reply.author.avatar_url) %>" class="user-avatar rounded-circle z-depth-1-half" style="height: 40px; "title="<%= reply.author.name %>"/>
     </a>
     <span class='user_info' style="font-size: 12px">
-      <a class='dark reply_author' href="/user/<%= reply.author.loginname %>"><%= reply.author.loginname %></a>
+      <a class='dark reply_author' href="/user/<%= reply.author.name %>"><%= reply.author.name %></a>
       <a class="reply_time" href="#<%= reply._id %>"></a> | <%= indexInCollection + 1 %>楼  | <%= reply.create_at_ago()
         %></a>
     </span>
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class='reply_content from-<%= reply.author.loginname %>'>
+  <div class='reply_content from-<%= reply.author.name %>'>
     <%- markdown(reply.content) %>
   </div>
   

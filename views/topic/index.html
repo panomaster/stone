@@ -117,11 +117,11 @@
             <hr>
               <div class="news offset-4">
                   <div class="label">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1-mini.jpg" class="rounded-circle z-depth-1-half">
+                      <img src="<%= proxy(topic.author.avatar_url) %>" class="rounded-circle z-depth-1-half">
                   </div>
                   <div class="excerpt">
                       <div class="brief"  style="font-size: 13px">
-                          <a class="name"  style="font-size: 13px"  href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a><div class="date" style="font-size: 13px">积分<%= topic.author.score %></div>
+                          <a class="name"  style="font-size: 13px"  href="/user/<%= topic.author.loginname %>"><%= topic.author.name %></a><div class="date" style="font-size: 13px">积分<%= topic.author.score %></div>
                       </div>
                       <div class="feed-footer" style="font-size: 13px">
                           <%= topic.author.signature%>

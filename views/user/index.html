@@ -6,11 +6,11 @@
     <!-- Card -->
     <div class="card card-image pano-side-card" style="border-radius:0px; height: 300px; background-image: url(../public/images/bg4.jpg);">            
       <!-- Content -->
-      <div class="text-white text-center align-items-center rgba-black-light" style="text-shadow: grey; height: 300px; padding-top: 130px">
+      <div class="text-white text-center align-items-center rgba-black-light" style="text-shadow: grey; height: 300px; padding-top: 100px">
         <div class='user_big_avatar'>
-          <img src="<%= proxy(user.avatar_url) %>" class="user_avatar rounded-circle" title="<%= user.loginname %>" />
+          <img src="<%= proxy(user.avatar_url) %>" class="rounded-circle" style="max-width: 80px;" title="<%= user.loginname %>" />
         </div>
-        <h6 class="card-title pt-2"><strong><%= user.loginname %></strong></h6>
+        <h6 class="card-title pt-2"><strong><%= user.name %></strong></h6>
         <h6 class="card-title pt-2"><strong><%= user.signature %></strong></h6>
         <div style="font-size: 12px">
           <span class='col_fade mx-1 px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">

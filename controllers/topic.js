@@ -63,7 +63,7 @@ exports.index = function (req, res, next) {
       logger.error('getFullTopic error topic_id: ' + topic_id)
       return res.renderError(message);
     }
-
+    logger.error("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     topic.visit_count += 1;
     topic.save();
 

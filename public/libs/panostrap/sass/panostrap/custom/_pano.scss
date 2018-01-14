@@ -13,23 +13,30 @@ $grey: (
 );
 
 
+
 body{
   font-family: 'Microsoft Yahei',Tahoma,Helvetica,'SimSun',sans-serif;
   background-color: white;
 }
 
+.logo-bg {
+  background-color: rgb(3,169,244)!important;
+}
+
+.logo-text {
+  color: rgb(3,169,244)!important;
+}
+
 .main{
   margin-top: 65px;
-  margin-bottom: 65px;
 }
 
 .footer.page-footer {
-  background-color: #53463d;
-  margin-top: 2rem;
+  background-color: #414141;
 }
 
 .col-left{
-    float: left;
+  float: left;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
@@ -58,17 +65,39 @@ body{
   margin: 0px;
 } 
 
-.pano-toic-index-blockquote {
-  margin: 10px 20px 10px;
-  font-style: italic;
-  padding: .5rem 1rem;
-  font-size: 14px;
-  border-left: 6px solid #06a7f8;
-  color: rgb(54, 54, 54);
-  }
+.pano-text-grey-shadow {
+  text-shadow:1px 1px 1px #000;
+}
 
-.pano-side-card {
-  margin-bottom: 8px;
+.pano-full-bg-grey {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: rgb(196, 196, 196);
+  height: 100%;
+} 
+
+.pano-full-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+} 
+
+.pano-nav-brand {
+  height:32px
+}
+
+.pano-avatar-lg {
+  height: 50px;
+}
+
+.pano-avatar-md {
+  height: 40px;
+}
+
+.pano-avatar-sm {
+  height: 30px;
 }
 
 .pano-banner-adv {
@@ -84,27 +113,30 @@ body{
   }
 }
 
-.pano-square-card {
-  margin-bottom: 8px;
-  border-radius: 0px;
+.pano-header-txt {
+  margin-left: -30%; 
+  margin-top: -300px;
+  background-color: none;
+  height: 100%; 
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
-.pano-main-header-caption {
+.pano-header-caption {
   height: 100%; 
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.pano-main-header-ribon-box {
+.pano-header-ribon-box {
   margin-bottom: 80px;
   margin-left: -60px;
 }
 
-.pano-main-header-ribon {
+.pano-header-ribon {
   width: 50px; 
   height: 38px; 
   font-size: 12px; 
 }
-
 
 .pano-topic-index-head {
   height: 300px;
@@ -114,14 +146,8 @@ body{
   background-color: #bdbdbd;
 } 
 
-.pano-full-bg-grey {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: rgb(196, 196, 196);
-} 
-
-.pano-full-bg {
+.pano-header {
+  height: 300px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -133,33 +159,31 @@ body{
   text-shadow: 1px 1px 1px black;
 }
 
-.pano-main-header-txt {
-  margin-left: -30%; 
-  margin-top: -300px;
-  background-color: none;
-  height: 100%; 
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
-
-.pano-nav-brand {
-  height:32px
-}
+.pano-toic-index-blockquote {
+  margin: 10px 20px 10px;
+  font-style: italic;
+  padding: .5rem 1rem;
+  font-size: 14px;
+  border-left: 6px solid #06a7f8;
+  color: rgb(54, 54, 54);
+  }
 
 .pano-cover-shape-border {
   width: 0px;
   z-index: 0;
-	height: 0px;
-    border-top: 300px solid rgb(2, 171, 250);
-    border-right: 100px solid transparent;
+  height: 0px;
+  z-index:0;
+  border-top: 300px solid rgb(3,169,244)!important;
+  border-right: 100px solid transparent;
 }
 
 .pano-cover-shape-border-right {
   width: 0px;
   z-index: 0;
-	height: 0px;
-    border-bottom: 300px solid rgb(2, 171, 250);
-    border-left: 100px solid transparent;
+  height: 0px;
+  z-index:0;
+  border-bottom: 300px solid rgb(3,169,244)!important;
+  border-left: 100px solid transparent;
 }
 
 .pano-cover-shape-border-adv  {
@@ -190,14 +214,6 @@ body{
   width: 70%;
 }
 
-.pano-carousel-bg {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-color: #bdbdbd;
-  width: 100%;
-  height: 300px;
-}
 
 .pano-landing-bg {
   background-repeat: no-repeat;
@@ -241,8 +257,8 @@ body{
   padding-right: 8px;
   width: 100%;
   background-color: #f1f1f1;
-  border-left: solid 10px #2196f3;
-  border-right: solid 3px #2196f3;
+  border-left: solid 10px rgb(3,169,244)!important;
+  border-right: solid 3px rgb(3,169,244)!important;
   color: #2196f3;
   font-size: 18px;
   font-weight: 600;
@@ -337,10 +353,6 @@ body{
   cursor: pointer;
 }
 
-.pano-avatar-small{
-  height: 30px;
-}
-
 .pano-cut2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -362,7 +374,6 @@ body{
   background-color: rgb(73, 73, 73);
 }
 
-
 .topic-tab {
   text-align: center;
   width: 55px;
@@ -377,7 +388,7 @@ body{
     color: rgb(17, 17, 17);
     font-size: 18px;
     font-weight: 700;
-    border-bottom: 4px solid #2196f3;
+    border-bottom: 4px solid rgb(3,169,244)!important;
   }
   &:hover {
     text-decoration: none;
@@ -398,14 +409,51 @@ body{
   font-size: 12px;
 }
 
-.topiclist-video {
-  font-size: 23px;
-  width: 38px;
-  height: 38px;
-  opacity: 0.8;
-  border: white solid 2px; 
-  border-radius: 50%;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  text-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+/* typografy */
+
+.pano-responsive-t1 {
+  font-size: 26px;
+  font-weight: 600;
+  padding: 0px; 
+  margin: 0px;
+}
+.pano-responsive-t2 {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0px; 
+  margin: 0px;
+}
+.pano-responsive-t3 {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0px; 
+  margin: 0px;
+}
+.pano-responsive-t4 {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 0px; 
+  margin: 0px;
+}
+
+.pano-responsive-d1 {
+  font-size: 26px;
+  font-weight: 600;
+  padding: 0px; 
+  margin: 0px;
+}
+.pano-responsive-d2 {
+  font-size: 20px;
+  padding: 0px; 
+  margin: 0px;
+}
+.pano-responsive-d3 {
+  font-size: 14px;
+  padding: 0px; 
+  margin: 0px;
+}
+.pano-responsive-d4 {
+  font-size: 10px;
+  padding: 0px; 
+  margin: 0px;
 }

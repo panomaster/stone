@@ -108,48 +108,39 @@
                 <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
               <%}%>
             </div> 
-
           </div>
-
-
 
           <div class="card-body mdb-feed">
             <hr>
-              <div class="news offset-4">
-                  <div class="label">
-                      <img src="<%= proxy(topic.author.avatar_url) %>" class="rounded-circle z-depth-1-half">
+              <div class="pano-abstract-information"  style="height: 30px;">    
+                <div class="pull-left px-1">
+                  <a href="/user/<%= topic.author.loginname %>">
+                    <img class="pano-avatar-md rounded-circle" src="<%= proxy(topic.author.avatar_url) %>">
+                  </a>                
+                </div>
+                <div class="px-1">
+                  <div style="font-size: 10px">
+                    <div><a href="/user/<%= topic.author.loginname %>"><%= topic.author.name %></a> | <%= topic.create_at_ago() %></div>
+                    <div><%= topic.author.signature%></div>
                   </div>
-                  <div class="excerpt">
-                      <div class="brief"  style="font-size: 13px">
-                          <a class="name"  style="font-size: 13px"  href="/user/<%= topic.author.loginname %>"><%= topic.author.name %></a><div class="date" style="font-size: 13px">积分<%= topic.author.score %></div>
-                      </div>
-                      <div class="feed-footer" style="font-size: 13px">
-                          <%= topic.author.signature%>
-                      </div>
-                  </div>
+                </div>
               </div>
             <hr>
           </div>
           
         </div>
         <!-- Accordion card -->
-        <div class="card pano-square-card"> 
-            <!-- Card header -->
-            <div class="card-header grey darken-4 py-1" role="tab" id="heading-Reply">
-                <a class="collapsed white-text" data-toggle="collapse" data-parent="#accordionEx" href="#collapse-Reply" aria-expanded="false" aria-controls="collapse-Reply">
-                    <span class="btn btn-info btn-sm px-3 my-0">添加回复</span>
-                </a>
-            </div>
+        添加回复
+        
             <% if (current_user && typeof(topic) !== 'undefined') { %>
-            <!-- Card body -->
-            <div id="collapse-Reply" class="collapse" role="tabpanel" aria-labelledby="heading-Reply">
+            <div>
                 <div class="card-body">
                     <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
                       <div class='markdown_editor in_editor'>
                         <div class='markdown_in_editor'>
                           <textarea class='editor' name='r_content' rows='8'></textarea>
                           <div class='editor_buttons'>
-                            <input class='pull-right btn btn-info btn-sm px-3' type="submit" data-loading-text="回复中.." value="发布回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
+                            <input class='btn btn-info btn-sm px-3' type="submit" data-loading-text="回复中.." value="发布回复<%= topic.lock ? '(此主题已锁定)' : ''%>" <%= topic.lock ? 'disabled="disabled"' : ''%>>
                           </div>
                         </div>
                       </div>
@@ -158,29 +149,25 @@
                 </div>
             </div>
             <% } else { %>
-              <div id="collapse-Reply" class="collapse" role="tabpanel" aria-labelledby="heading-Reply">
-                  <div class="card-body text-center">
-                      <p>回复主题需要先登录</p>
-                      <a href='/signin'><span class="btn btn-sm btn-info bx-3 white-text">登录</span></a> | <a href='/signup'><span class="btn btn-sm btn-info bx-3 white-text">注册</span></a>
-                      <hr>
-                      <p><%= config.description %></p>
-                  </div>
-              </div>
+            <div>
+                <div class="card-body text-center">
+                    <p>回复主题需要先登录</p>
+                    <a href='/signin'><span class="btn btn-sm btn-info bx-3 white-text">登录</span></a> | <a href='/signup'><span class="btn btn-sm btn-info bx-3 white-text">注册</span></a>
+                    <hr>
+                    <p><%= config.description %></p>
+                </div>
+            </div>
             <% } %>
-          </div>
 
-         
+
+        <hr> 
         <!-- Accordion card -->
         <% if (topic.replies && topic.replies.length > 0) { %>
-        <!--Panel-->
-        <div class="card pano-side-card">
-            <div class="card-header grey darken-4 white-text">
-                共 <%= topic.replies.length %> 个回复
-            </div>
+        <!--Panel-->      
+            共 <%= topic.replies.length %> 个回复
             <div class="card-body px-0 py-2">
                 <%- partial('../reply/reply', topic.replies) %>
             </div>
-        </div>
         <!--/.Panel-->
         <% } %>
 

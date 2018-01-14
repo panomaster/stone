@@ -30,7 +30,7 @@
       </div>
       <div class="chip pano-abstract-chip offset-1">    
         <a href="/user/<%= topic.author.loginname %>">
-          <img class="pano-avatar-small rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" />
+          <img class="pano-avatar-sm rounded-circle" src="<%= proxy(topic.author.avatar_url) %>" />
         </a>
           &nbsp; <%= topic.author.loginname %> <%= topic.create_at_ago() %>发布 | <i class="fa fa-reply" aria-hidden="true"></i> <%= topic.reply_count %> | <i class="fa fa-eye" aria-hidden="true"></i> <%= topic.visit_count %>
       </div>

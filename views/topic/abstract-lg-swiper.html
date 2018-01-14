@@ -1,49 +1,47 @@
 <div class="swiper-slide inline-block">
-    <div class="pano-carousel-bg">
-        <div class="pano-topic-index-head inline-block pull-left hidden-sm" style="width: 30%; background-color:#02abfa">
-        </div>
-        <div class="inline-block pull-right pano-responsive-width">
-            <div class="pano-topic-index-head" style="background-image: url(<%= topic.cover %>);">    
-                <div class="pano-cover-shape-border" style="z-index:0;"></div>  
-                <div class="pano-main-header-txt text-white">
-                    <div class="d-flex flex-row pano-main-header-ribon-box">    
-                        <% if (topic.origin) { %>
-                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
-                            <div style="margin-top: -4px;"><strong>原创</strong></div>
-                        </div> 
-                        <% } %>
-                        <% if (topic.good) { %>
-                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
-                            <div style="margin-top: -4px;"><strong>精华</strong></div>
-                        </div>
-                        <% } %>
-                        <% if (topic.mtab === 'video' && topic.mtab) { %>
-                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
-                            <div style="margin-top: -4px;"><strong>视频</strong></div>
-                        </div>  
-                        <% } %>   
-                        <div class="pano-full-bg pano-valign text-white m-1 pano-main-header-ribon">
-                        </div>  
+    <div class="pano-header inline-block pull-left hidden-sm logo-bg" style="width: 30%;">
+    </div>
+    <div class="pano-header inline-block pull-right pano-responsive-width">
+        <div class="pano-full-bg" style="background-image: url(<%= topic.cover %>);">    
+            <div class="pano-cover-shape-border"></div>  
+            <div class="pano-header-txt text-white">
+                <div class="d-flex flex-row pano-header-ribon-box">    
+                    <% if (topic.origin) { %>
+                    <div class="pano-full-bg pano-valign text-white m-1 pano-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
+                        <strong>原创</strong>
+                    </div> 
+                    <% } %>
+                    <% if (topic.good) { %>
+                    <div class="pano-full-bg pano-valign text-white m-1 pano-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
+                        <strong>精华</strong>
                     </div>
+                    <% } %>
+                    <% if (topic.mtab === 'video' && topic.mtab) { %>
+                    <div class="pano-full-bg pano-valign text-white m-1 pano-header-ribon" style="background-image: url(public/images/leaf-banner.png);">
+                        <strong>视频</strong>
+                    </div>  
+                    <% } %>   
+                    <div class="pano-full-bg pano-valign text-white m-1 pano-header-ribon">
+                    </div>  
+                </div>
 
-
-                    <div>    
-                        <a href="/topic/<%= topic._id %>" style="text-shadow:1px 1px 1px #000; ">
-                            <p class="pano-carousel-desc white-text" style="font-size: 12px;">
-                                    <%= topic.tabName%> 
-                                    <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
-                                    <% } else { %> 
-                                      | <%= topic.mtabName%>
-                                    <% } %>
-                            </p>
-                            <p class="pano-carousel-title pano-cut2"><strong><%= topic.title %></strong><p>
-                            <p class="pano-carousel-desc pano-cut2 hidden-md-down" style="font-size: 12px;"><%= topic.desc %></p>
-                        </a>
-                    </div>
-                </div> 
-                <div class="pano-cover-shape-border-right pull-right" style="z-index:0; margin-top:-300px;"></div>  
-            </div>
+                <div>    
+                    <a class="pano-text-grey-shadow" href="/topic/<%= topic._id %>">
+                        <p class="white-text pano-responsive-d4 px-2">
+                                <%= topic.tabName%> 
+                                <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
+                                <% } else { %> 
+                                    | <%= topic.mtabName%>
+                                <% } %>
+                        </p>
+                        <p class="white-text pano-responsive-t1 pano-cut2 px-2"><%= topic.title %><p>
+                        <p class="white-text pano-responsive-d3 pano-cut2 px-2 hidden-md-down"><%= topic.desc %></p>
+                    </a>
+                </div>
+            </div> 
+            <div class="pano-cover-shape-border-right pull-right" style="margin-top:-300px;"></div>  
         </div>
     </div>
+
 </div>
 

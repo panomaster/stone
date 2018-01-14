@@ -63,7 +63,7 @@ exports.index = function (req, res, next) {
       logger.error('getFullTopic error topic_id: ' + topic_id)
       return res.renderError(message);
     }
-    logger.error("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    
     topic.visit_count += 1;
     topic.save();
 
@@ -144,6 +144,8 @@ exports.create = function (req, res, next) {
     tabs: config.tabs,
     mtabs: config.mtabs,
     origin:false,
+    cover:'',
+    thumbnail:'',
   });
 };
 
@@ -233,6 +235,7 @@ exports.showEdit = function (req, res, next) {
         content: topic.content,
         desc:topic.desc,
         cover:topic.cover,
+        thumbnail:topic.thumbnail,
         origin:topic.origin,
         tab: topic.tab,
         mtab: topic.mtab,

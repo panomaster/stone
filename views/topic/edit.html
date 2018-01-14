@@ -24,7 +24,7 @@
               <fieldset>
                 <!-- 封面上传按钮 -->
                 <div id="cover_div">
-                    <div class="btn btn-primary btn-sm btn-round submit_btn" id="cover_btn" name="cover_btn">
+                    <div class="btn btn-primary btn-sm btn-round submit_btn" style="padding:0" id="cover_btn" name="cover_btn">
                       上传封面
                     </div>
                   <!-- 封面图片显示区 -->
@@ -90,8 +90,8 @@
             <input type='hidden' type='text' id='topic_tags' name='topic_tags' value=''>
             <input type='hidden' name='_csrf' value='<%= csrf %>'>
             <input type='hidden' name='_csrf1' value='<%= csrf %>'>
-            <input type='hidden' id='cover' name="cover" value=''>
-            <input type='hidden' id='thumbnail' name="thumbnail" value=''>
+            <input type='hidden' id='cover' name="cover" value='<%= cover %>'>
+            <input type='hidden' id='thumbnail' name="thumbnail" value='<%= thumbnail %>'>
           </fieldset>
           </form>
         </div>
@@ -110,19 +110,19 @@
 	
 <script>
   (function () {
-	    CKEDITOR.replace( 'editor' );
+    CKEDITOR.replace( 'editor' );
     //$('#origin').val(false);
 		
-    $('#cover_btn').on('click', function(){
-      var toolImage = new ToolImage1();
-      toolImage.bind();
-    });
+    // $('#cover_btn').on('click', function(){
+    //   var toolImage = new ToolImage1();
+    //   toolImage.bind();
+    // });
 
     $('#originornot').on('click', function(){
       var ori = eval($('#origin').val());
       if(!ori){
         $('#origin').val(true);
-      }else{alert(2)
+      }else{
         $('#origin').val(false);
       }
     });
@@ -159,157 +159,75 @@
       $('#topic_create_warn').html(warnMsg);
     });
     // END 选择招聘版块时，给出提示
-	
+    this.file = false;
+    var _csrf1 = $('[name=_csrf1]').val();
 
-	  var ToolImage1 = function(){
-      var self = this;
-      this.$win = $([
-        '<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">',
-			'<div class="modal-dialog">',
-				'<div class="modal-content">',
-					'<div class="modal-header">',		
-						'<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
-						'<h4 class="modal-title" id="editorToolImageTitle">上传封面图片</h4>',
-					'</div>',
-					'<div class="modal-body" style="height: 260px">',
-						'<div class="upload-img">',
-						'<div class="button">上传封面</div>',
-							'<div style="margin-top:10px;">',
-							  '<p>请选择作为本文章封面的图片。</p>',
-							  '<p>请避免选择与主题无关的图片。</p>',
-							  '<p>上传图片请遵守法律法规。</p>',
-							'</div>',
-							'<span class="tip"></span>',
-							'<div class="alert alert-error hide"></div>',
-						'</div>',
-					'</div>',
-					'<div class="modal-footer">',
-						'<button type="button" class="close btn btn-default" data-dismiss="modal">Close</button>',
-					'</div>',
-				'</div>',
-			'</div>',	
-        '</div>'		
-      ].join('')).appendTo($('#cover_div'));
+    this.uploader = WebUploader.create({
+      swf: '/public/libs/webuploader/Uploader.swf',
+      server: '/upload?_csrf=' + _csrf1,
+      pick: '#cover_btn',
+      auto: true,
+      fileSingleSizeLimit: 2 * 1024 * 1024,
+      //sendAsBinary: true,
+      // 只允许选择图片文件。
+      accept: {
+        title: 'Images',
+        extensions: 'gif,jpg,jpeg,bmp,png',
+        mimeTypes: 'image/*'
+      }
+    });
 
-      this.$upload = this.$win.find('.upload-img').css({
-        height: 30,
-        textAlign: 'center',
-        padding: '20px 0',
-      });
+    this.uploader.on('beforeFileQueued', function(file){
+      if(self.file !== false){
+        return false;
+      }
+      //self.showFile(file);
+    });
 
-      this.$uploadBtn = this.$upload.find('.button').css({
-        width: 86,
-        height: 40,
-        margin: '0 auto'
-      });
+    this.uploader.on('uploadProgress', function(file, percentage){
+      // console.log(percentage);
+      //self.showProgress(file, percentage * 100);
+    });
 
-      this.$uploadTip = this.$upload.find('.tip').hide();
+    this.uploader.on('uploadSuccess', function(file, res){
+      if(res.success){
+        //self.$win.modal('hide');
+        console.log(JSON.stringify(res));
+        $('#cover_url').text(res.url);
+        $('#cover').val(res.url);
+        $('#thumbnail').val(res.url+"?imageMogr2/auto-orient/thumbnail/40000@/blur/1x0/quality/75|imageslim");
+        //self.editor.push('!['+ file.name +']('+ res.url +')');
+        alert(res.url || '服务器走神了，上传失败!!!!!!!!!!!!!!!!!');
+      }
+      else{
+        alert(res.msg || '服务器走神了，上传失败');
+      }
+    });
 
-      this.file = false;
-      var _csrf1 = $('[name=_csrf1]').val();
+    this.uploader.on('uploadComplete', function(file){
+      //self.uploader.removeFile(file);
+      //self.removeFile();
+    });
 
-      this.uploader = WebUploader.create({
-        swf: '/public/libs/webuploader/Uploader.swf',
-        server: '/upload?_csrf=' + _csrf1,
-        pick: this.$uploadBtn[0],
-        paste: document.body,
-        dnd: this.$upload[0],
-        auto: true,
-        fileSingleSizeLimit: 2 * 1024 * 1024,
-        //sendAsBinary: true,
-        // 只允许选择图片文件。
-        accept: {
-          title: 'Images',
-          extensions: 'gif,jpg,jpeg,bmp,png',
-          mimeTypes: 'image/*'
-        }
-      });
+    this.uploader.on('error', function(type){
+      self.removeFile();
+      switch(type){
+        case 'Q_EXCEED_SIZE_LIMIT':
+        case 'F_EXCEED_SIZE':
+          self.showError('文件太大了, 不能超过2M');
+          break;
+        case 'Q_TYPE_DENIED':
+          self.showError('只能上传图片');
+          break;
+        default:
+          self.showError('发生未知错误');
+      }
+    });
 
-      this.uploader.on('beforeFileQueued', function(file){
-        if(self.file !== false){
-          return false;
-        }
-        self.showFile(file);
-      });
-
-      this.uploader.on('uploadProgress', function(file, percentage){
-        // console.log(percentage);
-        self.showProgress(file, percentage * 100);
-      });
-
-      this.uploader.on('uploadSuccess', function(file, res){
-        if(res.success){
-          self.$win.modal('hide');
-          console.log(JSON.stringify(res));
-          $('#cover_url').text(res.url);
-          $('#cover').val(res.url);
-          $('#thumbnail').val(res.url+"?imageMogr2/auto-orient/thumbnail/40000@/blur/1x0/quality/75|imageslim");
-          //self.editor.push('!['+ file.name +']('+ res.url +')');
-          self.showError(res.url || '服务器走神了，上传失败!!!!!!!!!!!!!!!!!');
-        }
-        else{
-          self.removeFile();
-          self.showError(res.msg || '服务器走神了，上传失败');
-        }
-      });
-
-      this.uploader.on('uploadComplete', function(file){
-        self.uploader.removeFile(file);
-        self.removeFile();
-      });
-
-      this.uploader.on('error', function(type){
-        self.removeFile();
-        switch(type){
-          case 'Q_EXCEED_SIZE_LIMIT':
-          case 'F_EXCEED_SIZE':
-            self.showError('文件太大了, 不能超过2M');
-            break;
-          case 'Q_TYPE_DENIED':
-            self.showError('只能上传图片');
-            break;
-          default:
-            self.showError('发生未知错误');
-        }
-      });
-
-      this.uploader.on('uploadError', function(){
-        self.removeFile();
-        self.showError('服务器走神了，上传失败');
-      });
-    };
-    ToolImage1.prototype.removeFile = function(){
-      //var self = this;
-      this.file = false;
-      this.$uploadBtn.show();
-      this.$uploadTip.hide();
-    };
-
-    ToolImage1.prototype.showFile = function(file){
-      //var self = this;
-      this.file = file;
-      this.$uploadBtn.hide();
-      this.$uploadTip.html('正在上传: ' + file.name).show();
-      this.hideError();
-    };
-
-    ToolImage1.prototype.showError = function(error){
-      this.$upload.find('.alert-error').html(error).show();
-    };
-
-    ToolImage1.prototype.hideError = function(error){
-      this.$upload.find('.alert-error').hide();
-    };
-
-    ToolImage1.prototype.showProgress = function(file, percentage){
-      this.$uploadTip
-              .html('正在上传: ' + file.name + ' ' + percentage + '%')
-              .show();
-    };
-
-    ToolImage1.prototype.bind = function(){
-      this.$win.modal('show');
-    };
-
+    this.uploader.on('uploadError', function(){
+      //self.removeFile();
+      alert('服务器走神了，上传失败');
+    });
+    
   })();
 </script>

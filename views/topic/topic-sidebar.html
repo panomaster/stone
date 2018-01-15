@@ -46,9 +46,9 @@
 
     <!--Panel-->
     <div>
-        <% if (typeof(silder_topics) !== 'undefined') { %>
+        <% if (typeof(slider_topics) !== 'undefined') { %>
         <div class="pano-qrate-tab-label">其他热门话题</div>
-        <%- partial('../topic/abstract-qrate', { collection: silder_topics, as: 'topic' }) %>
+        <%- partial('../topic/abstract-qrate', { collection: slider_topics, as: 'topic' }) %>
         
         <% } else { %>
 

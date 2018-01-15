@@ -41,16 +41,16 @@ exports.index = function (req, res, next) {
   if (topic_id.length !== 24) {
     return res.render404('此话题不存在或已被删除。');
   }
-  var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect', 'silder_topics', 'tab_topics', 'mtab_topics'];
+  var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect', 'slider_topics', 'tab_topics', 'mtab_topics'];
   var ep = EventProxy.create(events,
-    function (topic, other_topics, no_reply_topics, is_collect, silder_topics, tab_topics, mtab_topics) {
+    function (topic, other_topics, no_reply_topics, is_collect, slider_topics, tab_topics, mtab_topics) {
     res.render('topic/index', {
       topic: topic,
       author_other_topics: other_topics,
       no_reply_topics: no_reply_topics,
       is_uped: isUped,
       is_collect: is_collect,
-      silder_topics:silder_topics,
+      slider_topics:slider_topics,
       tab_topics:tab_topics,
       mtab_topics:mtab_topics
     });
@@ -93,8 +93,8 @@ exports.index = function (req, res, next) {
     
     var options1 = { limit: 5, sort: '-top -last_reply_at'};
     var query1 = { top: true};
-    Topic.getTopicsByQuery(query1, options1, ep.done('silder_topics', function(silder_topics){
-      return silder_topics;
+    Topic.getTopicsByQuery(query1, options1, ep.done('slider_topics', function(slider_topics){
+      return slider_topics;
     }));
 
     var options2 = { limit: 5, sort: '-top -last_reply_at'};

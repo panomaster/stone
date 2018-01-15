@@ -4,9 +4,9 @@
 
 <div class="swiper-container lg-swiper" style="margin-bottom: 10px; width:100%; box-shadow: 0px 1px 0px rgb(219, 219, 219)">
     <div class="swiper-wrapper">
-        <% if (typeof(silder_topics) !== 'undefined') { %>
-            <% if (silder_topics.length > 0) { %>
-            <%- partial('topic/abstract-lg-swiper', { collection: silder_topics, as: 'topic' }) %>
+        <% if (typeof(slider_topics) !== 'undefined') { %>
+            <% if (slider_topics.length > 0) { %>
+            <%- partial('topic/abstract-lg-swiper', { collection: slider_topics, as: 'topic' }) %>
             <% } %>
         <% } %>
 

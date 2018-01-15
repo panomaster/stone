@@ -49,8 +49,8 @@ exports.index = function (req, res, next) {
     // get slider_topics
     var options = { limit: 5, sort: '-top -last_reply_at'};
     var query = { top: true};
-    Topic.getTopicsByQuery(query, options, proxy.done('silder_topics', function(silder_topics){
-      return silder_topics;
+    Topic.getTopicsByQuery(query, options, proxy.done('slider_topics', function(slider_topics){
+      return slider_topics;
     }));
     return topics;
   }));
@@ -105,8 +105,8 @@ exports.index = function (req, res, next) {
   // END 取分页数据
 
   var tabName = renderHelper.tabName(tab);
-  proxy.all('topics', 'tops', 'no_reply_topics', 'pages', 'silder_topics',
-    function (topics, tops, no_reply_topics, pages, silder_topics) {
+  proxy.all('topics', 'tops', 'no_reply_topics', 'pages', 'slider_topics',
+    function (topics, tops, no_reply_topics, pages, slider_topics) {
       res.render('index', {
         topics: topics,
         current_page: page,
@@ -119,7 +119,7 @@ exports.index = function (req, res, next) {
         tab: tab,
         mtab: mtab,
         pageTitle: tabName && (tabName + '版块'),
-        silder_topics:silder_topics,
+        slider_topics:slider_topics,
       });
     });
 };

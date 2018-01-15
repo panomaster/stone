@@ -2,9 +2,11 @@
   .page-link {
     background-color: transparent;
     font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
   }
   .active .page-link {
-    border-radius: 2px;
+    border-radius: 50%;
     transition: all 0.2s linear;
     @extend.z-depth-1;
     &:hover {
@@ -20,6 +22,7 @@
       border-radius: 50%;
       margin-left: 2px;
       margin-right: 2px;
+      background-color: rgba(128, 128, 128, 0.404);
       &:hover {
         border-radius: 50%;
       }
@@ -71,6 +74,7 @@
   &.pg-bluegrey {
     .active .page-link {
       background-color: #3F729B;
+      color: white;
     }
   }
   &.pg-amber {

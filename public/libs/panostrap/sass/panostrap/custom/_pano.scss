@@ -160,7 +160,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: rgb(196, 196, 196);
+  background-color: rgba(196, 196, 196, 0.5);
   height: 100%;
 } 
 
@@ -293,7 +293,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
+  background-color: rgba(196, 196, 196, 0.5);
   height: 300px; 
 }
 
@@ -306,7 +306,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
+  background-color: rgba(196, 196, 196, 0.5);
   width: 100%;
 }
 
@@ -331,13 +331,13 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
-  height: 70px;
+  background-color: rgba(196, 196, 196, 0.5);
+  height: 78px;
 }
 
 
 .pano-qrate-bg-caption {
-  height: 70px;
+  height: 78px;
 }
 
 .pano-qrate-tab-label {
@@ -357,9 +357,10 @@ body{
 .pano-qrate-title-dark {
   color: rgb(34, 33, 33);
   font-weight: 300;
-  font-size: 12px;
+  font-size: 14px;
   padding-left: 0px;
   padding-right: 0px;
+  font-weight: 600;
 }
 
 .pano-qrate-desc-dark {
@@ -380,8 +381,9 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
-  height: 130px; 
+  background-color: rgba(196, 196, 196, 0.5);
+  height: 100%;
+  border-radius: 0px;
 }
 .pano-abstract-bg-caption {
   height: 130px; 
@@ -547,3 +549,5 @@ body{
   padding: 0px; 
   margin: 0px;
 }
+
+

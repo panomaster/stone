@@ -143,18 +143,21 @@
 
   .pano-abstract-box{
     float: left;
-    background-color: white;
+    background-color: transparent;
     padding: 0px;
     padding-bottom: 10px;
     margin-bottom: 12px;
     border: none;
   }
+  
   .pano-abstract-bg {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-color: #bdbdbd;
-    height: 140px;
+    background-color:rgba(215, 236, 235, 0.9);
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
   }
 
   .pano-abstract-bg-caption {
@@ -263,15 +266,12 @@
     padding: 0px; 
     margin: 0px;
   }
-
-
 }
-
 
 @media (max-width: 992px) {
   body{
     font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
-    background-color: white;
+    background-color: rgba(234, 234, 234, 0.2);
   }
 }  
 
@@ -280,7 +280,6 @@
     display: none;
   }
 }  
-
 
 @media (max-width: 576px) {
   .hidden-sm {

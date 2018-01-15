@@ -8199,10 +8199,12 @@ button:focus {
 .pagination .page-link {
   background-color: transparent;
   font-size: 0.8rem;
+  width: 30px;
+  height: 30px;
 }
 
 .pagination .active .page-link {
-  border-radius: 2px;
+  border-radius: 50%;
   transition: all 0.2s linear;
 }
 
@@ -8214,6 +8216,7 @@ button:focus {
   border-radius: 50%;
   margin-left: 2px;
   margin-right: 2px;
+  background-color: rgba(128, 128, 128, 0.404);
 }
 
 .pagination.pagination-circle .page-link:hover {
@@ -8260,6 +8263,7 @@ button:focus {
 
 .pagination.pg-bluegrey .active .page-link {
   background-color: #3F729B;
+  color: white;
 }
 
 .pagination.pg-amber .active .page-link {
@@ -19494,7 +19498,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #c4c4c4;
+  background-color: rgba(196, 196, 196, 0.5);
   height: 100%;
 }
 
@@ -19628,7 +19632,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
+  background-color: rgba(196, 196, 196, 0.5);
   height: 300px;
 }
 
@@ -19640,7 +19644,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
+  background-color: rgba(196, 196, 196, 0.5);
   width: 100%;
 }
 
@@ -19665,12 +19669,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
-  height: 70px;
+  background-color: rgba(196, 196, 196, 0.5);
+  height: 78px;
 }
 
 .pano-qrate-bg-caption {
-  height: 70px;
+  height: 78px;
 }
 
 .pano-qrate-tab-label {
@@ -19690,9 +19694,10 @@ body {
 .pano-qrate-title-dark {
   color: #222121;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 14px;
   padding-left: 0px;
   padding-right: 0px;
+  font-weight: 600;
 }
 
 .pano-qrate-desc-dark {
@@ -19713,8 +19718,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #bdbdbd;
-  height: 130px;
+  background-color: rgba(196, 196, 196, 0.5);
+  height: 100%;
+  border-radius: 0px;
 }
 
 .pano-abstract-bg-caption {
@@ -20015,7 +20021,7 @@ body {
   }
   .pano-abstract-box {
     float: left;
-    background-color: white;
+    background-color: transparent;
     padding: 0px;
     padding-bottom: 10px;
     margin-bottom: 12px;
@@ -20025,8 +20031,10 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-color: #bdbdbd;
-    height: 140px;
+    background-color: rgba(215, 236, 235, 0.9);
+    height: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
   }
   .pano-abstract-bg-caption {
     height: 140px;
@@ -20130,7 +20138,7 @@ body {
 @media (max-width: 992px) {
   body {
     font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
-    background-color: white;
+    background-color: rgba(234, 234, 234, 0.2);
   }
 }
 

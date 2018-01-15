@@ -1,15 +1,27 @@
 
-<div class="col-12 py-2 px-0" style="height: 75px;">
+<div class="col-12 py-4 px-1 pano-valign pano-border-bottom" style="height: 80px;">
     <a href="/topic/<%= topic._id %>" title="<%= topic.title %>">
         <div class="col-3 col-left pano-qrate-bg" style="background-image:URL(<%= topic.thumbnail %>);">
         </div>
-        <!--Excerpt-->
-        <div class="col-9 col-left px-2" style="background-color:white; height: 70px;" >
-            <div class="pano-qrate-title-dark" style="font-weight: 500"><%= topic.title %></div>
-            <div class="pano-qrate-desc-dark pano-cut1" style="color: grey"><%= topic.desc %></div>   
+        <div class="col-9 col-left pano-valign px-2" style="background-color:white; height: 70px;" >
+            <span class="logo-text" style="margin-right: 2px; font-size: 10px">
+                <%= topic.tabName%>
+                <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
+                <% } else { %>
+                | <%= topic.mtabName%>
+                <% } %>
+            </span>
+            <div class="pano-qrate-title-dark pano-cut2" style="font-weight: 500">
+                <%= topic.title %>
+            </div>
+            <div class="pano-qrate-desc-dark pano-cut1" style="color: grey">
+                <%= topic.desc %>
+            </div>   
         </div>
     </a>
 </div>
 <div class="clearfix"></div>
+
+
 
 

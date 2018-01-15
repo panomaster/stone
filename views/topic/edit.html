@@ -24,7 +24,7 @@
               <fieldset>
                 <!-- 封面上传按钮 -->
                 <div id="cover_div">
-                    <div class="btn btn-primary btn-sm btn-round submit_btn" style="padding:0" id="cover_btn" name="cover_btn">
+                    <div class="btn btn-primary btn-sm btn-round submit_btn" style="padding:0; background-color: transparent; box-shadow: none" id="cover_btn" name="cover_btn">
                       上传封面
                     </div>
                   <!-- 封面图片显示区 -->
@@ -65,10 +65,10 @@
 
                 <span id="topic_create_warn"></span>
                 <!-- 内容标题 -->		
-                <textarea autofocus class='form-control' id='title' name='title' rows='1' maxlength="20" 
+                <textarea autofocus class='form-control' id='title' name='title' rows='1' maxlength="50" 
                           placeholder="标题字数 10 字以上"><%= typeof(title) !== 'undefined' && title || '' %></textarea>
                 <!-- 内容简介 -->						
-                <textarea class='form-control' id='desc' name='desc' rows='1' maxlength="40"
+                <textarea class='form-control' id='desc' name='desc' rows='1' maxlength="100"
                           placeholder="简介字数20~40字"><%= typeof(desc) !== 'undefined' && desc || '' %></textarea>		
 
             <div class="clearfix"></div>
@@ -146,19 +146,33 @@
     });
     // END 版块选择的检查，必须选择
 
-    // 选择招聘版块时，给出提示
+    // 不同TAB选择时的告警信息 
     $('#tab-value').on('change', function () {
       var $this = $(this);
       var value = $this.val();
       var warnMsg = '';
-      if (value === 'accident') {
-        warnMsg = '<strong>为避免被管理员删帖，发帖时请好好阅读<a href="http://cnodejs.org/topic/541ed2d05e28155f24676a12" target="_blank">《招聘帖规范》</a></strong>';
-      } else if (value === 'story') {
-        warnMsg = '<strong>提问时，请遵循 <a href="http://doc.zengrong.net/smart-questions/cn.html" target="_blank">《提问的智慧》</a>中提及的要点，以便您更接收到高质量回复。</strong>'
+      if (value === 'mall') {
+        warnMsg = '<strong><span style="padding-left: 20px; font-size: 12px">请不要交易假冒伪劣商品</span></strong>';
+      } else if (value === 'activity') {
+        warnMsg = '<strong><span style="padding-left: 20px; font-size: 12px">仅限户外活动</span></strong>'
       }
       $('#topic_create_warn').html(warnMsg);
     });
-    // END 选择招聘版块时，给出提示
+    // END 不同TAB选择时的告警信息
+
+    // 不同MTAB选择时的告警信息 
+    $('#mtab-value').on('change', function () {
+      var $this = $(this);
+      var value = $this.val();
+      var warnMsg = '';
+      if (value === 'accident') {
+        warnMsg = '<strong><span style="padding-left: 20px; font-size: 12px">发布事故信息请注意上传内容的真实性。</span></strong>';
+      } else if (value === 'news') {
+        warnMsg = '<strong><span style="padding-left: 20px; font-size: 12px">请注明新闻出处。</span></strong>'
+      }
+      $('#topic_create_warn').html(warnMsg);
+    });
+    // END 不同MTAB选择时的告警信息
     this.file = false;
     var _csrf1 = $('[name=_csrf1]').val();
 
@@ -197,10 +211,10 @@
         $('#cover').val(res.url);
         $('#thumbnail').val(res.url+"?imageMogr2/auto-orient/thumbnail/100000@/blur/1x0/quality/75|imageslim");
         //self.editor.push('!['+ file.name +']('+ res.url +')');
-        alert(res.url || '服务器走神了，上传失败!!!!!!!!!!!!!!!!!');
+        alert(res.url || '服务器链接失败，上传无法完成！');
       }
       else{
-        alert(res.msg || '服务器走神了，上传失败');
+        alert(res.msg || '服务器链接失败，上传无法完成！');
       }
     });
 
@@ -214,7 +228,7 @@
       switch(type){
         case 'Q_EXCEED_SIZE_LIMIT':
         case 'F_EXCEED_SIZE':
-          self.showError('文件太大了, 不能超过2M');
+          self.showError('文件过大, 不能超过2M');
           break;
         case 'Q_TYPE_DENIED':
           self.showError('只能上传图片');
@@ -226,7 +240,7 @@
 
     this.uploader.on('uploadError', function(){
       //self.removeFile();
-      alert('服务器走神了，上传失败');
+      alert('服务器链接失败，上传无法完成！');
     });
     
   })();

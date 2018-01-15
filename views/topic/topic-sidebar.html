@@ -21,10 +21,11 @@
     </div>
 
     <!--Panel-->
-    <div class="mb-2">
+    <div>
         <% if (typeof(tab_topics) === 'undefined' || tab_topics.length > 0) { %>
-        <div class="pano-qrate-tab-lable"><%= topic.tabName %>板块其他话题</div>
+        <div class="pano-qrate-tab-label"><%= topic.tabName %>板块其他话题</div>
         <%- partial('../topic/abstract-qrate', { collection: tab_topics, as: 'topic' }) %>
+        
         <% } else { %>
         
         <% } %>
@@ -32,10 +33,11 @@
     <!--/.Panel-->
 
     <!--Panel-->
-    <div class="mb-2">
+    <div>
         <% if (typeof(mtab_topics) === 'undefined' || mtab_topics.length > 0) { %>
-        <div class="pano-qrate-tab-lable"><%= topic.mtabName %>板块其他话题</div>
+        <div class="pano-qrate-tab-label"><%= topic.mtabName %>板块其他话题</div>
         <%- partial('../topic/abstract-qrate', { collection: mtab_topics, as: 'topic' }) %>
+        
         <% } else { %>
 
         <% } %>
@@ -43,10 +45,11 @@
     <!--/.Panel-->
 
     <!--Panel-->
-    <div class="mb-2">
+    <div>
         <% if (typeof(silder_topics) !== 'undefined') { %>
-        <div class="pano-qrate-tab-lable">其他热门话题</div>
+        <div class="pano-qrate-tab-label">其他热门话题</div>
         <%- partial('../topic/abstract-qrate', { collection: silder_topics, as: 'topic' }) %>
+        
         <% } else { %>
 
         <% } %>
@@ -54,10 +57,11 @@
     <!--/.Panel-->
 
     <!--Panel-->
-    <div class="mb-2">
+    <div>
         <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
-        <div class="pano-qrate-tab-lable">作者其他话题</div>
+        <div class="pano-qrate-tab-label">作者其他话题</div>
         <%- partial('../topic/abstract-qrate', { collection: author_other_topics, as: 'topic' }) %>
+        
         <% } else { %>
  
         <% } %>
@@ -65,23 +69,18 @@
     <!--/.Panel-->
 
     <!--Panel-->
-    <div class="mb-2">
+    <div>
         <% if (typeof(no_reply_topics) !== 'undefined') { %>
         <% if (no_reply_topics.length > 0) { %>
-        <div class="pano-qrate-tab-lable">没有回复的话题</div>
+        <div class="pano-qrate-tab-label">没有回复的话题</div>
         <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
-
+        
         <% } else { %>
 
         <% } %>
         <% } %>
     </div>
-
     <!--/.Panel-->
-
-    
-
-
 
 </div> 
 

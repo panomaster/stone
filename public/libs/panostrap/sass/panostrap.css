@@ -19413,6 +19413,10 @@ body {
   text-shadow: 1px 1px 1px #000;
 }
 
+.pano-hide {
+  display: none;
+}
+
 .pano-hr {
   display: block;
   content: ' ';
@@ -19581,7 +19585,9 @@ body {
 
 .pano-topic-index-caption {
   height: 300px;
-  padding-top: 200px;
+  padding-top: 160px;
+  padding-right: 10%;
+  padding-left: 10%;
   text-shadow: 1px 1px 1px black;
 }
 
@@ -20934,14 +20940,22 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .swiper-button-next {
   position: absolute;
   top: 50%;
-  width: 27px;
-  height: 44px;
+  width: 60px;
+  height: 50%;
   margin-top: -22px;
   z-index: 10;
   cursor: pointer;
   background-size: 27px 44px;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.swiper-button-prev {
+  text-align: left;
+}
+
+.swiper-button-next {
+  text-align: right;
 }
 
 .swiper-button-prev.swiper-button-disabled,

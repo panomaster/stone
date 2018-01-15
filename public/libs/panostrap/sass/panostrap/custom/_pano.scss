@@ -75,6 +75,10 @@ body{
   text-shadow:1px 1px 1px #000;
 }
 
+.pano-hide {
+  display: none;
+}
+
 .pano-hr {
   display: block;
   content: ' ';
@@ -242,7 +246,9 @@ body{
 
 .pano-topic-index-caption {
   height: 300px;
-  padding-top: 200px;
+  padding-top: 160px;
+  padding-right: 10%;
+  padding-left: 10%;
   text-shadow: 1px 1px 1px black;
 }
 

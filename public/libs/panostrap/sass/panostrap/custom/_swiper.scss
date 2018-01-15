@@ -159,14 +159,21 @@
   .swiper-button-next {
     position: absolute;
     top: 50%;
-    width: 27px;
-    height: 44px;
+    width: 60px;
+    height: 50%;
     margin-top: -22px;
     z-index: 10;
     cursor: pointer;
     background-size: 27px 44px;
     background-position: center;
     background-repeat: no-repeat;
+  }
+  .swiper-button-prev,
+  {
+    text-align: left;
+  }
+  .swiper-button-next {
+    text-align: right; 
   }
   .swiper-button-prev.swiper-button-disabled,
   .swiper-button-next.swiper-button-disabled {

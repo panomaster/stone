@@ -36,33 +36,41 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Italic Title',		element: 'h2', styles: { 'font-style': 'italic' } },
 	{ name: 'Subtitle',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
 	{
-		name: 'Special Container',
-		element: 'div',
+		name: '蓝色标题框',
+		element: 'div', 
 		styles: {
 			padding: '5px 10px',
-			background: '#eee',
-			border: '1px solid #ccc'
+			background: 'rgb(3,169,244)',
+			color: 'white',
+			margin: '5px',
+			'font-style': 'strong',
+			'font-size': '18px',
+			'font-weight': '700',
+			'font-family': 'Microsoft Yahei',
 		}
 	},
 	{
-		name: 'Special Container2',
-		element: 'div',
-		styles: {
-			padding: '5px 10px',
-			background: '#dd00ff',
-			border: '1px solid #ccc'
-		}
-	},
-
-	{
-		name: 'Special Container3',
+		name: '灰色边框',
 		element: 'div',
 		styles: {
 			padding: '10px 20px',
-			background: '#ddyy00',
-			border: '1px solid #ccc'
+			border: '1px solid #ccc',
+			margin: '5px',
+			'font-size': '12px',
 		}
 	},
+	{
+		name: '灰底框',
+		element: 'div',
+		styles: {
+			padding: '10px 20px',
+			background: '#eee',
+			border: '1px solid #ccc',
+			margin: '5px',
+			'font-size': '12px',
+		}
+	},
+
 
 	/* Inline styles */
 

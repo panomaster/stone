@@ -24,21 +24,18 @@
     <%- partial('adv/side-adv-pl') %> 
 
     <!--Panel-->
-    <div class="card-header grey darken-2 white-text">
-        无人回复的话题
-    </div>
-    <div class="py-2">
+    <div>
         <% if (typeof(no_reply_topics) !== 'undefined') { %>
         <% if (no_reply_topics.length > 0) { %>
-        
+        <div class="pano-qrate-tab-label">没有回复的话题</div>
         <%- partial('topic/abstract-qrate', { collection: no_reply_topics, as: 'topic' }) %>
         
         <% } else { %>
-        <p>无</p>
+
         <% } %>
         <% } %>
     </div>
-    <!--/.Panel-->  
+    <!--/.Panel-->    
     
 
     <!--Panel ------------------------------- display none ... not ready -->

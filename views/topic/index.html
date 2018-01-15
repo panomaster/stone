@@ -6,72 +6,25 @@
     <div id="content" class="col-lg-8 order-1" style="background-color: white">
         <div class='panel'>
           <div class='header topic_header'>
-              <div class="pano-toic-index-blockquote"><%= topic.desc %></div>  
+            <div class="pano-toic-index-blockquote"><%= topic.desc %></div>  
             <div class="card-body text-center" style="font-size: 12px;">
               <span>
-                作者 <a href="/user/<%= topic.author.loginname %>"><%= topic.author.name %></a> | 
+                <a href="/user/<%= topic.author.loginname %>"><%= topic.author.name %></a> 
               </span>
               <span>
                 发布于<%= topic.create_at_ago() %> | 
               </span>
               <span>
-                <%= topic.visit_count %> 次浏览  | 
+                热度 <%= topic.visit_count %>
               </span>
+              <!-- <span>
               <% if (topic.create_at_ago() != topic.update_at_ago()) { %> | 
-              <span>
                 最后一次编辑是 <%= topic.update_at_ago() %> |
-              </span>
-              <% } %>
-              <% if (topic.tab) { %>
-              <span> 
-                来自 <%= topic.tabName %>
-              </span>
-              <%}%>
-
+              </span> 
+              <% } %> -->
             </div>
 
-            <div class="text-center" style="font-size: 12px;">
-              <% if (current_user) { %>
-                  <% if (current_user.is_admin) { %>
-                    <a href='/topic/<%= topic._id %>/top' data-method="post">
-                      <% if (topic.top) { %>
-                        <span class="btn-floating btn-sm grey"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
-                      <% } else { %>
-                        <span class="btn-floating btn-sm grey"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-                      <% } %>
-                    </a>
-                    <a href='/topic/<%= topic._id %>/good' data-method="post">
-                      <% if (topic.good) { %>
-                        <span class="btn-floating btn-sm grey"><i class="fa fa-star-o" aria-hidden="true"></i></span>
-                      <% } else { %>
-                        <span class="btn-floating btn-sm grey"><i class="fa fa-star" aria-hidden="true"></i></span>
-                      <% } %>
-                    </a>
-                    <a href='/topic/<%= topic._id %>/lock' data-method="post">
-                      <% if (topic.lock) { %>
-                        <span class="btn-floating btn-sm grey"><i class="fa fa-unlock" aria-hidden="true"></i></span>
-                      <% } else { %>
-                        <span class="btn-floating btn-sm grey"><i class="fa fa-lock" aria-hidden="true"></i></span>
-                      <% } %>
-                    </a>
-                    <a href='/topic/<%= topic._id %>/edit'>
-                      <span class="btn-floating btn-sm grey"><i class="fa fa-edit" aria-hidden="true"></i></span>
-                    <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
-                      <span class="btn-floating btn-sm grey"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                    </a>
-                    <% } else { %>
-                    <% if (current_user._id.equals(topic.author_id)) { %>
-                    <a href='/topic/<%= topic._id %>/edit'>
-                      <span class="btn-floating btn-sm grey"><i class="fa fa-edit" aria-hidden="true"></i></span>
-                    </a>
-                    <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
-                      <span class="btn-floating btn-sm grey"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                    </a>
-                    <% } %>
-                  <% } %>
-                <% } %>
 
-            </div>  
           </div>
           <div class="clear-fix"></div>
           <div class='card-body inner topic'>
@@ -102,7 +55,6 @@
                 }
               }  
             </style>
-
             <div class="text-center">
               <% if (current_user) { %>
                 <input class="btn btn-info btn-sm  btn-rounded <%= is_collect ? '' : 'btn btn-success btn-sm' %> collect_btn" type="submit" value="<%= is_collect ? '取消收藏' : '收藏' %>" action="<%= is_collect ? 'de_collect' : 'collect' %>">
@@ -128,6 +80,51 @@
             <hr>
           </div>
           
+          <% if (current_user) { %>
+              <% if (current_user.is_admin) { %>
+                <div class="text-center p-3 m-3" style="font-size: 12px;">
+                <p>管理话题/管理员</p>
+                <a href='/topic/<%= topic._id %>/top' data-method="post">
+                  <% if (topic.top) { %>
+                    <span class="btn-floating btn-sm logo-bg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                  <% } else { %>
+                    <span class="btn-floating btn-sm grey"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+                  <% } %>
+                </a>
+                <a href='/topic/<%= topic._id %>/good' data-method="post">
+                  <% if (topic.good) { %>
+                    <span class="btn-floating btn-sm logo-bg"><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                  <% } else { %>
+                    <span class="btn-floating btn-sm grey"><i class="fa fa-star" aria-hidden="true"></i></span>
+                  <% } %>
+                </a>
+                <a href='/topic/<%= topic._id %>/lock' data-method="post">
+                  <% if (topic.lock) { %>
+                    <span class="btn-floating btn-sm red"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                  <% } else { %>
+                    <span class="btn-floating btn-sm grey"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                  <% } %>
+                </a>
+                <a href='/topic/<%= topic._id %>/edit'>
+                  <span class="btn-floating btn-sm success"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                <a href='javascript:;'data-id="<%= topic._id %>" class='delete_topic_btn'>
+                  <span class="btn-floating btn-sm success"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                </a>
+                </div>
+                <% } else { %>
+                <% if (current_user._id.equals(topic.author_id)) { %>
+                <div class="text-center p-3 m-3" style="font-size: 12px;">  
+                <p>管理话题</p>  
+                <a href='/topic/<%= topic._id %>/edit'>
+                  <span class="btn-floating btn-sm success"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                </a>
+                <a href='javascript:;' data-id="<%= topic._id %>" class='delete_topic_btn'>
+                  <span class="btn-floating btn-sm success"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                </a>
+                </div>
+                <% } %>
+              <% } %>
+          <% } %>
         </div>
         <!-- Accordion card -->
         添加回复

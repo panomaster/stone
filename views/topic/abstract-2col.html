@@ -16,8 +16,14 @@
               <%= topic.tabName%> 
               <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
               <% } else { %> 
-                | <%= topic.mtabName%>
+                | <%= topic.mtabName%> 
               <% } %>
+              <% if (topic.top) { %>
+                | 置顶
+              <% } %>  
+              <% if (topic.good) { %>
+                | 精华
+              <% } %>  
             </span>  
             <a href="/topic/<%= topic._id %>">
               <div class="pano-abstract-title pano-cut2">  

@@ -4,13 +4,13 @@
 <div class="clearfix"></div>
   
 <nav class='pagination mt-3 mb-3' current_page='<%= current_page %>'>
-  <ul class="pagination pg-bluegrey">
+  <ul class="pagination pg-bluegrey" style="margin-left: auto; margin-right: auto;">
     <% var base_url = base + (base.indexOf('?') < 0 ? '?' : '&')
       + 'tab=' + (typeof tab !== 'undefined' ? tab : '') + '&page='; %>
     <% if (current_page == 1) { %>
-    <li  class="page-item disabled"><a class="page-link"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></a></li>
+    <li  class="page-item disabled mx-1"><a class="page-link"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></a></li>
     <% } else { %>
-    <li class="page-item"><a class="page-link" href="<%= base_url %>1"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></a></li>
+    <li class="page-item mx-1"><a class="page-link" href="<%= base_url %>1"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i></a></li>
     <% } %>
 
     <%
@@ -19,25 +19,25 @@
     %>
 
     <% if (page_start > 1) { %>
-    <li class="page-item"><a class="page-link">...</a></li>
+    <li class="page-item mx-1"><a class="page-link">...</a></li>
     <% } %>
 
     <% for(var i = page_start; i <= page_end; i++) { %>
     <% if (i === current_page) { %>
-    <li class="page-item disabled"><a class="page-link"><%= i %></a></li>
+    <li class="page-item disabled mx-1"><a class="page-link"><%= i %></a></li>
     <% } else { %>
-    <li class="page-item"><a class="page-link" href='<%= base_url + i %>'><%= i %></a></li>
+    <li class="page-item mx-1"><a class="page-link" href='<%= base_url + i %>'><%= i %></a></li>
     <% } %>
     <% } %>
 
     <% if (page_end < pages ) { %>
-    <li class="page-item"><a class="page-link">...</a></li>
+    <li class="page-item mx-1"><a class="page-link"> ... </a></li>
     <% } %>
 
     <% if (current_page == pages) { %>
-    <li class="page-item disabled"><a class="page-link"><i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></a></li>
+    <li class="page-item disabled mx-1"><a class="page-link"><i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></a></li>
     <% } else { %>
-    <li class="page-item"><a class="page-link" href='<%= base_url + pages %>'><i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></a></li>
+    <li class="page-item mx-1"><a class="page-link" href='<%= base_url + pages %>'><i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></a></li>
     <% } %>
   </ul>
 </nav>          

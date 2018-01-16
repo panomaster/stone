@@ -5,11 +5,11 @@
     background-color: white;
   }
 
-  /*
+
   .main{
-    margin-top: 54px;
-    margin-bottom: 54px;
-  } */ 
+    margin-top: 0px;
+    margin-bottom: 0px;
+  } 
 
   .topic-tab {
     text-align: center;
@@ -46,6 +46,18 @@
     padding-right: 0px;
     padding-left: 0px;
   }
+
+  .pano-nav-color-1 {
+    transition: all 0.5s ease-in-out;
+    background: -moz-linear-gradient(top, rgba(92, 92, 92, 0.2), transparent); 
+    background: -webkit-linear-gradient(top, rgba(92, 92, 92, 0.2), transparent);
+    background: -o-linear-gradient(top, rgba(92, 92, 92, 0.2), transparent);
+  }
+  .pano-nav-color-2 {
+    background: black;
+    transition: all 1s ease-in-out;
+  }    
+  
   .pano-topic-index-head {
     height: 200px;
     background-repeat: no-repeat;

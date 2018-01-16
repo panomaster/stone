@@ -10635,7 +10635,6 @@ button, html [type="button"], [type="reset"], [type="submit"] {
   display: flex;
   white-space: nowrap;
   overflow-x: auto;
-  border-radius: 0.3rem 0.3rem 0 0;
 }
 
 @media (min-width: 62rem) {
@@ -10660,17 +10659,18 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 .classic-tabs li a {
   display: block;
-  padding: 20px 24px;
   font-size: 13px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
   border-radius: 0;
+  color: grey;
+  border-bottom: 3px solid #dbdbdb;
 }
 
 .classic-tabs li a.active {
-  border-bottom: 3px solid;
-  color: #fff;
+  border-bottom: 3px solid #307cee;
+  color: black;
 }
 
 @media (min-width: 62em) {
@@ -12364,7 +12364,7 @@ a.pswp__share--download:hover {
 .chip {
   display: inline-block;
   height: 32px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
   line-height: 32px;
@@ -12815,7 +12815,6 @@ a.pswp__share--download:hover {
   border-color: red;
 }
 
-/* @import "panostrap/pro/material-select"; */
 /***************
      Switch 
 ***************/
@@ -19011,6 +19010,71 @@ section .contact i {
   color: #6b89a5;
 }
 
+.show {
+  width: 95%;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100px;
+  border: 5px solid #eee;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+body {
+  min-width: 320px;
+  max-width: 640px;
+  margin: 0 auto;
+  color: #333;
+  padding: 0;
+  font: "Microsoft Yahei",Verdana,Tahoma;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.swiper1 {
+  width: 100%;
+}
+
+.swiper1 .selected {
+  color: #ec5566;
+  border-bottom: 2px solid #ec5566;
+}
+
+.swiper1 .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  height: 50px;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.swiper2 {
+  width: 100%;
+  height: 400px;
+}
+
+.swiper2 .swiper-slide {
+  height: 400px;
+  background-color: #ccc;
+  text-align: center;
+}
+
 /* common */
 .user {
   -webkit-border-radius: 3px;
@@ -19364,10 +19428,10 @@ body {
   color: #03a9f4 !important;
 }
 
-/* 
-.main{
+.main {
   margin-top: 65px;
-} */
+}
+
 .footer.page-footer {
   background-color: #414141;
 }
@@ -19407,6 +19471,16 @@ body {
 
 .alert {
   margin: 0px;
+}
+
+.pano-nav-color-1 {
+  transition: all 0.5s ease-in-out;
+  background: #363636;
+}
+
+.pano-nav-color-2 {
+  background: black;
+  transition: all 1s ease-in-out;
 }
 
 .pano-text-grey-shadow {
@@ -19905,11 +19979,10 @@ body {
     font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
     background-color: white;
   }
-  /*
-  .main{
-    margin-top: 54px;
-    margin-bottom: 54px;
-  } */
+  .main {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
   .topic-tab {
     text-align: center;
     width: 40px;
@@ -19942,6 +20015,16 @@ body {
     min-height: 1px;
     padding-right: 0px;
     padding-left: 0px;
+  }
+  .pano-nav-color-1 {
+    transition: all 0.5s ease-in-out;
+    background: -moz-linear-gradient(top, rgba(92, 92, 92, 0.2), transparent);
+    background: -webkit-linear-gradient(top, rgba(92, 92, 92, 0.2), transparent);
+    background: -o-linear-gradient(top, rgba(92, 92, 92, 0.2), transparent);
+  }
+  .pano-nav-color-2 {
+    background: black;
+    transition: all 1s ease-in-out;
   }
   .pano-topic-index-head {
     height: 200px;

@@ -1,5 +1,5 @@
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark panotr h6 verti-hidden scrolling-navbar" style="font-size: 12px;">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark pano-nav-color-1 h6 verti-hidden" style="font-weight: 600; font-size: 14px; box-shadow: none; text-shadow: 1px 1px 1px black">
     <div class="container">
         <a class='brand px-10' href='/'>
             <% if (config.site_logo) {%>
@@ -57,26 +57,17 @@
     </div>   
 </nav>
  
-<style>
-    .panotr {
-        background-color: rgba(128, 128, 128, 0.493);
-        transition: all 1s ease-in-out;
-    }
-    .black {
-        transition: all 1s ease-in-out;
-    }
-</style>
 
 
 <script>
 var OFFSET_TOP = 30;
 $(window).scroll(function () {
   if ($('.navbar').offset().top > OFFSET_TOP) {
-    $('.scrolling-navbar').addClass('black');
-    $('.scrolling-navbar').removeClass('panotr');
+    $('.navbar').addClass('pano-nav-color-2');
+    $('.navbar').removeClass('pano-nav-color-1');
   } else {
-    $('.scrolling-navbar').removeClass('black');
-    $('.scrolling-navbar').addClass('panotr');
+    $('.navbar').removeClass('pano-nav-color-2');
+    $('.navbar').addClass('pano-nav-color-1');
   }
 });
 </script>

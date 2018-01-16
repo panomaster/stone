@@ -27,10 +27,10 @@ body{
   color: rgb(3,169,244)!important;
 }
 
-/* 
+
 .main{
   margin-top: 65px;
-} */ 
+}
 
 .footer.page-footer {
   background-color: #414141;
@@ -71,6 +71,16 @@ body{
 .alert{
   margin: 0px;
 } 
+
+.pano-nav-color-1 {
+  transition: all 0.5s ease-in-out;
+  background: rgb(54, 54, 54);
+}
+.pano-nav-color-2 {
+  background: black;
+  transition: all 1s ease-in-out;
+}    
+
 
 .pano-text-grey-shadow {
   text-shadow:1px 1px 1px #000;

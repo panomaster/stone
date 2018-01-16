@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <%- partial('main-header') %>
+        <%- partial('sidebar') %>  
+        <div class="col-lg-8 order-1">
+            
+            <div>
+                <div style="padding-top: 2px; padding-bottom: 0; border-bottom: 1px solid #cfcfcf;">  
+                    <% [['all', '全部'], ].concat(mtabs).forEach(function (pair) {
+                    var value = pair[0];
+                    var text = pair[1]; %>
+                    <a href="<%= value ? '/?mtab=' + value : '/' %>" class="topic-tab <%= value === mtab ? 'current-tab' : '' %>">
+                    <div class="pano-vhalign"><%= text %></div>
+                    </a>
+                    <% }) %>
+                </div>
+
+                <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
+                <div>
+                    <%- partial('topic/list', {
+                    topics: topics,
+                    pages: pages,
+                    current_page: current_page,
+                    base: '/'
+                    }) %>
+                </div>
+                <% } else { %>
+                    
+                <div>
+                    <!--Panel-->
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="text-center">此版块暂时还没有话题</p>
+                        </div>
+                    </div>
+                    <!--/.Panel-->
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div> 
+</div> 
+
+<script>
+    var swiper = new Swiper('.rolling-mtab', {
+        slidesPerView: 5,
+        spaceBetween: 1,
+        freeMode: true,
+    });
+</script>

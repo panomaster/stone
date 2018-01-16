@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class='panel'>
-    <div class="header"><%= user.loginname %> 参与的话题</div>
+    <div class="header"><%= user.name %> 参与的话题</div>
     <div class="inner padding">
     <% if(typeof(topics) !== 'undefined' && topics.length > 0){ %>
     <%- partial('../topic/list',

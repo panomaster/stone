@@ -146,17 +146,17 @@
                 </div>
             </div>
             <% } else { %>
-            <div>
-                <div class="card-body text-center">
-                    <p>回复主题需要先登录</p>
-                    <a href='/signin'><span class="btn btn-sm btn-info bx-3 white-text">登录</span></a> | <a href='/signup'><span class="btn btn-sm btn-info bx-3 white-text">注册</span></a>
-                    <hr>
-                    <p><%= config.description %></p>
+              <!--Panel-->
+              <div class="my-2" style="width: 60%; margin-left: auto; margin-right: auto">              
+                <div class="card">
+                    <h6 class="card-header primary-color white-text text-center">回复主题需要先登录</h6>
+                    <div class="card-body text-center">
+                      <a href='/signin'><span class="btn btn-sm btn-info bx-5 white-text mx-2">登录</span></a><a href='/signup'><span class="btn btn-sm btn-info bx-5 white-text mx-2">注册</span></a>
+                    </div>
                 </div>
-            </div>
+              </div>
+              <!--/.Panel-->
             <% } %>
-
-
         <hr> 
         <!-- Accordion card -->
         <% if (topic.replies && topic.replies.length > 0) { %>

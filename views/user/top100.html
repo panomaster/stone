@@ -3,12 +3,6 @@
         <%- partial('sidebar-simple') %> 
         <div class="col-lg-8 order-1">
   <div class='panel'>
-    <div class='header'>
-      <ul class='breadcrumb'>
-        <li><a href='/'>主页</a><span class='divider'>/</span></li>
-        <li class='active'>Top100 积分榜</li>
-      </ul>
-    </div>
     <div class='inner'>
       <% if(typeof(users) !== 'undefined' && users.length > 0){ %>
       <table class='table table-condensed table-striped'>

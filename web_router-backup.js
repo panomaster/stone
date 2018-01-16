@@ -29,7 +29,6 @@ var router = express.Router();
 
 // home page
 router.get('/', site.index);
-router.get('/indexm', site.indexm);
 // sitemap
 router.get('/sitemap.xml', site.sitemap);
 // mobile app download

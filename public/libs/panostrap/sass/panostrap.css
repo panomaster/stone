@@ -12364,7 +12364,7 @@ a.pswp__share--download:hover {
 .chip {
   display: inline-block;
   height: 32px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
   line-height: 32px;
@@ -21515,6 +21515,4 @@ button.swiper-pagination-bullet {
   color: #777;
   font-weight: normal;
 }
- 
-
- /*# sourceMappingURL= panostrap.css.map */
+/*# sourceMappingURL=panostrap.css.map */

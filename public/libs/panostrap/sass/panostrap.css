@@ -19364,10 +19364,10 @@ body {
   color: #03a9f4 !important;
 }
 
-.main {
+/* 
+.main{
   margin-top: 65px;
-}
-
+} */
 .footer.page-footer {
   background-color: #414141;
 }
@@ -19905,10 +19905,11 @@ body {
     font-family: 'Microsoft Yahei',Tahoma,Helvetica,SimSun,sans-serif;
     background-color: white;
   }
-  .main {
+  /*
+  .main{
     margin-top: 54px;
     margin-bottom: 54px;
-  }
+  } */
   .topic-tab {
     text-align: center;
     width: 40px;

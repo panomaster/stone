@@ -1,3 +1,83 @@
+<style type="text/css">
+  .pano-touchslide-ul,.pano-touchslide-li{
+    padding:0;
+    margin:0;
+  }
+	.find_nav {
+		width: 100%;
+		height: 50px;
+		background-color: white;
+		z-index: 9999;
+		border-bottom: 2px solid #ddd;
+		display: -moz-box;
+		display: -webkit-box;
+    display: box;
+	}
+	.find_nav_left {
+		height: 50px;
+		position: relative;
+		overflow: hidden;
+		-moz-box-flex: 1;
+		-webkit-box-flex: 1;
+		box-flex: 1;
+	}
+	.find_nav_list {
+		position: absolute;
+		left: 0;
+	}
+	.find_nav_list ul {
+		position: relative;
+		white-space: nowrap;
+    font-size: 0;
+	}
+  .find_nav_list ul li span{
+    border-right: 1px solid #c6c7c7;
+    border-left: 1px solid #c6c7c7;
+  }
+
+  .find_nav_list ul li:first-child span{
+    border-right: 1px solid #c6c7c7;
+    border-left: 0;
+  }
+
+  .find_nav_list ul li:nth-last-child(2) span{
+    border-right: 0;
+    border-left: 1px solid #c6c7c7;
+  }
+  
+	.find_nav_list ul li {
+		display: inline-block;
+		padding: 0;
+    margin:0 20px;
+	}
+	.find_nav_list ul li a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		line-height: 50px;
+		font-size: 16px;
+		text-align: center;
+		color: #666;
+	}
+	.find_nav_cur a {
+    color: #0b8cf5 !important;
+    font-weight: 700;
+	}
+	.find_nav_list a.active{ color:rgb(49, 48, 48)}
+	.sideline {
+		display: block;
+		position: absolute;
+		border: 0;
+		height: 2px;
+		background-color: #48a5f4;
+		left: 0;
+		top: 48px;
+		pointer-events: none;
+  }
+  .swipe{ padding:2px 0 0 0;}
+  </style>
+
+
 <div class="container">
   <div class="row">
     <%- partial('sidebar-simple') %>
@@ -68,117 +148,164 @@
             <% } %>
         </div>
         <hr>
-        <div class="text-center" style="border:1px solid grey">
-          管理用户/话题<br>
-            <% if (current_user && current_user.is_admin) { %>
-              <% if (!user.is_star) { %>
-                <span class='btn btn-sm btn-success' id='set_star_btn' action='set_star'>设为达人</span>
-              <% } else { %>
-                <span class='btn btn-sm btn-default' id='set_star_btn' action='cancel_star'>取消达人</span>
-              <% } %>
+ 
+        <% if (current_user && current_user.is_admin) { %>
+          <div class="btn-group pull-right" style="width: 100%" >
+              <button class="btn btn-light-blue btn-sm dropdown-toggle" style="width: 100%; font-size: 14px;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  用户管理/话题管理
+              </button>
+              <div class="dropdown-menu" style="width: 100%">
+                <a class="dropdown-item text-center" href="#">
+                  <% if (!user.is_star) { %>
+                    <span class='btn btn-sm btn-light-blue' id='set_star_btn' action='set_star'>设为达人</span>
+                  <% } else { %>
+                    <span class='btn btn-sm btn-light-blue' id='set_star_btn' action='cancel_star'>取消达人</span>
+                  <% } %>
 
-              <% if (!user.is_block) { %>
-                <span class='btn btn-sm btn-success' id='set_block_btn' action='set_block'>屏蔽用户</span>
-              <% } else { %>
-                <span class='btn btn-sm btn-default' id='set_block_btn' action='cancel_block'>取消屏蔽用户</span>
-              <% } %>
+                  <% if (!user.is_block) { %>
+                    <span class='btn btn-sm btn-light-blue' id='set_block_btn' action='set_block'>屏蔽用户</span>
+                  <% } else { %>
+                    <span class='btn btn-sm btn-light-blue' id='set_block_btn' action='cancel_block'>取消屏蔽用户</span>
+                  <% } %>                    
 
-              <span class="btn btn-sm btn-success" id="delete_all">删除所有发言</span>
-              <br/> Email (管理者可见):
-              <a href="mailto:<%= user.email %>">
-                <%= user.email %>
-              </a>
-              <% if (!user.active) { %>
-                <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>" target="_blank">
-                  <span class="btn btn-sm btn-success">
-                    激活账号
-                  </span>
+                  <span class="btn btn-sm btn-light-blue" id="delete_all">删除所有发言</span>
+
+                  <% if (!user.active) { %>
+                    <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>" target="_blank">
+                      <span class="btn btn-sm btn-light-blue">
+                        激活账号
+                      </span>
+                    </a>
+                  <% } %>
+                  <div class="dropdown-divider"></div>
+                  <div class="text-center" style="width: 100%">
+                  <a href="mailto:<%= user.email %>" class="btn btn-sm btn-light-blue" >给用户发邮件</a>
+                  </div>
                 </a>
-              <% } %>
-            <% } %>
-        </div>
+              </div>
+          </div>
+        <% } %>
       </div>
     </div>
 
-        <div class='panel'  style="background-color:white">
-          <div class='header'>
-            <span class='col_fade'>最近创建的话题</span>
+    <div class="find_nav">
+      <div class="find_nav_left">
+          <div class="find_nav_list" id="pagenavi1">
+              <ul class="pano-touchslide-ul">
+                <li class="m-0 pano-touchslide-li"><a href="#" class="active"><span class="px-3">最近创建的话题</span></a></li>
+                <li class="m-0 pano-touchslide-li"><a href="#"><span class="px-3">最近参与的话题</span></a></li>
+                <li class="m-0 pano-touchslide-li sideline"></li>
+              </ul>
           </div>
-          <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
-            <%- partial('../topic/abstract-2col', { collection: recent_topics, as: 'topic' }) %>
-              
-                  <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1" style="border-radius: 5px">
-                      <a href="aaa ">
-                        <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg" style="background-image:URL(../public/images/climb_quickdraws2.png)">
-                            <span>广告</span>
-                        </div>
-                      </a>
-                      <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body">
-                        <div class="pano-abstract-contents">
-                          <a href="a">
-                            <p class="pano-abstract-title">
-                                广告标题   
-                            </p>
-                            <p class="pano-abstract-desc">          
-                                广告说明          
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="clearfix"></div>
-
-                <a class='dark' href="/user/<%= user.loginname %>/topics">查看更多»</a>
-              
-              <% } else { %>
-                <div class='inner'>
-                  <p>无话题</p>
-                </div>
-                <% } %>
-
-        </div>
-
-        <div class='panel' style="background-color:white">
-          <div class='header'>
-            <span class='col_fade'>最近参与的话题</span>
-          </div>
-          <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
-            <%- partial('../topic/abstract-2col', { collection: recent_replies, as: 'topic' }) %>
-              
-                  <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1" style="border-radius: 5px">
-                      <a href="aaa ">
-                        <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg" style="background-image:URL(../public/images/climb_rope.png)">
-                            <span>广告</span>
-                        </div>
-                      </a>
-                      <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body">
-                        <div class="pano-abstract-contents">
-                          <a href="a">
-                            <p class="pano-abstract-title">
-                                广告标题   
-                            </p>
-                            <p class="pano-abstract-desc">          
-                                广告说明          
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="clearfix"></div>
-                <a class='dark' href="/user/<%= user.loginname %>/replies">查看更多»</a>
-            
-              <% } else { %>
-                <div class='inner'>
-                  <p>无话题</p>
-                </div>
-                <% } %>
-
-
-
-
-        </div>
       </div>
-
+    </div>
+    <div id="slider1" class="swipe">
+      <ul class="box01_list pano-touchslide-ul">
+        <li class="li_list pano-touchslide-li">
+            <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
+              <%- partial('../topic/abstract-2col', { collection: recent_topics, as: 'topic' }) %>
+                <!-- 广告 -->
+                <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+                  <a href="/">
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/snowboard_boards.png)">
+                      <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
+                        <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
+                        </div>   
+                      </div>
+                    </div>
+                  </a>
+                  <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body" style="background:#c6fdfd">
+                    <div class="pano-abstract-contents">
+                      <span style="font-size: 10px; color: grey">
+                        广告
+                      </span>  
+                      <a href="/">
+                        <div class="pano-abstract-title pano-cut2">  
+                            广告标题
+                        </div>
+                        <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                            广告说明
+                        </div>
+                      </a>
+                    </div>
+                    <div class="pano-abstract-information"  style="height: 30px;">    
+                      <div class="hidden-sm px-1">
+                        <div style="font-size: 10px">
+                            其他信息
+                        </div>
+                      </div>
+                      <div class="hidden-md-up px-1">
+                        <div style="font-size: 10px">
+                            其他信息
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 广告结束 -->
+                    <div class="clearfix"></div>
+                  <a class='dark' href="/user/<%= user.loginname %>/topics">查看更多»</a>
+                <% } else { %>
+                  <div class='inner'>
+                    <p>无话题</p>
+                  </div>
+                  <% } %>
+        </li>
+        <li class="li_list pano-touchslide-li">
+            <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
+              <%- partial('../topic/abstract-2col', { collection: recent_replies, as: 'topic' }) %>
+                <!-- 广告 -->
+                <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+                  <a href="/">
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
+                      <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
+                        <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
+                        </div>   
+                      </div>                    
+                    </div>
+                  </a>
+                  <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
+                    <div class="pano-abstract-contents">
+                      <span style="font-size: 10px; color: grey">
+                        广告
+                      </span>  
+                      <a href="/">
+                        <div class="pano-abstract-title pano-cut2">  
+                            广告标题
+                        </div>
+                        <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                            广告说明
+                        </div>
+                      </a>
+                    </div>
+                    <div class="pano-abstract-information"  style="height: 30px;">    
+                      <div class="hidden-sm px-1">
+                        <div style="font-size: 10px">
+                            其他信息
+                        </div>
+                      </div>
+                      <div class="hidden-md-up px-1">
+                        <div style="font-size: 10px">
+                            其他信息
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 广告结束 -->
+  
+                    <div class="clearfix"></div>
+                  <a class='dark' href="/user/<%= user.loginname %>/replies">查看更多»</a>
+              
+                <% } else { %>
+                  <div class='inner'>
+                    <p>无话题</p>
+                  </div>
+                  <% } %>          
+        </li>
+      </ul>
+    </div>
+      </div>
   </div>
 </div>
 
@@ -248,3 +375,109 @@
   <% } %>
 
 
+    
+    <!-- touchslider script -->
+    <script type="text/javascript">
+      $(".find_nav_list").css("left",0);
+      
+      $(".find_nav_list li").each(function(){
+          $(".sideline").css({left:0});
+          $(".find_nav_list li").eq(0).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
+      });
+      var nav_w=$(".find_nav_list li").first().width();
+      $(".sideline").width(nav_w);
+      $(".find_nav_list li").on('click', function(){
+        nav_w=$(this).width();
+        $(".sideline").stop(true);
+        $(".sideline").animate({left:$(this).position().left},300);
+        $(".sideline").animate({width:nav_w});
+        $(this).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
+        var fn_w = ($(".find_nav").width() - nav_w) / 2;
+        var fnl_l;
+        var fnl_x = parseInt($(this).position().left);
+        if (fnl_x <= fn_w) {
+          fnl_l = 0;
+        } else if (fn_w - fnl_x <= flb_w - fl_w) {
+          fnl_l = flb_w - fl_w;
+        } else {
+          fnl_l = fn_w - fnl_x;
+        }
+        $(".find_nav_list").animate({
+          "left" : fnl_l
+        }, 300);
+        
+      });
+      var fl_w=$(".find_nav_list").width();
+      var flb_w=$(".find_nav_left").width();
+      $(".find_nav_list").on('touchstart', function (e) {
+        var touch1 = e.originalEvent.targetTouches[0];
+        x1 = touch1.pageX;
+        y1 = touch1.pageY;
+        ty_left = parseInt($(this).css("left"));
+      });
+      $(".find_nav_list").on('touchmove', function (e) {
+        var touch2 = e.originalEvent.targetTouches[0];
+        var x2 = touch2.pageX;
+        var y2 = touch2.pageY;
+        if(ty_left + x2 - x1>=0){
+          $(this).css("left", 0);
+        }else if(ty_left + x2 - x1<=flb_w-fl_w){
+          $(this).css("left", flb_w-fl_w);
+        }else{
+          $(this).css("left", ty_left + x2 - x1);
+        }
+        if(Math.abs(y2-y1)>0){
+          e.preventDefault();
+        }
+      });
+      
+      
+      for(n=1;n<9;n++){
+        var page='pagenavi'+n;
+        var mslide='slider'+n;
+        var mtitle='emtitle'+n;
+        arrdiv = 'arrdiv' + n;
+        var as=document.getElementById(page).getElementsByTagName('a');
+        var tt=new TouchSlider({id:mslide,'auto':'-1',fx:'ease-out',direction:'left',speed:600,timeout:5000,'before':function(index){
+          var as=document.getElementById(this.page).getElementsByTagName('a');
+          as[this.p].className='';
+          this.p=index;
+          
+          fnl_x =  parseInt($(".find_nav_list li").eq(this.p).position().left);
+          
+          nav_w=$(".find_nav_list li").eq(this.p).width();
+          $(".sideline").stop(true);
+          $(".sideline").animate({left:$(".find_nav_list li").eq(this.p).position().left},300);
+          $(".sideline").animate({width:nav_w},100);
+          $(".find_nav_list li").eq(this.p).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
+          var fn_w = ($(".find_nav").width() - nav_w) / 2;
+          var fnl_l;
+          if (fnl_x <= fn_w) {
+            fnl_l = 0;
+          } else if (fn_w - fnl_x <= flb_w - fl_w) {
+            fnl_l = flb_w - fl_w;
+          } else {
+            fnl_l = fn_w - fnl_x;
+          }
+          $(".find_nav_list").animate({
+            "left" : fnl_l
+          }, 300);
+        }});
+        tt.page = page;
+        tt.p = 0;
+        //console.dir(tt); console.dir(tt.__proto__);
+      
+        for(var i=0;i<as.length;i++){
+          (function(){
+            var j=i;
+            as[j].tt = tt;
+            as[j].onclick=function(){
+              this.tt.slide(j);
+              return false;
+            }
+          })();
+        }
+      }
+      </script>
+  
+     <!-- end of touchslider script -->

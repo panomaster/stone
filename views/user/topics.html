@@ -1,27 +1,23 @@
-
 <div class="container">
-    <div class="row">
-        <%- partial('sidebar-simple') %> 
-        <div class="col-lg-8 order-1">
-  <div class='panel'>
-    <div class='header'>
+  <div class="row">
+    <%- partial('sidebar-simple') %> 
+    <div class="col-lg-8 order-1">
+      <div class='panel'>
+        <div class="header text-center py-5 light-blue" style="width: 100%">
+          <img src="<%= proxy(user.avatar_url) %>" class="rounded-circle" style="max-width: 50px;" title="<%= user.loginname %>">
+          <%= user.name %> 创建的话题
+        </div>
+        <div class="inner padding">
+          <% if(typeof(topics) !== 'undefined' && topics.length > 0 ){ %>
+            <%- partial('../topic/list',
+            {topics:topics,pages:pages,current_pages:current_page,base:'/user/'+user.loginname+'/topics'}) %>
+            <% }else{ %>
+            <div class='inner'>
+              <p>无话题</p>
+            </div>
+            <% } %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class='panel'>
-    <div class="header"><%=user.name%> 创建的话题</div>
-    <div class="inner padding">
-    <% if(typeof(topics) !== 'undefined' && topics.length > 0 ){ %>
-    <%- partial('../topic/list',
-    {topics:topics,pages:pages,current_pages:current_page,base:'/user/'+user.loginname+'/topics'}) %>
-    <% }else{ %>
-    <div class='inner'>
-      <p>无话题</p>
-    </div>
-    <% } %>
-  </div>
 </div>
-</div>
-
-</div>
-</div>
-

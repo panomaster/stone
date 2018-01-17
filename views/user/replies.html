@@ -1,25 +1,50 @@
 <div class="container">
-    <div class="row">
-        <%- partial('sidebar-simple') %> 
-        <div class="col-lg-8 order-1">
-  <div class='panel'>
-    <div class='header'>
+  <div class="row">
+    <%- partial('sidebar-simple') %> 
+    <div class="col-lg-8 order-1">
+      <div class='panel'>
+    <!-- Card -->
+    <div class="card card-image pano-side-card" style="border-radius:0px; height: 300px; background-image: url(/public/images/bg4.png);">            
+      <!-- Content -->
+      <div class="text-white text-center align-items-center rgba-black-light" style="text-shadow: grey; height: 300px; padding-top: 100px">
+        <div class='user_big_avatar'>
+          <img src="<%= proxy(user.avatar_url) %>" class="rounded-circle" style="max-width: 80px;" title="<%= user.loginname %>" />
+        </div>
+        <h6 class="card-title pt-2"><strong><%= user.name %></strong></h6>
+        <h6 class="card-title pt-2"><strong><%= user.signature %></strong></h6>
+        <div style="font-size: 12px">
+          <span class='col_fade mx-1 px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
+              粉丝: <%= user.follower_count %>  
+          </span>
+          <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
+              关注: <%= user.following_count %> 
+          </span>
+          <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
+              积分: <%= user.score %>  
+          </span>
+          <% if (user.collect_topic_count) {%>
+          <a class="text-white" href="/user/<%= user.loginname %>/collections">
+            <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white;  border-left: solid 8px white;">
+              收藏: <%= user.collect_topic_count %>
+            </span>
+          </a>
+          <%}%>
+      </div>
+    </div>
+    <!-- Content -->
+  </div>
+  <!-- Card -->  
+        <div class="inner padding">
+        <% if(typeof(topics) !== 'undefined' && topics.length > 0){ %>
+        <%- partial('../topic/list',
+        {topics:topics,pages:pages,current_pages:current_page,base:'/user/'+user.loginname+'/replies'}) %>
+        <% }else{ %>
+          <div class='inner'>
+            <p><%= user.name %> 没有参与到讨论</p>
+          </div>
+        <% } %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class='panel'>
-    <div class="header"><%= user.name %> 参与的话题</div>
-    <div class="inner padding">
-    <% if(typeof(topics) !== 'undefined' && topics.length > 0){ %>
-    <%- partial('../topic/list',
-    {topics:topics,pages:pages,current_pages:current_page,base:'/user/'+user.loginname+'/replies'}) %>
-    <% }else{ %>
-    <div class='inner'>
-      <p>无话题</p>
-    </div>
-    <% } %>
-  </div>
-  </div>
-</div>
-
-</div>
 </div>

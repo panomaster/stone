@@ -1,152 +1,13 @@
-<style type="text/css">
-  .pano-touchslide-ul,.pano-touchslide-li{
-    padding:0;
-    margin:0;
-  }
-	.find_nav {
-		width: 100%;
-		height: 50px;
-		background-color: white;
-		z-index: 9999;
-		border-bottom: 2px solid #ddd;
-		display: -moz-box;
-		display: -webkit-box;
-    display: box;
-	}
-	.find_nav_left {
-		height: 50px;
-		position: relative;
-		overflow: hidden;
-		-moz-box-flex: 1;
-		-webkit-box-flex: 1;
-		box-flex: 1;
-	}
-	.find_nav_list {
-		position: absolute;
-		left: 0;
-	}
-	.find_nav_list ul {
-		position: relative;
-		white-space: nowrap;
-    font-size: 0;
-	}
-  .find_nav_list ul li span{
-    border-right: 1px solid #c6c7c7;
-    border-left: 1px solid #c6c7c7;
-  }
-
-  .find_nav_list ul li:first-child span{
-    border-right: 1px solid #c6c7c7;
-    border-left: 0;
-  }
-
-  .find_nav_list ul li:nth-last-child(2) span{
-    border-right: 0;
-    border-left: 1px solid #c6c7c7;
-  }
-  
-	.find_nav_list ul li {
-		display: inline-block;
-		padding: 0;
-    margin:0 20px;
-	}
-	.find_nav_list ul li a {
-		display: block;
-		width: 100%;
-		height: 100%;
-		line-height: 50px;
-		font-size: 16px;
-		text-align: center;
-		color: #666;
-	}
-	.find_nav_cur a {
-    color: #0b8cf5 !important;
-    font-weight: 700;
-	}
-	.find_nav_list a.active{ color:rgb(49, 48, 48)}
-	.sideline {
-		display: block;
-		position: absolute;
-		border: 0;
-		height: 2px;
-		background-color: #48a5f4;
-		left: 0;
-		top: 48px;
-		pointer-events: none;
-  }
-  .swipe{ padding:2px 0 0 0;}
-  </style>
-
-
 <div class="container">
   <div class="row">
     <%- partial('sidebar-simple') %>
       <div class="col-lg-8 order-1">
+        <%- partial('user-header') %>
 
-    <!-- Card -->
-    <div class="card card-image pano-side-card" style="border-radius:0px; height: 300px; background-image: url(../public/images/bg4.png);">            
-      <!-- Content -->
-      <div class="text-white text-center align-items-center rgba-black-light" style="text-shadow: grey; height: 300px; padding-top: 100px">
-        <div class='user_big_avatar'>
-          <img src="<%= proxy(user.avatar_url) %>" class="rounded-circle" style="max-width: 80px;" title="<%= user.loginname %>" />
-        </div>
-        <h6 class="card-title pt-2"><strong><%= user.name %></strong></h6>
-        <h6 class="card-title pt-2"><strong><%= user.signature %></strong></h6>
-        <div style="font-size: 12px">
-          <span class='col_fade mx-1 px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
-              粉丝: <%= user.follower_count %>  
-          </span>
-          <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
-              关注: <%= user.following_count %> 
-          </span>
-          <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
-              积分: <%= user.score %>  
-          </span>
-          <% if (user.collect_topic_count) {%>
-          <a class="text-white" href="/user/<%= user.loginname %>/collections">
-            <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white;  border-left: solid 8px white;">
-              收藏: <%= user.collect_topic_count %>
-            </span>
-          </a>
-          <%}%>
-      </div>
-    </div>
-    <!-- Content -->
-  </div>
-  <!-- Card -->  
         
     <div class='panel'  style="background-color:white">
       <div class='inner userinfo' style="font-size: 12px">
-        <div class='text-center'>
-            <span class='col_fade'>
-                <%= user.create_at_ago() %> 注册 
-            </span>
-            <% if (user.url) { %>
-              <i class="fa fa-lg fa-fw fa-home"></i>
-              <a class='dark' href="<%= user.url %>" target='_blank'>
-                <%= user.url %>
-              </a>
-            <% } %>
-            <% if (user.location) { %>
-              <i class="fa fa-lg fa-fw fa-map-marker"></i>
-              <span class='dark'>
-                <%= user.location %>
-              </span>
-            <% } %>
-            <% if (user.githubUsername) { %>
-              <i class="fa fa-lg fa-fw fa-github"></i>
-              <a class='dark' href="https://github.com/<%= user.githubUsername %>" target='_blank'>
-                @
-                <%= user.githubUsername %>
-              </a>
-            <% } %>
-            <% if (user.weibo) { %>
-              <i class="fa fa-lg fa-fw fa-twitter"></i>
-              <a class='dark' href="<%= user.weibo %>" target='_blank'>
-                <%= user.weibo %>
-              </a>
-            <% } %>
-        </div>
+
         <hr>
  
         <% if (current_user && current_user.is_admin) { %>
@@ -194,6 +55,7 @@
               <ul class="pano-touchslide-ul">
                 <li class="m-0 pano-touchslide-li"><a href="#" class="active"><span class="px-3">最近创建的话题</span></a></li>
                 <li class="m-0 pano-touchslide-li"><a href="#"><span class="px-3">最近参与的话题</span></a></li>
+                <li class="m-0 pano-touchslide-li"><a href="#"><span class="px-3">用户收藏的话题</span></a></li>
                 <li class="m-0 pano-touchslide-li sideline"></li>
               </ul>
           </div>
@@ -202,47 +64,48 @@
     <div id="slider1" class="swipe">
       <ul class="box01_list pano-touchslide-ul">
         <li class="li_list pano-touchslide-li">
-            <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
-              <%- partial('../topic/abstract-2col', { collection: recent_topics, as: 'topic' }) %>
-                <!-- 广告 -->
-                <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+          <!-- 广告 -->
+          <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+              <a href="/">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
+                  <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
+                    <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
+                    </div>   
+                  </div>                    
+                </div>
+              </a>
+              <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
+                <div class="pano-abstract-contents">
+                  <span style="font-size: 10px; color: grey">
+                    广告
+                  </span>  
                   <a href="/">
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/snowboard_boards.png)">
-                      <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
-                        <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
-                        </div>   
-                      </div>
+                    <div class="pano-abstract-title pano-cut2">  
+                        广告标题
+                    </div>
+                    <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                        广告说明
                     </div>
                   </a>
-                  <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body" style="background:#c6fdfd">
-                    <div class="pano-abstract-contents">
-                      <span style="font-size: 10px; color: grey">
-                        广告
-                      </span>  
-                      <a href="/">
-                        <div class="pano-abstract-title pano-cut2">  
-                            广告标题
-                        </div>
-                        <div class="pano-abstract-desc pano-cut1 hidden-sm">          
-                            广告说明
-                        </div>
-                      </a>
+                </div>
+                <div class="pano-abstract-information"  style="height: 30px;">    
+                  <div class="hidden-sm px-1">
+                    <div style="font-size: 10px">
+                        其他信息
                     </div>
-                    <div class="pano-abstract-information"  style="height: 30px;">    
-                      <div class="hidden-sm px-1">
-                        <div style="font-size: 10px">
-                            其他信息
-                        </div>
-                      </div>
-                      <div class="hidden-md-up px-1">
-                        <div style="font-size: 10px">
-                            其他信息
-                        </div>
-                      </div>
+                  </div>
+                  <div class="hidden-md-up px-1">
+                    <div style="font-size: 10px">
+                        其他信息
                     </div>
                   </div>
                 </div>
-                <!-- 广告结束 -->
+              </div>
+            </div>
+            <!-- 广告结束 -->
+            <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
+              <%- partial('../topic/abstract-2col', { collection: recent_topics, as: 'topic' }) %>
+                
                     <div class="clearfix"></div>
                   <a class='dark' href="/user/<%= user.loginname %>/topics">查看更多»</a>
                 <% } else { %>
@@ -252,47 +115,101 @@
                   <% } %>
         </li>
         <li class="li_list pano-touchslide-li">
-            <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
-              <%- partial('../topic/abstract-2col', { collection: recent_replies, as: 'topic' }) %>
-                <!-- 广告 -->
-                <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+          <!-- 广告 -->
+          <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+              <a href="/">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
+                  <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
+                    <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
+                    </div>   
+                  </div>                    
+                </div>
+              </a>
+              <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
+                <div class="pano-abstract-contents">
+                  <span style="font-size: 10px; color: grey">
+                    广告
+                  </span>  
                   <a href="/">
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
-                      <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
-                        <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
-                        </div>   
-                      </div>                    
+                    <div class="pano-abstract-title pano-cut2">  
+                        广告标题
+                    </div>
+                    <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                        广告说明
                     </div>
                   </a>
-                  <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
-                    <div class="pano-abstract-contents">
-                      <span style="font-size: 10px; color: grey">
-                        广告
-                      </span>  
-                      <a href="/">
-                        <div class="pano-abstract-title pano-cut2">  
-                            广告标题
-                        </div>
-                        <div class="pano-abstract-desc pano-cut1 hidden-sm">          
-                            广告说明
-                        </div>
-                      </a>
+                </div>
+                <div class="pano-abstract-information"  style="height: 30px;">    
+                  <div class="hidden-sm px-1">
+                    <div style="font-size: 10px">
+                        其他信息
                     </div>
-                    <div class="pano-abstract-information"  style="height: 30px;">    
-                      <div class="hidden-sm px-1">
-                        <div style="font-size: 10px">
-                            其他信息
-                        </div>
-                      </div>
-                      <div class="hidden-md-up px-1">
-                        <div style="font-size: 10px">
-                            其他信息
-                        </div>
-                      </div>
+                  </div>
+                  <div class="hidden-md-up px-1">
+                    <div style="font-size: 10px">
+                        其他信息
                     </div>
                   </div>
                 </div>
-                <!-- 广告结束 -->
+              </div>
+            </div>
+            <!-- 广告结束 -->
+            <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
+              <%- partial('../topic/abstract-2col', { collection: recent_replies, as: 'topic' }) %>
+                
+  
+                    <div class="clearfix"></div>
+                  <a class='dark' href="/user/<%= user.loginname %>/replies">查看更多»</a>
+              
+                <% } else { %>
+                  <div class='inner'>
+                    <p>无话题</p>
+                  </div>
+                  <% } %>          
+        </li>
+        <li class="li_list pano-touchslide-li">
+          <!-- 广告 -->
+          <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
+              <a href="/">
+                <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
+                  <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
+                    <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
+                    </div>   
+                  </div>                    
+                </div>
+              </a>
+              <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
+                <div class="pano-abstract-contents">
+                  <span style="font-size: 10px; color: grey">
+                    广告
+                  </span>  
+                  <a href="/">
+                    <div class="pano-abstract-title pano-cut2">  
+                        广告标题
+                    </div>
+                    <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                        广告说明
+                    </div>
+                  </a>
+                </div>
+                <div class="pano-abstract-information"  style="height: 30px;">    
+                  <div class="hidden-sm px-1">
+                    <div style="font-size: 10px">
+                        其他信息
+                    </div>
+                  </div>
+                  <div class="hidden-md-up px-1">
+                    <div style="font-size: 10px">
+                        其他信息
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 广告结束 -->
+            <% if (typeof(is_collect) !== 'undefined' && is_collect.length > 0) { %>
+              <%- partial('../topic/abstract-2col', { collection: is_collect, as: 'topic' }) %>
+                
   
                     <div class="clearfix"></div>
                   <a class='dark' href="/user/<%= user.loginname %>/replies">查看更多»</a>

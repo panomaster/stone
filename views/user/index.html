@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container white">
   <div class="row">
     <%- partial('sidebar-simple') %>
       <div class="col-lg-8 order-1">
@@ -7,9 +7,6 @@
         
     <div class='panel'  style="background-color:white">
       <div class='inner userinfo' style="font-size: 12px">
-
-        <hr>
- 
         <% if (current_user && current_user.is_admin) { %>
           <div class="btn-group pull-right" style="width: 100%" >
               <button class="btn btn-light-blue btn-sm dropdown-toggle" style="width: 100%; font-size: 14px;" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -65,46 +62,10 @@
       <ul class="box01_list pano-touchslide-ul">
         <li class="li_list pano-touchslide-li">
           <!-- 广告 -->
-          <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
-              <a href="/">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
-                  <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
-                    <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
-                    </div>   
-                  </div>                    
-                </div>
-              </a>
-              <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
-                <div class="pano-abstract-contents">
-                  <span style="font-size: 10px; color: grey">
-                    广告
-                  </span>  
-                  <a href="/">
-                    <div class="pano-abstract-title pano-cut2">  
-                        广告标题
-                    </div>
-                    <div class="pano-abstract-desc pano-cut1 hidden-sm">          
-                        广告说明
-                    </div>
-                  </a>
-                </div>
-                <div class="pano-abstract-information"  style="height: 30px;">    
-                  <div class="hidden-sm px-1">
-                    <div style="font-size: 10px">
-                        其他信息
-                    </div>
-                  </div>
-                  <div class="hidden-md-up px-1">
-                    <div style="font-size: 10px">
-                        其他信息
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 广告结束 -->
+          <%- partial('../views/adv/qrate-adv') %> 
+          <!-- 广告结束 -->
             <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
-              <%- partial('../topic/abstract-2col', { collection: recent_topics, as: 'topic' }) %>
+              <%- partial('../topic/abstract-qrate', { collection: recent_topics, as: 'topic' }) %>
                 
                     <div class="clearfix"></div>
                   <a class='dark' href="/user/<%= user.loginname %>/topics">查看更多»</a>
@@ -116,46 +77,10 @@
         </li>
         <li class="li_list pano-touchslide-li">
           <!-- 广告 -->
-          <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
-              <a href="/">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
-                  <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
-                    <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
-                    </div>   
-                  </div>                    
-                </div>
-              </a>
-              <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
-                <div class="pano-abstract-contents">
-                  <span style="font-size: 10px; color: grey">
-                    广告
-                  </span>  
-                  <a href="/">
-                    <div class="pano-abstract-title pano-cut2">  
-                        广告标题
-                    </div>
-                    <div class="pano-abstract-desc pano-cut1 hidden-sm">          
-                        广告说明
-                    </div>
-                  </a>
-                </div>
-                <div class="pano-abstract-information"  style="height: 30px;">    
-                  <div class="hidden-sm px-1">
-                    <div style="font-size: 10px">
-                        其他信息
-                    </div>
-                  </div>
-                  <div class="hidden-md-up px-1">
-                    <div style="font-size: 10px">
-                        其他信息
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 广告结束 -->
+          <%- partial('../views/adv/qrate-adv') %> 
+          <!-- 广告结束 -->
             <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
-              <%- partial('../topic/abstract-2col', { collection: recent_replies, as: 'topic' }) %>
+              <%- partial('../topic/abstract-qrate', { collection: recent_replies, as: 'topic' }) %>
                 
   
                     <div class="clearfix"></div>
@@ -169,46 +94,10 @@
         </li>
         <li class="li_list pano-touchslide-li">
           <!-- 广告 -->
-          <div class="col-lg-12 col-md-6 col-sm-6 col-6 pano-abstract-box px-1 my-1">
-              <a href="/">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg pupple" style="border-radius: 5px; background-image:URL(../public/images/climb_rope.png)">
-                  <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
-                    <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
-                    </div>   
-                  </div>                    
-                </div>
-              </a>
-              <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body"  style="background:#c6fdfd">
-                <div class="pano-abstract-contents">
-                  <span style="font-size: 10px; color: grey">
-                    广告
-                  </span>  
-                  <a href="/">
-                    <div class="pano-abstract-title pano-cut2">  
-                        广告标题
-                    </div>
-                    <div class="pano-abstract-desc pano-cut1 hidden-sm">          
-                        广告说明
-                    </div>
-                  </a>
-                </div>
-                <div class="pano-abstract-information"  style="height: 30px;">    
-                  <div class="hidden-sm px-1">
-                    <div style="font-size: 10px">
-                        其他信息
-                    </div>
-                  </div>
-                  <div class="hidden-md-up px-1">
-                    <div style="font-size: 10px">
-                        其他信息
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 广告结束 -->
+          <%- partial('../views/adv/qrate-adv') %> 
+          <!-- 广告结束 -->
             <% if (typeof(is_collect) !== 'undefined' && is_collect.length > 0) { %>
-              <%- partial('../topic/abstract-2col', { collection: is_collect, as: 'topic' }) %>
+              <%- partial('../topic/abstract-qrate', { collection: is_collect, as: 'topic' }) %>
                 
   
                     <div class="clearfix"></div>

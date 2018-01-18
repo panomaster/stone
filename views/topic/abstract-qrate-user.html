@@ -1,0 +1,79 @@
+
+<div class="col-lg-6 col-md-12 col-sm-12 py-4 px-1 pano-valign pano-border-bottom" style="height: 86px; display: none">
+    <a href="/topic/<%= topic._id %>" title="<%= topic.title %>">
+        <div class="col-3 col-left pano-qrate-bg" style="background-image:URL(<%= topic.thumbnail %>);">
+        </div>
+        <div class="col-9 col-left pano-valign pano-qrate-bg-caption px-2">
+            <span class="logo-text" style="margin-right: 2px; font-size: 10px">
+                <%= topic.tabName%>
+                <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
+                <% } else { %>
+                | <%= topic.mtabName%>
+                <% } %>
+            </span>
+            <div class="pano-qrate-title-dark pano-cut2">
+                <%= topic.title %>
+            </div>
+            <div class="pano-qrate-desc-dark pano-cut1" style="color: grey">
+                <%= topic.desc %>
+            </div>   
+        </div>
+    </a>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-12 pano-abstract-box px-1 my-1">
+        <a href="/topic/<%= topic._id %>">
+          <div class="col-lg-3 col-md-12 col-sm-12 col-12 col-left pano-abstract-bg" style="background-image:URL(<%= topic.thumbnail %>)">
+              <div class="pano-abstract-bg-caption d-flex justify-content-center align-self-center">
+                <% if (topic.mtab === 'video' && topic.mtab) { %>
+                  <div class="white-text align-self-center" style="text-shadow: 1px 1px 1px grey">
+                    <img src="../public/images/play-1.png" style="width: 50px;">
+                  </div>   
+                <% } %>
+              </div>
+          </div>
+        </a>
+        <div class="col-lg-9 col-md-12 col-sm-12 col-12 col-left pano-abstract-body">
+              <div class="pano-abstract-contents">
+                <span style="font-size: 10px; color: grey">
+                  <%= topic.tabName%> 
+                  <% if (topic.tab === 'mall' || topic.tab === 'hiking' ) { %>
+                  <% } else { %> 
+                    | <%= topic.mtabName%> 
+                  <% } %>
+                  <% if (topic.top) { %>
+                    | 置顶
+                  <% } %>  
+                  <% if (topic.good) { %>
+                    | 精华
+                  <% } %>  
+                </span>  
+                <a href="/topic/<%= topic._id %>">
+                  <div class="pano-abstract-title pano-cut2">  
+                    <%= topic.title %>    
+                  </div>
+                  <div class="pano-abstract-desc pano-cut1 hidden-sm">          
+                    <%= topic.desc %>           
+                  </div>
+                </a>
+              </div>
+              <div class="pano-abstract-information"  style="height: 30px;">    
+                <div class="pull-left px-1">
+                  <img class="pano-avatar-sm rounded-circle" src="<%= proxy(topic.author.avatar_url) %>">
+                </div>
+                <div class="hidden-sm px-1">
+                  <div style="font-size: 10px">
+                    <%= topic.author.name %> | <%= topic.create_at_ago() %> | <%= topic.reply_count %> 个回复 | 热度 <%= topic.visit_count %>
+                  </div>
+                </div>
+                <div class="hidden-md-up px-1">
+                  <div style="font-size: 10px">
+                    <div><%= topic.author.name %> | <%= topic.create_at_ago() %></div>
+                    <div><%= topic.reply_count %> 个回复 | 热度 <%= topic.visit_count %></div>
+                  </div>
+                </div>
+              </div>
+    
+        </div>
+    </div>
+    

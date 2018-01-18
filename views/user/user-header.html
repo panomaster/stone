@@ -1,108 +1,81 @@
-<!--Card-->
-<div class="card testimonial-card text-center" style="height: 300px; border-radius: 0px; box-shadow; none">
-    <!--Bacground color-->
-    <div class="card-up indigo lighten-1" style="border-radius:0px; background-image: url(<%- staticFile(config.user_header_bg) %>);">
+<div class="pano-full-bg-grey" style="height: 120px; background-image: url(<%- staticFile(config.page_header_bg) %>);">
+</div>
+<div class="pb-3 mb-3" style="width: 100%; border-bottom: 1px solid rgb(231, 229, 229);">
+    <div class="pull-right" style="margin-top: -40px; margin-right: 30px; width: 300px">
+        <div class="pull-left" style="height: 80px">
+            <img src="<%= proxy(user.avatar_url) %>" class="rounded-circle pano-avatar-xl" style="border: 5px solid white;">
+        </div>
+        <div class="pull-left" style="height: 80px">
+            <div class="pt-1" style="height: 40px; padding-left:10px">            
+                <span class="white-text pano-responsive-t1 pano-text-grey-shadow"><%= user.name %></span>
+            </div>
+            <div style="height: 40px; padding-left:10px">            
+                <span class="pano-responsive-d3">
+                
+                <% if (user.signature) {%>
+                    
+                    <%-escapeSignature(user.signature)%>
+                    
+                <%} else {%>
+                    <span style="font-style: italic">没有个性签名</span>
+                <%}%>
+                
+                </span>
+            </div>
+
+        </div>
     </div>
-    <!--Avatar-->
-    <div class="text-center"><img src="<%= proxy(user.avatar_url) %>" class="rounded-circle" style="margin-top: -40px; width: 80px; height: 80px; border: 5px solid white;"></div>
-    
-    <div class="card-body" style="box-shadow: none">
-        <!--Name-->
-        <p class="pano-responsive-t2"><%= user.name %><p>
-        <p class="pano-responsive-d3">
-            
-            <% if (user.signature) {%>
-                <i class="fa fa-quote-left"></i> 
-                <%-escapeSignature(user.signature)%>
-                <i class="fa fa-quote-right"></i> 
-            <%} else {%>
-                没有个性签名
-            <%}%>
-            
-        </p>
-        <hr>
-        <!--Quotation-->
-        <span class='col_fade mx-1 px-2 text-center pano-responsive-d4' style="border:solid 1px white; border-left: solid 8px white;">
+    <div class="pt-5 text-center pano-responsive-d4" style="height: auto; width: 100%">
+        <span class='col_fade px-2 text-center'>
             粉丝: <%= user.follower_count %>  
         </span>
-        <span class='col_fade mx-1 px-2 text-center pano-responsive-d4' style="border:solid 1px white; border-left: solid 8px white;">
+        <span class='col_fade px-2 text-center'>
             关注: <%= user.following_count %> 
         </span>
-        <span class='col_fade mx-1 px-2 text-center pano-responsive-d4' style="border:solid 1px white; border-left: solid 8px white;">
+        <span class='col_fade px-2 text-center'>
             积分: <%= user.score %>  
         </span>
         <% if (user.collect_topic_count) {%>
         <a href="/user/<%= user.loginname %>/collections">
-            <span class='col_fade mx-1  px-2 text-center pano-responsive-d4' style="border:solid 1px white;  border-left: solid 8px white;">
-            收藏: <%= user.collect_topic_count %>
+            <span class='col_fade px-2 text-center' style="border:solid 1px white;  border-left: solid 8px white;">
+            收藏的话题: <%= user.collect_topic_count %>
             </span>
         </a>
         <%}%>
         
-
-        <div class='text-center' style="font-size: 10px">
-                <span class='col_fade'>
-                    <%= user.create_at_ago() %> 注册 
+        <div class='text-center' style="font-size: 10px; display:none">
+            <span class='col_fade'>
+                <%= user.create_at_ago() %> 注册 
+            </span>
+            <% if (user.url) { %>
+                <i class="fa fa-lg fa-fw fa-home"></i>
+                <a class='dark' href="<%= user.url %>" target='_blank'>
+                <%= user.url %>
+                </a>
+            <% } %>
+            <% if (user.location) { %>
+                <i class="fa fa-lg fa-fw fa-map-marker"></i>
+                <span class='dark'>
+                <%= user.location %>
                 </span>
-                <% if (user.url) { %>
-                  <i class="fa fa-lg fa-fw fa-home"></i>
-                  <a class='dark' href="<%= user.url %>" target='_blank'>
-                    <%= user.url %>
-                  </a>
-                <% } %>
-                <% if (user.location) { %>
-                  <i class="fa fa-lg fa-fw fa-map-marker"></i>
-                  <span class='dark'>
-                    <%= user.location %>
-                  </span>
-                <% } %>
-                <% if (user.githubUsername) { %>
-                  <i class="fa fa-lg fa-fw fa-github"></i>
-                  <a class='dark' href="https://github.com/<%= user.githubUsername %>" target='_blank'>
-                    @
-                    <%= user.githubUsername %>
-                  </a>
-                <% } %>
-                <% if (user.weibo) { %>
-                  <i class="fa fa-lg fa-fw fa-twitter"></i>
-                  <a class='dark' href="<%= user.weibo %>" target='_blank'>
-                    <%= user.weibo %>
-                  </a>
-                <% } %>
-            </div>
-
-
+            <% } %>
+            <% if (user.githubUsername) { %>
+                <i class="fa fa-lg fa-fw fa-github"></i>
+                <a class='dark' href="https://github.com/<%= user.githubUsername %>" target='_blank'>
+                @
+                <%= user.githubUsername %>
+                </a>
+            <% } %>
+            <% if (user.weibo) { %>
+                <i class="fa fa-lg fa-fw fa-twitter"></i>
+                <a class='dark' href="<%= user.weibo %>" target='_blank'>
+                <%= user.weibo %>
+                </a>
+            <% } %>
+        </div>
     </div>
 </div>
-<!--/.Card-->
- 
 
-
-
-<!-- <div class="hm-black-strong">
-    <div class="pano-header-bg pano-header-bg-blur" style="background-image: url(<%- staticFile(config.user_header_bg) %>);"></div>
-    <div class="pano-header-content pano-header-content-front">
-        <img src="<%= proxy(user.avatar_url) %>" class="rounded-circle" style="max-width: 80px;" title="<%= user.loginname %>" />
-        <p class="pano-responsive-t2"><strong><%= user.name %></strong></p>
-        <h6><strong><%= user.signature %></strong></h6>
-        <span class='col_fade mx-1 px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
-            粉丝: <%= user.follower_count %>  
-        </span>
-        <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
-            关注: <%= user.following_count %> 
-        </span>
-        <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white; border-left: solid 8px white;">
-            积分: <%= user.score %>  
-        </span>
-        <% if (user.collect_topic_count) {%>
-        <a class="text-white" href="/user/<%= user.loginname %>/collections">
-            <span class='col_fade mx-1  px-2 text-center' style="border:solid 1px white;  border-left: solid 8px white;">
-            收藏: <%= user.collect_topic_count %>
-            </span>
-        </a>
-        <%}%>
-  </div>   
-</div> -->
 
 
 <style>
